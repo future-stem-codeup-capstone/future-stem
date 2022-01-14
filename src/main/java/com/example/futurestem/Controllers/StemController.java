@@ -11,4 +11,14 @@ public class StemController {
     public String showLandingPage() {
         return "views/landing-page";
     }
+
+    @GetMapping("/home")
+    public String home() {
+        return "views/home";
+    }
+
+    @GetMapping("/profile")
+    public String showProfile() {
+        return "views/profile";
+    }
 }
