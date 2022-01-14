@@ -3,7 +3,7 @@ package com.example.futurestem.Models;
 import java.util.List;
 
 @Entity
-@Table(name = "blog_users")
+@Table(name = "users")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
