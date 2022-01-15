@@ -1,6 +1,7 @@
 package com.example.futurestem.Models;
 
 import javax.persistence.*;
+import java.util.List;
 //import javax.persistence.Table;
 
 
@@ -20,6 +21,6 @@ public class User {
     @Column(nullable = false, length = 240)
     private String password;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<Post> userPosts;
+    @OneToMany(mappedBy = "user")
+    private List<Project> userProjects;
 }
