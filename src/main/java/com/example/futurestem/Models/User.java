@@ -1,10 +1,12 @@
 package com.example.futurestem.Models;
 
-import java.util.List;
+import javax.persistence.*;
+//import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +20,6 @@ public class Users {
     @Column(nullable = false, length = 240)
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Post> userPosts;
+//    @OneToMany(mappedBy = "user")
+//    private List<Post> userPosts;
 }
