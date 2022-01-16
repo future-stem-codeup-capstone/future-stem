@@ -20,8 +20,13 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user")
-
     private List<Project> userProjects;
+
+    @OneToMany(mappedBy = "user")
+    private List<Hobby> = userHobbies;
+
+    @OneToMany(mappedBy = "user")
+    private List<User> = userFriends;
 
     public User() {}
 
