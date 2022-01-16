@@ -23,10 +23,11 @@ public class User {
     private List<Project> userProjects;
 
     @OneToMany(mappedBy = "user")
-    private List<Hobby> = userHobbies;
+    private List<Hobby> userHobbies;
 
-    @OneToMany(mappedBy = "user")
-    private List<User> = userFriends;
+//    Figure out how to do friends
+//    @OneToMany(mappedBy = "user")
+//    private List<User> userFriends;
 
     public User() {}
 
@@ -62,13 +63,27 @@ public class User {
         this.password = password;
     }
 
+
     public List<Project> getUserProjects() {
         return userProjects;
     }
-
-    public void setUserProjects(List<Project> userPosts) {
-        this.userProjects = userPosts;
+    public void setUserProjects(List<Project> userProjects) {
+        this.userProjects = userProjects;
     }
 
 
+    public List<Hobby> getUserHobbies() {
+        return userHobbies;
+    }
+    public void setUserHobbies(List<Hobby> userHobbies) {
+        this.userHobbies = userHobbies;
+    }
+
+
+//    public List<User> getUserFriends() {
+//        return userFriends;
+//    }
+//    public void setUserFriends(List<User> userFriends) {
+//        this.userFriends = userFriends;
+//    }
 }
