@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+<form action="/project/edit" method="post">
+    <label name="projectTitle">Title of Project:</label>
+    <input name="projectTitle" th:value="${projectToEdit.getTitle()}">
+
+    <label name="projectBody">Body of Project:</label>
+    <input name="projectBody" th:value="${projectToEdit.getBody()}">
+
+    <input name="projectId" type="hidden" th:value="${projectToEdit.getId()}">
+
+    <button type="submit">Submit edit</button>
+</form>
+</body>
+</html>

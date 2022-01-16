@@ -25,4 +25,10 @@ public class UserController {
         return "redirect:/views/landing-page";
     }
 
+
+
+
+
+
+
 }
