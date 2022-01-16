@@ -1,5 +1,4 @@
 package com.example.futurestem.Controllers;
-
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
@@ -13,7 +12,7 @@ public class StemController {
     }
 
     @GetMapping("/home")
-    public String home() {
+    public String showHome() {
         return "views/home";
     }
 
@@ -21,4 +20,15 @@ public class StemController {
     public String showProfile() {
         return "views/profile";
     }
+
+    @GetMapping("/error")
+    public String showError() {return "views/error";}
+
+    @GetMapping("/requests")
+    public String showRequests() {return "views/friend-requests";}
+
+    @GetMapping("/logout")
+    public String showLogout() {return "views/logged-out";}
+
+
 }
