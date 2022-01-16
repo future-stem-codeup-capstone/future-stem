@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Title</title>
+	<title>Home</title>
 </head>
 <body>
+
+
+<div th:each="project : ${projects}">
+	<p th:text="${project.getTitle()}" />
+	<p th:text="${project.getBody()}" />
+	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
+		<button>Delete</button>
+	</form>
+
+	<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >
+		<button>Edit</button>
+	</form>
+</div>
+
 
 </body>
 </html>
