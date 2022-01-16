@@ -80,6 +80,7 @@ public class User {
     }
 
 
+
 //    public List<User> getUserFriends() {
 //        return userFriends;
 //    }
@@ -87,3 +88,6 @@ public class User {
 //        this.userFriends = userFriends;
 //    }
 }
+
+
+
