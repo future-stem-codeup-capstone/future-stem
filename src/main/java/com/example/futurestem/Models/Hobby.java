@@ -1,22 +1,22 @@
 package com.example.futurestem.Models;
-import javax.persistence.*;
-@Entity
-@Table(name = "projects")
-public class Project {
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "hobbies")
+public class Hobby {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, length = 100)
-	private String title;
-
-	@Column(nullable = false)
-	private String body;
+	@Column(nullable = false, length = 25)
+	private String name;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+
+	public Hobby() {}
 
 	public Long getId() {
 		return id;
@@ -26,20 +26,12 @@ public class Project {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getBody() {
-		return body;
-	}
-
-	public void setBody(String body) {
-		this.body = body;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public User getUser() {
@@ -51,5 +43,6 @@ public class Project {
 	}
 
 
-}
 
+
+}
