@@ -22,33 +22,32 @@ public class HobbyController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/hobbies")
-    public String hobbies(Model model){
-        model.addAttribute("hobbies", hobbyDao.findAll());
-        return "views/Hobby/create";
-    }
+//    @GetMapping("/hobbies")
+//    public String hobbies(Model model){
+//        model.addAttribute("hobbies", hobbyDao.findAll());
+//        return "views/home";
+//    }
 
-    @GetMapping("/views/createHobbies")
+    @GetMapping("/Hobby/create")
     public String hobbiesCreateForm(Model model) {
         model.addAttribute("hobbies", new Hobby());
         return "views/Hobby/create";
     }
 
-    @PostMapping("/views/createHobbies")
+    @PostMapping("/Hobby/create")
     public String createHobby(@ModelAttribute Hobby hobby) {
 
-        User user = userDao.getById(1L);
-        hobby.setUser(user);
+        hobby.setUser(userDao.getById(1L));
         hobbyDao.save(hobby);
 
-        return "redirect:/views/profile";
+        return "views/Hobby/create";
     }
 
 
-    @PostMapping("/hobbies/delete/{id}")
-    public String deletePost(@PathVariable long id) {
-        hobbyDao.deleteById(id);
-
-        return "redirect:/views/profile";
-    }
+//    @PostMapping("/hobbies/delete/{id}")
+//    public String deletePost(@PathVariable long id) {
+//        hobbyDao.deleteById(id);
+//
+//        return "redirect:/views/profile";
+//    }
 }
