@@ -25,10 +25,10 @@ public class User {
     private List<Hobby> userHobbies;
 
 //    Figure out how to do friends
-//    @OneToMany(mappedBy = "user")
-//    private List<User> userFriends;
+    @ManyToMany(mappedBy = "user")
+    private List<Friends> userFriends;
 
-//    public User(User user) {}
+
 
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
@@ -37,9 +37,7 @@ public class User {
         password = copy.password;
     }
 
-    public User() {
-
-    }
+    public User() {}
 
     public Long getId() {
         return id;

@@ -14,6 +14,9 @@ public class Project {
 	@Column(nullable = false)
 	private String body;
 
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
+//	private List<Image> images;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
