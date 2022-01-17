@@ -1,4 +1,6 @@
 package com.example.futurestem.Controllers;
+import com.example.futurestem.Models.User;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 
@@ -7,7 +9,8 @@ public class StemController {
 
 
     @GetMapping("/landing")
-    public String showLandingPage() {
+    public String showLandingPage(Model model) {
+        model.addAttribute("user", new User());
         return "views/landing-page";
     }
 
