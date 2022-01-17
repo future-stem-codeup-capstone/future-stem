@@ -5,8 +5,61 @@
 </head>
 <body>
 	<nav th:insert="fragments/navbar"></nav>
-	<img src="/images/stem-logo.jpeg" alt="stem" width="800" height="500">
+	<div class="modal fade" id="register-modal" aria-hidden="true" data-toggle="modal" tabindex="-1" aria-labelledby="register-modal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" style="font-weight: bold">Register!</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form th:action="@{/register}" method="post" th:object="${user}">
+						<div class="form-group">
+							<input th:field="*{username}" class="form-control" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="E-Mail" th:field="*{email}">
+						</div>
+						<div class="form-group">
+							<input class="form-control" placeholder="Password" th:field="*{password}" type="password">
+						</div>
+						<input type="submit" value="Sign Me Up!">
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
+	<div class="container">
+		<img src="/images/stem-logo.jpeg" alt="stem" width="800" height="500">
+		<h1>Log In</h1>
+		<div th:if="${param.error}">
+			Invalid Username and Password.
+		</div>
+		<div th:if="${param.logout}">
+			You have been logged out.
+		</div>
+		
+		<form th:action="@{/login}" method="post">
+			<div class="form-group">
+				<input name="username" type="text" placeholder="Username" class="form-control"/>
+			
+			</div>
+			<div class="form-group">
+				<input name="password" type="password" placeholder="Password" class="form-control"/>
+			
+			</div>
+			<input type="submit" value="Log In" />
+		</form>
+<!--		<a th:href="@{/sign-up}">Sign-Up</a>-->
+		<button type="button" data-toggle="modal" data-target="#register-modal">Join</button>
+	</div>
+<!--	<div th:insert="fragments/register-modal"></div>-->
 	<div th:insert="fragments/scripts"></div>
 </body>
 </html>
