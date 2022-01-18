@@ -48,6 +48,6 @@ public class HobbyController {
     public String deletePost(@PathVariable long id) {
         hobbyDao.deleteById(id);
 
-        return "redirect:/views/profile";
+        return "redirect:/home";
     }
 }
