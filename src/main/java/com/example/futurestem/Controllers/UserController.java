@@ -1,5 +1,7 @@
 package com.example.futurestem.Controllers;
 
+import com.example.futurestem.Repository.HobbyRepository;
+import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,10 +15,17 @@ import com.example.futurestem.Models.User;
 public class UserController {
 	private final UserRepository userDao;
     private final PasswordEncoder passwordEncoder;
+    private final ProjectRepository projectDao;
+    private final HobbyRepository hobbyDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder) {
+
+
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, ProjectRepository projectDao, HobbyRepository hobbyDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
+        this.projectDao = projectDao;
+        this.hobbyDao = hobbyDao;
     }
 
 
@@ -27,6 +36,13 @@ public class UserController {
         user.setPassword(hash);
         userDao.save(user);
         return "redirect:/landing";
+    }
+
+    @GetMapping("/profile")
+    public String userProfile(Model model) {
+        model.addAttribute("project", projectDao.findAll());
+        model.addAttribute("hobby", hobbyDao.findAll());
+        return "views/profile";
     }
 
 
