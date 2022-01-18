@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:insert="fragments/head">
 	<meta charset="UTF-8">
 	<title>Home</title>
 </head>
@@ -8,7 +8,7 @@
 <nav th:insert="fragments/navbar"></nav>
 <h1>Future Stem</h1>
 
-<div th:each="project : ${projects}">
+<div th:each="project : ${project}">
 	<p th:text="${project.getTitle()}" />
 	<p th:text="${project.getBody()}" />
 	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
@@ -28,6 +28,6 @@
 	</form>
 </div>
 
-
+<div th:insert="fragments/scripts"></div>
 </body>
 </html>
