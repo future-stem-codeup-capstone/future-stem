@@ -23,9 +23,12 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Hobby> userHobbies;
+//    private List<User> userFriends;
+
 
     @OneToMany(mappedBy = "user")
     private List<Friends> friendsId;
+
 
 
 

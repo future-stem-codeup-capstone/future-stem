@@ -1,3 +1,4 @@
+
 package com.example.futurestem.Models;
 
 import javax.persistence.*;
@@ -16,3 +17,4 @@ public class Friends {
 	private User user;
 
 }
+
