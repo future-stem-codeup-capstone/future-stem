@@ -3,6 +3,9 @@ package com.example.futurestem.Controllers;
 import com.example.futurestem.Models.Project;
 import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -86,4 +89,11 @@ public class ProjectController {
 
 
 
+//	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//	//	Show on profile page
+//	@GetMapping("/project")
+//	public String showProjectsHome(Model model){
+//		model.addAttribute("projects", projectDao.findAll((Pageable) auth.getPrincipal()));
+//		return "views/profile";
+//	}
 }

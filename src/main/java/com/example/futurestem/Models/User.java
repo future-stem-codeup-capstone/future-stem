@@ -18,18 +18,19 @@ public class User {
     @Column(nullable = false, length = 240)
     private String password;
 
+    @Column(length = 240)
+    private String aboutMe;
+
+
+
     @OneToMany(mappedBy = "user")
     private List<Project> userProjects;
 
     @OneToMany(mappedBy = "user")
     private List<Hobby> userHobbies;
-//    private List<User> userFriends;
-
 
     @OneToMany(mappedBy = "user")
-    private List<Friends> friendsId;
-
-
+    private List<Connections> connectionsId;
 
 
     public User(User copy) {
@@ -40,7 +41,13 @@ public class User {
     }
 
     public User() {}
+    public String getAboutMe() {
+        return aboutMe;
+    }
 
+    public void setAboutMe(String aboutMe) {
+        this.aboutMe = aboutMe;
+    }
     public Long getId() {
         return id;
     }
@@ -91,11 +98,11 @@ public class User {
 
 
 
-    public List<Friends> getUserFriends() {
-        return friendsId;
+    public List<Connections> getUserConnections() {
+        return connectionsId;
     }
-    public void setUserFriends(List<Friends> userFriends) {
-        this.friendsId = userFriends;
+    public void setUserConnections(List<Connections> userConnections) {
+        this.connectionsId = userConnections;
     }
 }
 
