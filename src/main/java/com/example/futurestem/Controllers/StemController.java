@@ -1,5 +1,6 @@
 package com.example.futurestem.Controllers;
 import com.example.futurestem.Models.User;
+import com.example.futurestem.Repository.ProjectRepository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class StemController {
 
+    private final ProjectRepository projectDao;
+    public StemController(ProjectRepository projectDao) {this.projectDao = projectDao;}
 
     @GetMapping("/landing")
     public String showLandingPage(Model model) {
@@ -15,7 +18,8 @@ public class StemController {
     }
 
     @GetMapping("/home")
-    public String showHome() {
+    public String showHome(Model model) {
+        model.addAttribute("project", projectDao.findAll());
         return "views/home";
     }
 
