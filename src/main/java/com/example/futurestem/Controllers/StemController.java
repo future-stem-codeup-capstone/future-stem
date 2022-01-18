@@ -16,6 +16,11 @@ public class StemController {
         model.addAttribute("user", new User());
         return "views/landing-page";
     }
+    @GetMapping("/info")
+    public String showInfoPage(Model model) {
+        model.addAttribute("user", new User());
+        return "views/info-page";
+    }
 
     @GetMapping("/home")
     public String showHome(Model model) {
