@@ -19,7 +19,7 @@
 		<button>Edit</button>
 	</form>
 </div>
-<div th:each="hobby : ${hobbies}">
+<div th:each="hobby : ${hobby}">
 	<h2 th:text="${hobby.getName}"></h2>
 
 	<form th:action="'/hobbies/delete/' + ${hobby.getId()}" method="POST">
