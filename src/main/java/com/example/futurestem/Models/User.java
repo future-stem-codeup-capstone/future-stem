@@ -25,9 +25,10 @@ public class User {
     private List<Hobby> userHobbies;
 //    private List<User> userFriends;
 
-//    Figure out how to do friends
-//    @ManyToMany(mappedBy = "user")
-//    private List<User> userFriends;
+
+    @OneToMany(mappedBy = "user")
+    private List<Friends> friendsId;
+
 
 
 
@@ -90,12 +91,12 @@ public class User {
 
 
 
-//    public List<User> getUserFriends() {
-//        return userFriends;
-//    }
-//    public void setUserFriends(List<User> userFriends) {
-//        this.userFriends = userFriends;
-//    }
+    public List<Friends> getUserFriends() {
+        return friendsId;
+    }
+    public void setUserFriends(List<Friends> userFriends) {
+        this.friendsId = userFriends;
+    }
 }
 
 
