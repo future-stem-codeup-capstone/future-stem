@@ -23,10 +23,11 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Hobby> userHobbies;
+//    private List<User> userFriends;
 
 //    Figure out how to do friends
-    @ManyToMany(mappedBy = "user")
-    private List<Friends> userFriends;
+//    @ManyToMany(mappedBy = "user")
+//    private List<User> userFriends;
 
 
 
