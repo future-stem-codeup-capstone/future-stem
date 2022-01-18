@@ -22,11 +22,11 @@ public class HobbyController {
         this.userDao = userDao;
     }
 
-//    @GetMapping("/hobbies")
-//    public String hobbies(Model model){
-//        model.addAttribute("hobbies", hobbyDao.findAll());
-//        return "views/home";
-//    }
+    @GetMapping("/hobbies")
+    public String hobbies(Model model){
+        model.addAttribute("hobbies", hobbyDao.findAll());
+        return "views/home";
+    }
 
     @GetMapping("/Hobby/create")
     public String hobbiesCreateForm(Model model) {
@@ -44,10 +44,10 @@ public class HobbyController {
     }
 
 
-//    @PostMapping("/hobbies/delete/{id}")
-//    public String deletePost(@PathVariable long id) {
-//        hobbyDao.deleteById(id);
-//
-//        return "redirect:/views/profile";
-//    }
+    @PostMapping("/hobbies/delete/{id}")
+    public String deletePost(@PathVariable long id) {
+        hobbyDao.deleteById(id);
+
+        return "redirect:/views/profile";
+    }
 }
