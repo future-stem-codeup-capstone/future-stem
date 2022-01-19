@@ -7,5 +7,32 @@
 <body>
 <nav th:insert="fragments/navbar"></nav>
 
+<h1 th:text="${username}"></h1>
+
+<div class="container">
+	<div th:each="project : ${project}">
+		<p th:text="${project.getTitle()}"></p>
+		<p th:text="${project.getBody()}"></p>
+		<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
+			<button>Delete</button>
+		</form>
+		
+		<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >
+			<button>Edit</button>
+		</form>
+	</div>
+</div>
+<div class="container">
+	<div th:each="hobby : ${hobby}">
+		<h2 th:text="${hobby.getName}"></h2>
+		
+		<form th:action="'/hobbies/delete/' + ${hobby.getId()}" method="POST">
+			
+			<button>Delete</button>
+		</form>
+	</div>
+</div>
+
+<div th:insert="fragments/scripts"></div>
 </body>
 </html>

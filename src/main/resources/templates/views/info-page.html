@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-
+<head th:insert="fragments/head">
+	<meta charset="UTF-8">
+	<title>Profile</title>
 </head>
-
 <body>
-
-
+<nav th:insert="fragments/navbar"></nav>
 <h1>Info page</h1>
+
+<div th:insert="fragments/scripts"></div>
 </body>
 </html>
