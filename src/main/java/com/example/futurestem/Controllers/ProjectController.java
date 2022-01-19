@@ -66,16 +66,23 @@ public class ProjectController {
 		model.addAttribute("projectToEdit", editProject);
 		return "views/project/edit";
 	}
-	@PostMapping("/project/edit")
-	public String saveProjectEdit(@RequestParam(name="projectTitle") String projectTitle,
-							   @RequestParam (name="projectBody") String projectBody,
-							   @RequestParam (name="projectId") long id) {
-		Project projectToEdit = projectDao.getById(id);
-		projectToEdit.setBody(projectBody);
-		projectToEdit.setTitle(projectTitle);
-		projectDao.save(projectToEdit);
-		return "redirect:/views";
-	}
+
+
+    @PostMapping("/project/edit")
+    public String saveProjectEdit(@ModelAttribute Project project) {
+        projectDao.save(project);
+        return "redirect:/profile";
+    }
+//	@PostMapping("/project/edit")
+//	public String saveProjectEdit(@RequestParam(name="projectTitle") String projectTitle,
+//							   @RequestParam (name="projectBody") String projectBody,
+//							   @RequestParam (name="projectId") long id) {
+//		Project projectToEdit = projectDao.getById(id);
+//		projectToEdit.setBody(projectBody);
+//		projectToEdit.setTitle(projectTitle);
+//		projectDao.save(projectToEdit);
+//		return "redirect:/views";
+//	}
 
 
 

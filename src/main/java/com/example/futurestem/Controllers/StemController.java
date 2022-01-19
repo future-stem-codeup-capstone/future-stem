@@ -30,19 +30,18 @@ public class StemController {
         return "views/home";
     }
 
-//    @GetMapping("/profile")
-//    public String showProfile() {
-//        return "views/profile";
-//    }
 
     @GetMapping("/error")
-    public String showError() {return "views/error";}
+    public String showError() {
+
+
+        return "views/error";
+
+    }
 
     @GetMapping("/requests")
     public String showRequests() {return "views/friend-requests";}
 
-    @GetMapping("/logout")
-    public String showLogout() {return "views/logged-out";}
 
 
 }
