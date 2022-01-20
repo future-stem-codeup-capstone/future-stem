@@ -1,8 +1,10 @@
 package com.example.futurestem.Controllers;
 
 import com.example.futurestem.Models.Project;
+import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,7 +43,10 @@ public class ProjectController {
 	}
 	@PostMapping("/project/create")
 	public String createProject(@ModelAttribute Project project) {
-		project.setUser(userDao.getById(1L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = userDao.getById(user.getId());
+
+		project.setUser(loggedInUser);
 		projectDao.save(project);
 		return "redirect:/views";
 	}
