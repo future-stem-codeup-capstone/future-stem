@@ -16,13 +16,20 @@ public class Project {
 	@Column(nullable = false)
 	private String body;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
-	private List<ProjectImg> projectImgs;
+	@Column(nullable = false, length = 200)
+	private String url;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
 
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public Long getId() {
 		return id;
@@ -56,13 +63,6 @@ public class Project {
 		this.user = user;
 	}
 
-	public List<ProjectImg> getProjectImgs() {
-		return projectImgs;
-	}
-
-	public void setProjectImgs(List<ProjectImg> projectImgs) {
-		this.projectImgs = projectImgs;
-	}
 
 }
 
