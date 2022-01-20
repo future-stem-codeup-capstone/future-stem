@@ -13,6 +13,7 @@
 <div th:each="project : ${project}">
 	<p th:text="${project.getTitle()}" />
 	<p th:text="${project.getBody()}" />
+	<img th:src="${project.getUrl()}" alt="image" width="300" height="300">
 <!--	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">-->
 <!--		<button>Delete</button>-->
 <!--	</form>-->
