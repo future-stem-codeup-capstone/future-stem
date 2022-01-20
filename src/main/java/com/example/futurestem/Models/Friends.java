@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="user_connections")
-public class Connections {
+public class Friends {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
