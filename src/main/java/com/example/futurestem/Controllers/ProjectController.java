@@ -48,7 +48,7 @@ public class ProjectController {
 
 		project.setUser(loggedInUser);
 		projectDao.save(project);
-		return "redirect:/views";
+		return "redirect:/profile";
 	}
 
 
@@ -58,7 +58,7 @@ public class ProjectController {
 	public String deleteProject(@PathVariable Long id){
 		long deleteProjectId = id;
 		projectDao.deleteById(deleteProjectId);
-		return "redirect:/views";
+		return "redirect:/profile";
 	}
 
 	//	Edit Project
