@@ -14,8 +14,8 @@ public class Project {
 	@Column(nullable = false)
 	private String body;
 
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
-//	private List<Image> images;
+	@Column(nullable = false)
+	private String imageURL;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
