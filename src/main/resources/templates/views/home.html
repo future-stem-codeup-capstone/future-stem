@@ -13,13 +13,13 @@
 <div th:each="project : ${project}">
 	<p th:text="${project.getTitle()}" />
 	<p th:text="${project.getBody()}" />
-	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
-		<button>Delete</button>
-	</form>
+<!--	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">-->
+<!--		<button>Delete</button>-->
+<!--	</form>-->
 
-	<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >
-		<button>Edit</button>
-	</form>
+<!--	<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >-->
+<!--		<button>Edit</button>-->
+<!--	</form>-->
 </div>
 
 <div th:insert="fragments/scripts"></div>

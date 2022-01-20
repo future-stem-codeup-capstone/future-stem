@@ -6,11 +6,49 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+<div class="modal fade" id="create-project-modal" aria-hidden="true" data-toggle="modal" tabindex="-1" aria-labelledby="create-project-modal">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" style="font-weight: bold">Add New Project!</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form th:action="@{/project/create}" method="post" th:object="${project}">
+					<div class="form-group">
+						<label for="title">Title:</label>
+						<input class="form-control" th:field="*{title}" id="title">
+					</div>
+					<div class="form-group">
+						<label for="body">Description:</label>
+						<textarea class="form-control" th:field="*{body}" id="body" rows="3"></textarea>
+					</div>
+					<button type="submit">Create</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <h1 th:text="${username}"></h1>
+<button type="button" data-toggle="modal" data-target="#create-project-modal">New Project</button>
+<!--<form th:action="@{/project/create}" th:method="post" th:object="${project}">-->
+<!--	Title:-->
+<!--	<input type="text" th:field="*{title}" />-->
+<!--	<br />-->
+<!--	Description:-->
+<!--	<input type="text" th:field="*{body}" />-->
+<!--	<br />-->
+<!--	<input type="submit" />-->
+<!--</form>-->
 
 <div class="container">
-	<div th:each="project : ${project}">
+	<div th:each="project : ${userProjects}">
 		<p th:text="${project.getTitle()}"></p>
 		<p th:text="${project.getBody()}"></p>
 		<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">

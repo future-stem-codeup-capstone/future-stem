@@ -31,6 +31,12 @@ public class Project {
 		this.url = url;
 	}
 
+    public Project(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+    public Project() {}
+
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +68,8 @@ public class Project {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+
 
 
 }
