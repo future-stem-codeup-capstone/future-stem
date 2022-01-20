@@ -1,3 +1,10 @@
+// references to the DOM elements
+const form = document.getElementById('upload');
+const fileInput = document.getElementById('fileupload');
+const btn = document.getElementById('picker');
+const nameBox = document.getElementById('nameBox');
+const urlBox = document.getElementById('urlBox');
+
 const getUserId = () => {
     return new Promise((resolve) => {
         resolve({
@@ -27,9 +34,16 @@ window.addEventListener('DOMContentLoaded', function () {
             onFileUploadFinished: (response) => {
                 saveUserData({
                     userId,
-                    fileHandle: response.handle
+                    fileHandle: response.handle,
+                    url: response.url
                 }).then((response) => {
                     console.log('User data has been saved', response);
+                    form.addEventListener('submit', function (event) {
+
+
+                        event.preventDefault();
+                        alert('Submitting: ' + fileInput.value);
+                    });
                 })
             }
         };
@@ -51,12 +65,6 @@ window.addEventListener('DOMContentLoaded', function () {
 // };
 // const picker = client.picker(options);
 
-// references to the DOM elements
-        const form = document.getElementById('pick-form');
-        const fileInput = document.getElementById('fileupload');
-        const btn = document.getElementById('picker');
-        const nameBox = document.getElementById('nameBox');
-        const urlBox = document.getElementById('urlBox');
 
 // our event listeners
         btn.addEventListener('click', function (event) {
@@ -64,42 +72,43 @@ window.addEventListener('DOMContentLoaded', function () {
             picker.open();
         });
 
-        form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            alert('Submitting: ' + fileInput.value);
-        });
 // overwrite the field input value
-// function updateForm(result) {
-//     const fileData = result.filesUploaded[0];
-//     fileInput.value = fileData.url;
-
-//     DOM code to show some data.
-//     const name = document.createTextNode('Selected: ' + fileData.filename);
-//     const url = document.createElement('a');
-//     url.href = fileData.url;
-//     url.appendChild(document.createTextNode(fileData.url));
-//     nameBox.appendChild(name);
-//     urlBox.appendChild(document.createTextNode('Uploaded to: '));
-//     urlBox.appendChild(url);
         function updateForm(result) {
             const fileData = result.filesUploaded[0];
             fileInput.value = fileData.url;
 
-            // thumbnail preview
-            if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
-                const container = document.getElementById('thumbnail-container');
-                const thumbnail = document.getElementById('thumbnail') || new Image();
-                thumbnail.id = 'thumbnail';
-                thumbnail.src = client.transform(fileData.handle, {
-                    resize: {
-                        width: 200
-                    }
-                });
-
-                if (!container.contains(thumbnail)) {
-                    container.appendChild(thumbnail);
-                }
-            }
+//     DOM code to show some data.
+            const name = document.createTextNode('Selected: ' + fileData.filename);
+            const url = document.createElement('a');
+            url.href = fileData.url;
+            url.appendChild(document.createTextNode(fileData.url));
+            nameBox.appendChild(name);
+            urlBox.appendChild(document.createTextNode('Uploaded to: '));
+            urlBox.appendChild(url);
         }
     });
 });
+//update form and thumbnail preview lines below
+
+        // function updateForm(result) {
+        //     const fileData = result.filesUploaded[0];
+        //     fileInput.value = fileData.url;
+
+            // thumbnail preview
+//             if (['jpeg', 'png'].indexOf(fileData.mimetype.split('/')[1]) !== -1) {
+//                 const container = document.getElementById('thumbnail-container');
+//                 const thumbnail = document.getElementById('thumbnail') || new Image();
+//                 thumbnail.id = 'thumbnail';
+//                 thumbnail.src = client.transform(fileData.handle, {
+//                     resize: {
+//                         width: 200
+//                     }
+//                 });
+//
+//                 if (!container.contains(thumbnail)) {
+//                     container.appendChild(thumbnail);
+//                 }
+//             }
+//         }
+//     });
+// });
