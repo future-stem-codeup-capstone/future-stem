@@ -3,7 +3,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 
 @Entity
-@Tabel(name	= "project_images")
+@Table(name	= "project_images")
 public class ProjectImg {
 
 	@Id
