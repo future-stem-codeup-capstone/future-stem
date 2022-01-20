@@ -1,5 +1,7 @@
 package com.example.futurestem.Models;
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "projects")
 public class Project {
@@ -14,12 +16,13 @@ public class Project {
 	@Column(nullable = false)
 	private String body;
 
-	@Column(nullable = false)
-	private String imageURL;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
+	private List<ProjectImg> projectImgs;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+
 
 	public Long getId() {
 		return id;
@@ -53,6 +56,13 @@ public class Project {
 		this.user = user;
 	}
 
+	public List<ProjectImg> getProjectImgs() {
+		return projectImgs;
+	}
+
+	public void setProjectImgs(List<ProjectImg> projectImgs) {
+		this.projectImgs = projectImgs;
+	}
 
 }
 
