@@ -47,17 +47,14 @@ public class UserController {
     @GetMapping("/profile")
     public String userProfile(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         User loggedInUser = userDao.getById(user.getId());
 
         List<Hobby> userHobbies = loggedInUser.getUserHobbies();
-
         List<Project> userProjects = loggedInUser.getUserProjects();
 
-        System.out.println(userProjects);
-
+        model.addAttribute("project", new Project());
         model.addAttribute("username", loggedInUser.getUsername());
-        model.addAttribute("project", userProjects);
+        model.addAttribute("userProjects", userProjects);
         model.addAttribute("hobby", userHobbies);
 
         return "views/profile";
