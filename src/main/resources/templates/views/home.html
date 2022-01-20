@@ -3,6 +3,7 @@
 <head th:insert="fragments/head">
 	<meta charset="UTF-8">
 	<title>Home</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!--	<script>src="factAPI.js"</script>-->
 </head>
 <body>
@@ -22,5 +23,19 @@
 </div>
 
 <div th:insert="fragments/scripts"></div>
+
+<script>
+	var category = 'sciencenature';
+	$.ajax({
+		method: 'GET',
+		url: 'https://api.api-ninjas.com/v1/trivia?category=' + category,
+		headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+		contentType: 'application/json',
+		success: function(result) {
+			console.log(result);
+			console.log("work pls");
+		}
+	});
+</script>
 </body>
 </html>
