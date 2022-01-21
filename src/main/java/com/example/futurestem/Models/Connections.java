@@ -2,6 +2,7 @@
 package com.example.futurestem.Models;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 
 @Entity
@@ -15,6 +16,28 @@ public class Connections {
 	@ManyToOne
 	@JoinColumn (name = "user_id")
 	private User user;
+
+	public Connections() {}
+
+	public Connections(User loggedInUser, Optional<User> userInDb, Optional<User> user) {
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 
 }
 
