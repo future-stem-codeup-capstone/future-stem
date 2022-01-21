@@ -19,7 +19,8 @@ public class Connections {
 
 	public Connections() {}
 
-	public Connections(User loggedInUser, Optional<User> userInDb, Optional<User> user) {
+
+	public Connections(User loggedInUser, User userInDb, User user) {
 	}
 
 	public Long getId() {

@@ -6,7 +6,9 @@ import com.example.futurestem.Repository.ConnectionsRepository;
 import com.example.futurestem.Repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -21,15 +23,24 @@ public class ConnectionsController {
 		this.userDao = userDao;
 		this.connectionsDao = connectionsDao;
 	}
-
+	@GetMapping("/profile/{username}")
+	public String showUsersProfile(Model model, @PathVariable String username) {
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User userInDb = userDao.getOne(currentUser.getId());
+		model.addAttribute("user", userInDb);
+		model.addAttribute("friendsList", userInDb.getUserConnections());
+		model.addAttribute("user", userDao.findByUsername(username));
+		model.addAttribute("userName", userInDb.getUsername());
+		return "redirect:/profile";
+	}
 	@GetMapping("/users/profile/friends-request")
 	public String sendFriendRequest( @RequestParam long userId) {
 		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Optional<User> userInDb = userDao.findById(loggedInUser.getId());
-		Optional<User> user = userDao.findById(userId);
+		User userInDb = userDao.getOne(loggedInUser.getId());
+		User user = userDao.getOne(userId);
 		Connections connection = new Connections(loggedInUser, userInDb, user);
 		connectionsDao.save(connection);
-		return "redirect:/profile";
+		return "redirect:/profile/" + user.getUsername();
 	}
 //getOne old findOne old now findByID
 	@PostMapping("/profile/friends-request/delete")
