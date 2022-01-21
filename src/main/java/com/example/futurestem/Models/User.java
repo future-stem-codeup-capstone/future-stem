@@ -30,7 +30,7 @@ public class User {
     private List<Hobby> userHobbies;
 
     @OneToMany(mappedBy = "user")
-    private List<Friends> connectionsId;
+    private List<Connections> connectionsId;
 
 
     public User(User copy) {
@@ -98,10 +98,10 @@ public class User {
 
 
 
-    public List<Friends> getUserConnections() {
+    public List<Connections> getUserConnections() {
         return connectionsId;
     }
-    public void setUserConnections(List<Friends> userConnections) {
+    public void setUserConnections(List<Connections> userConnections) {
         this.connectionsId = userConnections;
     }
 }
