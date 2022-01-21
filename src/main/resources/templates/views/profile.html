@@ -42,15 +42,7 @@
 
 <h1 th:text="${username}"></h1>
 <button type="button" data-toggle="modal" data-target="#create-project-modal">New Project</button>
-<!--<form th:action="@{/project/create}" th:method="post" th:object="${project}">-->
-<!--	Title:-->
-<!--	<input type="text" th:field="*{title}" />-->
-<!--	<br />-->
-<!--	Description:-->
-<!--	<input type="text" th:field="*{body}" />-->
-<!--	<br />-->
-<!--	<input type="submit" />-->
-<!--</form>-->
+
 
 <div class="container">
 	<div th:each="project : ${userProjects}">
