@@ -4,6 +4,7 @@ import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
+import com.example.futurestem.Services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectController {
 	private final UserRepository userDao;
 	private final ProjectRepository projectDao;
+	private final EmailService emailService;
 
-	public ProjectController(UserRepository userDao, ProjectRepository projectDao) {
+	public ProjectController(UserRepository userDao, ProjectRepository projectDao, EmailService emailService) {
 		this.userDao = userDao;
 		this.projectDao = projectDao;
+		this.emailService = emailService;
 	}
 
 	//Map to home page
@@ -43,10 +46,17 @@ public class ProjectController {
 	}
 	@PostMapping("/project/create")
 	public String createProject(@ModelAttribute Project project) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userDao.getById(user.getId());
+//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedInUser = userDao.getById(user.getId());
+		User projectCreator = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		project.setUser(loggedInUser);
+		project.setUser(projectCreator);
+		String emailSubject = project.getUser().getUsername() + ", Your post has been created";
+
+		String emailBody = "Congratulations - Your latest Project post is up and ready to view on www.yourfuturestem.com Your post read:" + project.getBody();
+
+//		project.setUser(loggedInUser);
+		emailService.prepareAndSendProject(project, emailSubject, emailBody);
 		projectDao.save(project);
 		return "redirect:/profile";
 	}
