@@ -8,19 +8,13 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
+
 <h1>Future Stem</h1>
 
 <div th:each="project : ${project}">
 	<p th:text="${project.getTitle()}" />
 	<p th:text="${project.getBody()}" />
 	<img th:src="${project.getUrl()}" alt="image" width="300" height="300">
-<!--	<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">-->
-<!--		<button>Delete</button>-->
-<!--	</form>-->
-
-<!--	<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >-->
-<!--		<button>Edit</button>-->
-<!--	</form>-->
 </div>
 
 <div th:insert="fragments/scripts"></div>

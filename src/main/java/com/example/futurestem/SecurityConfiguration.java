@@ -41,11 +41,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 /* Logout configuration */
                 .and()
                 .logout()
-                .logoutSuccessUrl("/landing") // append a query string value
+                .logoutSuccessUrl("/") // append a query string value
                 /* Pages that can be viewed without having to log in */
                 .and()
                 .authorizeRequests()
-                .antMatchers("/landing") // anyone can see the home and the ads pages
+                .antMatchers("/") // anyone can see the home and the ads pages
                 .permitAll()
                 /* Pages that require authentication */
                 .and()

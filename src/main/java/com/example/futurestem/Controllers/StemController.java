@@ -12,7 +12,7 @@ public class StemController {
     private final ProjectRepository projectDao;
     public StemController(ProjectRepository projectDao, HobbyRepository hobbyDao) {this.projectDao = projectDao; this.hobbyDao = hobbyDao;}
 
-    @GetMapping("/landing")
+    @GetMapping("/")
     public String showLandingPage(Model model) {
         model.addAttribute("user", new User());
         return "views/landing-page";

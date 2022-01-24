@@ -34,32 +34,48 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container">
-		<img src="/images/stem-logo.jpeg" alt="stem" width="800" height="500">
-		<h1>Log In</h1>
-		<div th:if="${param.error}">
-			Invalid Username and Password.
+	<div class="stem-container">
+		<div class="future-box">
+			<h1 class="future-txt">future</h1>
 		</div>
-		<div th:if="${param.logout}">
-			You have been logged out.
-		</div>
+		<div class="stem-img-box">
+			<img class="stem-img" src="/images/stem-logo.jpeg" alt="stem">
 		
-		<form th:action="@{/login}" method="post">
-			<div class="form-group">
-				<input name="username" type="text" placeholder="Username" class="form-control"/>
-			
-			</div>
-			<div class="form-group">
-				<input name="password" type="password" placeholder="Password" class="form-control"/>
-			
-			</div>
-			<input type="submit" value="Log In" />
-		</form>
-<!--		<a th:href="@{/sign-up}">Sign-Up</a>-->
-		<button type="button" data-toggle="modal" data-target="#register-modal">Join</button>
+		</div>
 	</div>
-<!--	<div th:insert="fragments/register-modal"></div>-->
+	<div class="container m-l-cntr">
+		<div class="vert-align-lg">
+			<div class="move-up">
+				<div class="login-container">
+					<!--			<h1 class="login-h1">Log In</h1>-->
+					<div th:if="${param.error}">
+						Invalid Username and Password.
+					</div>
+					<div th:if="${param.logout}">
+						You have been logged out.
+					</div>
+					<form th:action="@{/login}" method="post">
+						<div class="form-group">
+							<input name="username" type="text" placeholder="Username" class="form-control"/>
+						</div>
+						<div class="form-group">
+							<input name="password" type="password" placeholder="Password" class="form-control"/>
+						
+						</div>
+						<button class="btn btn-block btn-dark" type="submit">Log In</button>
+					</form>
+				</div>
+				<hr class="hr-land">
+				<div class="join-btn-box">
+					<div class="join-btn-container">
+						<button class="btn btn-block btn-success join-btn" type="button" data-toggle="modal" data-target="#register-modal">Create new account</button>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+	
 	<div th:insert="fragments/scripts"></div>
 </body>
 </html>
