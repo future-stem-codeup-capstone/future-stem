@@ -46,17 +46,9 @@ public class ProjectController {
 	}
 	@PostMapping("/project/create")
 	public String createProject(@ModelAttribute Project project) {
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User loggedInUser = userDao.getById(user.getId());
-		User projectCreator = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		project.setUser(projectCreator);
-		String emailSubject = project.getUser().getUsername() + ", Your post has been created";
-
-		String emailBody = "Congratulations - Your latest Project post is up and ready to view on www.yourfuturestem.com Your post read:" + project.getBody();
-
-//		project.setUser(loggedInUser);
-		emailService.prepareAndSendProject(project, emailSubject, emailBody);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = userDao.getById(user.getId());
+		project.setUser(loggedInUser);
 		projectDao.save(project);
 		return "redirect:/profile";
 	}
