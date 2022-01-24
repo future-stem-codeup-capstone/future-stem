@@ -39,7 +39,6 @@ public class User {
         username = copy.username;
         password = copy.password;
     }
-
     public User() {}
     public User(String username, String email) {
         this.username = username;
