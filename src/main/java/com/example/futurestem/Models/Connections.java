@@ -20,9 +20,6 @@ public class Connections {
 	public Connections() {}
 
 
-	public Connections(User loggedInUser, User userInDb, User user) {
-	}
-
 	public Long getId() {
 		return id;
 	}

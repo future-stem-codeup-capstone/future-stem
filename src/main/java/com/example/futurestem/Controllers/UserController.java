@@ -91,7 +91,11 @@ public class UserController {
     }
 
 
-
+    @GetMapping("/user")
+    public String findAllUsers(Model model){
+        model.addAttribute("user", userDao.findAll());
+        return "views/home";
+    }
 
 
 
