@@ -40,22 +40,28 @@
 	</div>
 </div>
 
-<h1 th:text="${username}"></h1>
-<button type="button" data-toggle="modal" data-target="#create-project-modal">New Project</button>
 
 
-<div class="container">
-	<div th:each="project : ${userProjects}">
-		<p th:text="${project.getTitle()}"></p>
+
+
+<div class="container margin-top15">
+	<div class="d-flex">
+		<h1 th:text="${username}"></h1>
+		<button class="ml-auto btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">New Project</button>
+	</div>
+	<div class="projects" th:each="project : ${userProjects}">
+		<h3 th:text="${project.getTitle()}"></h3>
 		<p th:text="${project.getBody()}"></p>
-		<img th:src="${project.getUrl()}" alt="image" width="300" height="300">
-		<form th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
-			<button>Delete</button>
-		</form>
+		<img th:src="${project.getUrl()}" alt="image" width="400" height="300">
+		<div class="d-flex">
+			<form class="edit-project-btn" th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >
+				<button class="btn btn-warning">Edit</button>
+			</form>
+			<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${project.getId()}"  th:method="POST">
+				<button class="btn btn-danger">Delete</button>
+			</form>
 		
-		<form th:action="'/project/edit/' + ${project.getId()}" th:method="GET" >
-			<button>Edit</button>
-		</form>
+		</div>
 	</div>
 </div>
 <div class="container">
