@@ -26,21 +26,25 @@ public class ConnectionsController {
 		this.connectionsDao = connectionsDao;
 		this.userDao = userDao;
 	}
-//	@GetMapping("/connection")
-//	public String showConnections(Model model){
-////		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		model.addAttribute("connection", connectionsDao.findAll());
-//		return "redirect:/home";
-//	}
+	@GetMapping("/connection")
+	public String showConnections(Model model){
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-
-	@PostMapping("/connections")
-	public String viewAllUsers(Model view, @PageableDefault(value=24) Pageable pageable) {
-		List<User> users = userDao.findAll();
-		view.addAttribute("connections", users.size());
-		return "redirect:/home";
-
+//		boolean contactAlready = !connectionsDao.findByOwner_userAndAdded_user_idExists(id, currentUser.getId()).isEmpty();
+		List<Connections> connectionsList = connectionsDao.findAllByOwnerUser(currentUser);
+		model.addAttribute("connection", connectionsList);
+		System.out.println(connectionsList.get(0).getAddedUser().getUsername());
+		return "views/home";
 	}
+//
+//
+//	@PostMapping("/connections")
+//	public String viewAllUsers(Model view, @PageableDefault(value=24) Pageable pageable) {
+//		List<User> users = userDao.findAll();
+//		view.addAttribute("connections", users.size());
+//		return "redirect:/home";
+//
+//	}
 
 
 //	@GetMapping("/profile/{username}")

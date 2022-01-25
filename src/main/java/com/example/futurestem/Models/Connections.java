@@ -14,11 +14,18 @@ public class Connections {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn (name = "user_id")
-	private User user;
+	@JoinColumn (name = "user_added")
+	private User addedUser;
+
+	@ManyToOne
+	@JoinColumn (name = "user_owner")
+	private User ownerUser;
+
+//	@ManyToOne
+//	@JoinColumn (name = "user_added")
+//	private User addedUser;
 
 	public Connections() {}
-
 
 	public Long getId() {
 		return id;
@@ -28,14 +35,20 @@ public class Connections {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return user;
+	public User getOwnerUser() {
+		return ownerUser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setOwnerUser(User ownerUser) {
+		this.ownerUser = ownerUser;
 	}
 
+	public User getAddedUser() {
+		return addedUser;
+	}
 
+	public void setAddedUser(User addedUser) {
+		this.addedUser = addedUser;
+	}
 }
 

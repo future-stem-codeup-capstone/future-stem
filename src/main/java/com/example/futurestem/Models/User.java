@@ -29,9 +29,27 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Hobby> userHobbies;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "ownerUser")
     private List<Connections> connectionsId;
 
+    @OneToMany(mappedBy = "addedUser")
+    private List<Connections> connectionsAdded;
+
+    public List<Connections> getConnectionsId() {
+        return connectionsId;
+    }
+
+    public void setConnectionsId(List<Connections> connectionsId) {
+        this.connectionsId = connectionsId;
+    }
+
+    public List<Connections> getConnectionsAdded() {
+        return connectionsAdded;
+    }
+
+    public void setConnectionsAdded(List<Connections> connectionsAdded) {
+        this.connectionsAdded = connectionsAdded;
+    }
 
     public User(User copy) {
         id = copy.id; // This line is SUPER important! Many things won't work if it's absent
