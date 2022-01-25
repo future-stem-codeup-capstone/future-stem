@@ -1,8 +1,9 @@
 
 /*Global edits start*/
+
 html, body {
 	height: 100vh;
-
+	/*background-color: #d3d3d326;*/
 }
 #stem-header {
 	width: 10rem;
@@ -12,21 +13,20 @@ html, body {
 	text-align: center;
 	margin-bottom: 2rem;
 }
-
 .login-container {
 	width: 400px;
 	margin: 0 auto;
 }
-
 .stem-container {
 	display: flex;
 	margin: 5rem auto;
 	justify-content: center;
 }
-.stem-img {
-	width: 500px;
-	height: 375px;
-}
+
+/*.stem-img {*/
+/*	width: 500px;*/
+/*	height: 375px;*/
+/*}*/
 .future-box {
 	margin-left: 4rem;
 	margin-right: -3rem;
@@ -53,11 +53,6 @@ html, body {
 	/*height: 10px;*/
 	background-color: white;
 }
-/*.flask {*/
-/*	height: 700px;*/
-/*	width: 43rem;*/
-/*}*/
-
 .m-l-cntr {
 	background-color: #fa4c56cc;
 	height: 700px;
@@ -74,47 +69,63 @@ html, body {
 .vert-align-lg {
 	margin: auto 0;
 }
-/*.move-up {*/
-/*	position: relative;*/
-/*	z-index: 2;*/
-/*	bottom: 26rem;*/
-/*}*/
-
-input {
-	background-color: white!important;
+.main-content {
+	width: 100%;
+	height: 100vh;
+	/*background-color: #d3d3d326;*/
 }
-/*.form-control {*/
-/*	border-bottom: 1px solid black;*/
-/*	!*background: transparent!important;*!*/
-/*}*/
-/*.form-control:valid {*/
-/*	!*background-color:  #96d3ec!important;*!*/
-/*}*/
-/*input:not(:placeholder-shown) {*/
-/*	!*background-color:  #96d3ec!important;*!*/
-/*}*/
-
-
-/*input:placeholder-shown {*/
-/*	background-color:  #ffffff!important;*/
-/*}*/
+.projects {
+	background-color: white;
+	border-radius: 10px;
+	width: fit-content;
+	height: fit-content;
+	padding: 10px;
+	margin: 40px;
+	box-shadow: 5px 8px 9px lightgray;
+}
+.projects > * {
+	padding: 1rem;
+}
+.random-fact {
+	padding: 1rem;
+	background-color: white;
+	border-radius: 10px;
+	width: fit-content;
+	height: fit-content;
+	margin: 40px;
+	box-shadow: 5px 8px 9px lightgray;
+}
+.random-fact > * {
+	padding: 1rem;
+}
+.margin-top15 {
+	margin-top: 15rem;
+}
 
 /*Global edits end*/
 
-
-@media screen and (min-width: 300px) and (max-width: 767px) {
-
-
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-
-
-
+@media screen and (min-width: 300px) {
+	a img.stem-img {
+		width: 200px;
+		height: 150px;
+	}
 }
 
 @media screen and (min-width: 1024px) {
-
+	.m-l-cntr {
+		height: 500px!important;
+		width: 20rem!important;
+	}
+	.login-container {
+		width: 300px!important;
+	}
+	.hr-land {
+		width: 300px!important;
+	}
+	a img.stem-img {
+		width: 100px;
+		height: 75px;
+	}
 
 
 }

@@ -5,21 +5,63 @@
 	<title>Home</title>
 <!--	<script>src="factAPI.js"</script>-->
 </head>
-<body>
+<body style="background-color: #d3d3d326">
 <nav th:insert="fragments/navbar"></nav>
+<div class="container margin-top15">
+	<div class="main-content row">
+		<div class="random-fact col">
+			<h3>Science Fact!</h3>
+			<div class="question"></div>
+			<div class="answer"></div>
+		</div>
+		<div class="projects-container col">
+			<div class="projects" th:each="project : ${project}">
+				<h3 th:text="${project.getTitle()}"></h3>
+				<p th:text="${project.getBody()}"></p>
+				<img th:src="${project.getUrl()}" alt="image" width="350" height="300">
+			</div>
+		</div>
+	</div>
 
-<h1>Future Stem</h1>
-
-<div th:each="project : ${project}">
-	<p th:text="${project.getTitle()}" />
-	<p th:text="${project.getBody()}" />
-	<img th:src="${project.getUrl()}" alt="image" width="300" height="300">
 </div>
 <p>hello world</p>
 <div th:each="connections : ${connection}">
 	<p th:text="${connections.getAddedUser().getUsername()}" />
 </div>
 
+
+
 <div th:insert="fragments/scripts"></div>
+<script>
+	const category = 'sciencenature';
+	
+	fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
+		method: 'GET',
+		headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+		contentType: 'application/json'})
+		.then(function (response) {
+			return response.json();
+		})
+			.then(function (data) {
+		console.log(data);
+		let question = data[0].question;
+		let answer = data[0].answer;
+		console.log(question)
+		console.log(answer)
+		$('.question').append(question);
+		$('.answer').append(answer);
+		
+	})
+	// $.get({
+	// 	method: 'GET',
+	// 	url: 'https://api.api-ninjas.com/v1/trivia?category=' + category,
+	// 	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+	// 	contentType: 'application/json',
+	// 	success: function(result) {
+	// 		console.log(result);
+	// 		$('.random-fact').append(result)
+	// 	}
+	// });
+</script>
 </body>
 </html>

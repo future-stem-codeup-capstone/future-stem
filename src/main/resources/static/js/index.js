@@ -12,7 +12,6 @@ const getUserId = () => {
 		})
 	});
 };
-
 //  function for saving user data
 const saveUserData = (data) => {
 	return new Promise((resolve) => {
@@ -22,6 +21,7 @@ const saveUserData = (data) => {
 		})
 	});
 };
+
 window.addEventListener('DOMContentLoaded', function () {
 	getUserId().then((response) => {
 		const userId = response.userId;
@@ -78,3 +78,6 @@ window.addEventListener('DOMContentLoaded', function () {
 $('.edit-account-btn').click(function () {
 	$('.update-account-form').css('display', 'contents');
 })
+
+
+
