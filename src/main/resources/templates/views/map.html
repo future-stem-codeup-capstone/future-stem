@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+	<meta charset="UTF-8">
+	<title>Map</title>
+</head>
+<body>
+	<nav th:insert="fragments/navbar"></nav>
+	<div class="container map-container">
+		<div id="map"></div>
+	</div>
+	<div th:insert="fragments/scripts"></div>
+	<script th:src="@{/js/map.js}"></script>
+</body>
+</html>

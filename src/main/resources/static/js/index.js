@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 // edit account button
 $('.edit-account-btn').click(function () {
-	$('.update-account-form').css('display', 'contents');
+	$('.update-account-form').toggleClass('hidden')
 })
 
 
