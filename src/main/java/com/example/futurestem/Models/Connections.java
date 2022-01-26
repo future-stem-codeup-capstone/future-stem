@@ -21,9 +21,10 @@ public class Connections {
 	@JoinColumn (name = "user_owner")
 	private User ownerUser;
 
-//	@ManyToOne
-//	@JoinColumn (name = "user_added")
-//	private User addedUser;
+	public Connections(User addedUser, User ownerUser) {
+		this.addedUser = addedUser;
+		this.ownerUser = ownerUser;
+	}
 
 	public Connections() {}
 

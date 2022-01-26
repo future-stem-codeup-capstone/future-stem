@@ -15,10 +15,7 @@
 	<p th:text="${project.getBody()}" />
 	<img th:src="${project.getUrl()}" alt="image" width="300" height="300">
 </div>
-<p>hello world</p>
-<div th:each="connections : ${connection}">
-	<p th:text="${connections.getAddedUser().getUsername()}" />
-</div>
+
 
 <div th:insert="fragments/scripts"></div>
 </body>

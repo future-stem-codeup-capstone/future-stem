@@ -5,6 +5,7 @@ import com.example.futurestem.Models.Project;
 import com.example.futurestem.Repository.HobbyRepository;
 import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
+import com.example.futurestem.Services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -23,15 +24,17 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
     private final ProjectRepository projectDao;
     private final HobbyRepository hobbyDao;
+    private final EmailService emailService;
 
 
 
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, ProjectRepository projectDao, HobbyRepository hobbyDao) {
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, ProjectRepository projectDao, HobbyRepository hobbyDao, EmailService emailService) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.projectDao = projectDao;
         this.hobbyDao = hobbyDao;
+        this.emailService = emailService;
     }
 
 
@@ -40,7 +43,19 @@ public class UserController {
     public String registerUser(@ModelAttribute User user) {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
+
+
+//        User userCreator = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        user.setUser(userCreator);
+        String emailSubject = user.getUsername() + ", Your account has been created";
+
+        String emailBody = "Congratulations - On creating your account on yourfuturestem we look forward to seeing your first project and all the progress you will make along the way";
+
+        emailService.prepareAndSendRegister(user, emailSubject, emailBody);
         userDao.save(user);
+
+
         return "redirect:/";
     }
 
@@ -91,11 +106,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/user")
-    public String findAllUsers(Model model){
-        model.addAttribute("user", userDao.findAll());
-        return "views/home";
-    }
+
 
 
 

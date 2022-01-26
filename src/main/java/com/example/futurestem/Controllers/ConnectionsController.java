@@ -29,25 +29,14 @@ public class ConnectionsController {
 	@GetMapping("/connection")
 	public String showConnections(Model model){
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-//		boolean contactAlready = !connectionsDao.findByOwner_userAndAdded_user_idExists(id, currentUser.getId()).isEmpty();
 		List<Connections> connectionsList = connectionsDao.findAllByOwnerUser(currentUser);
 		model.addAttribute("connection", connectionsList);
-		System.out.println(connectionsList.get(0).getAddedUser().getUsername());
-		return "views/home";
+		model.addAttribute("allUsers", userDao.findAll());
+		return "views/connections";
 	}
-//
-//
-//	@PostMapping("/connections")
-//	public String viewAllUsers(Model view, @PageableDefault(value=24) Pageable pageable) {
-//		List<User> users = userDao.findAll();
-//		view.addAttribute("connections", users.size());
-//		return "redirect:/home";
-//
-//	}
 
 
-//	@GetMapping("/profile/{username}")
+//	@GetMapping("/connection/{username}")
 //	public String showUsersProfile(Model model, @PathVariable String username) {
 //		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 //		User userInDb = userDao.getOne(currentUser.getId());
@@ -55,17 +44,17 @@ public class ConnectionsController {
 //		model.addAttribute("friendsList", userInDb.getUserConnections());
 //		model.addAttribute("user", userDao.findByUsername(username));
 //		model.addAttribute("userName", userInDb.getUsername());
-//		return "redirect:/profile";
+//		return "views/connections";
 //	}
-//	@GetMapping("/users/profile/friends-request")
-//	public String sendFriendRequest( @RequestParam long userId) {
-//		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		User userInDb = userDao.getOne(loggedInUser.getId());
-//		User user = userDao.getOne(userId);
-//		Connections connection = new Connections(loggedInUser, userInDb, user);
-//		connectionsDao.save(connection);
-//		return "redirect:/profile/" + user.getUsername();
-//	}
+	@GetMapping("/connection/friends-request")
+	public String sendFriendRequest( @RequestParam long userId) {
+		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User userInDb = userDao.getById(loggedInUser.getId());
+		User user = userDao.getById(userId);
+		Connections connection = new Connections(user, userInDb);
+		connectionsDao.save(connection);
+		return "views/connections" + user.getUsername();
+	}
 ////getOne old findOne old now findByID
 //	@PostMapping("/profile/friends-request/delete")
 //	public String delete(@RequestParam long deleteFriendId){
