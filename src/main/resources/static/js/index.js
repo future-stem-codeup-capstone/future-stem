@@ -31,6 +31,9 @@ window.addEventListener('DOMContentLoaded', function () {
 			onUploadDone: updateForm,
 			accept: ["image/*"],
 			uploadInBackground: false,
+			// maxSize: 1024,
+			// maxFiles: 4,
+			// failOverMaxFiles: false,
 			onFileUploadFinished: (response) => {
 				saveUserData({
 					userId,
