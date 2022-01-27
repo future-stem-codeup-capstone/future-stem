@@ -8,6 +8,8 @@ const map = new mapboxgl.Map({
 	zoom: 9
 });
 
+
+
 map.once('load', () => {
 	map.addSource('places', {
 		type: 'geojson',
@@ -49,6 +51,8 @@ map.once('load', () => {
 	})
 	
 	showPlaces();
+	
+	
 });
 
 function showPlaces() {
@@ -64,7 +68,7 @@ function showPlaces() {
 			params: {
 				category,
 				location: map.getCenter().toArray().join(","),
-				maxLocations: 25
+				maxLocations: 40
 			}
 		})
 		.then((response) => {
@@ -76,4 +80,5 @@ function showPlaces() {
 		})
 }
 
-document.getElementById('places-select').addEventListener('change', showPlaces);
+// document.getElementById('places-select').addEventListener('change', showPlaces);
+$('#places-select').change((event) => {showPlaces()})
