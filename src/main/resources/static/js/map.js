@@ -51,6 +51,24 @@ map.once('load', () => {
 		}
 	})
 	
+	map.on('click', 'places-text', (e) => {
+		const places = e.features[0];
+		console.log(places);
+		
+		new mapboxgl.Popup()
+			.setHTML(`<b>${places.properties.PlaceName}</b><br>${places.properties.Place_addr}`)
+			.setLngLat(places.geometry.coordinates)
+			.addTo(map);
+	})
+	
+	map.on('mouseenter', 'places-text', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	})
+	
+	map.on('mouseleave', 'places-text', () => {
+		map.getCanvas().style.cursor = '';
+	})
+	
 	showPlaces();
 	
 	
@@ -94,7 +112,7 @@ function geocode(search, token) {
 
 
 // document.getElementById('places-select').addEventListener('change', showPlaces);
-$('#places-select').change((event) => {showPlaces()});
+$('#places-select').change(() => {showPlaces()});
 $('#location-button').click((e) => {
 	e.preventDefault();
 	geocode($('#location-input').val(), mapboxKey)
