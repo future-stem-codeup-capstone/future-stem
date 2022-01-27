@@ -1,4 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFja2llZGFsbGFzIiwiYSI6ImNreXc0eGI3ZTAzODYyeG1zbnhyc21wOXYifQ.bl5vqXwUq_SIoY62-Bscvw';
+const mapboxKey = 'pk.eyJ1IjoiamFja2llZGFsbGFzIiwiYSI6ImNreXc0eGI3ZTAzODYyeG1zbnhyc21wOXYifQ.bl5vqXwUq_SIoY62-Bscvw';
 const arcGisKey = 'AAPKc6f35ea946a144539423779db38681abVoLuBW1wawtaCGQDc5IW7bvp-Zvckhhb5dZoncVuR9_QSXG7LEQLdCb8qipLOT_F';
 const basemapEnum = 'ArcGIS:Navigation'
 const map = new mapboxgl.Map({
@@ -79,6 +80,32 @@ function showPlaces() {
 			console.error(error);
 		})
 }
+function geocode(search, token) {
+	const baseUrl = 'https://api.mapbox.com';
+	const endPoint = '/geocoding/v5/mapbox.places/';
+	return fetch(baseUrl + endPoint + encodeURIComponent(search) + '.json' + "?" + 'access_token=' + token)
+		.then(function(res) {
+			return res.json();
+			// to get all the data from the request, comment out the following three lines...
+		}).then(function(data) {
+			return data.features[0].center;
+		});
+}
+
 
 // document.getElementById('places-select').addEventListener('change', showPlaces);
-$('#places-select').change((event) => {showPlaces()})
+$('#places-select').change((event) => {showPlaces()});
+$('#location-button').click((e) => {
+	e.preventDefault();
+	geocode($('#location-input').val(), mapboxKey)
+		.then((results) => {
+			map.flyTo({
+				center: results,
+				essential: true,
+				speed: 0.5,
+				zoom: 9,
+				bearing: 0
+			})
+		})
+	
+})
