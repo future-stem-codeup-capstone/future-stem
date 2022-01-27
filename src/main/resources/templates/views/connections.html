@@ -11,13 +11,16 @@
 </div>
 <h3>All Users</h3>
 <div th:each="user : ${allUsers}">
-    <p th:text="${user.getUsername()}" />
-    <form th:action="@{/views/connections}" th:method="post" th:object="${connections}">
+<div th:type="hidden" th:each="user : ${usersID}">
+    <form th:action="@{/connections/addconnection}" th:method="post" th:object="${connections}" >
         <input type="hidden" th:field="*{addedUser}" />
+<!--        user.getId = addedUser-->
         <input type="hidden" th:field="*{ownerUser}" />
         <button type="submit">Send Friend Request</button>
     </form>
 </div>
+</div>
 
 </body>
 </html>
+

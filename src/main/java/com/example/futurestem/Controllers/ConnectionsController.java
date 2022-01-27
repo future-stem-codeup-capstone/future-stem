@@ -1,6 +1,7 @@
 package com.example.futurestem.Controllers;
 
 import com.example.futurestem.Models.Connections;
+import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.ConnectionsRepository;
 import com.example.futurestem.Repository.UserRepository;
@@ -32,6 +33,9 @@ public class ConnectionsController {
 		List<Connections> connectionsList = connectionsDao.findAllByOwnerUser(currentUser);
 		model.addAttribute("connection", connectionsList);
 		model.addAttribute("allUsers", userDao.findAll());
+		model.addAttribute("connections", new Connections());
+		model.addAttribute("usersID", userDao.findAllById());
+		model.addAttribute("userId", userDao.findById());
 		return "views/connections";
 	}
 
@@ -46,14 +50,17 @@ public class ConnectionsController {
 //		model.addAttribute("userName", userInDb.getUsername());
 //		return "views/connections";
 //	}
-	@GetMapping("/connection/friends-request")
-	public String sendFriendRequest( @RequestParam long userId) {
+
+	@PostMapping("/connection/{userId}/addconnection")
+	public String sendFriendRequest(@PathVariable long userId) {
 		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User userInDb = userDao.getById(loggedInUser.getId());
-		User user = userDao.getById(userId);
-		Connections connection = new Connections(user, userInDb);
-		connectionsDao.save(connection);
-		return "views/connections" + user.getUsername();
+		User newUser = userDao.getById(userId);
+		Connections newConnection = new Connections();
+
+		newConnection.setAddedUser(newUser);
+		newConnection.setOwnerUser(loggedInUser);
+		connectionsDao.save(newConnection);
+		return "redirect:/connections";
 	}
 ////getOne old findOne old now findByID
 //	@PostMapping("/profile/friends-request/delete")
