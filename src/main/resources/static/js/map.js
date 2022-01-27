@@ -61,7 +61,13 @@ map.once('load', () => {
 			.addTo(map);
 	})
 	
-	map.on('mouseenter')
+	map.on('mouseenter', 'places-text', () => {
+		map.getCanvas().style.cursor = 'pointer';
+	})
+	
+	map.on('mouseleave', 'places-text', () => {
+		map.getCanvas().style.cursor = '';
+	})
 	
 	showPlaces();
 	
