@@ -15,5 +15,6 @@ public interface ConnectionsRepository extends JpaRepository<Connections, Long> 
 //	List<Connections> findByOwner_userAndAdded_user_idExists(long user_added, long user_owner);
 List<Connections> findAllByOwnerUser(User user);
 
+
 }
 

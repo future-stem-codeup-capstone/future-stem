@@ -67,6 +67,7 @@ public class ProjectController {
 		Project editProject = projectDao.getById(id);
 		model.addAttribute("projectToEdit", editProject);
 		model.addAttribute("id",editProject.getId());
+
 		return "views/project/edit";
 	}
 
@@ -82,6 +83,7 @@ public class ProjectController {
 
 		projectDao.save(project1);
         return "redirect:/profile";
+   
     }
 
 }
