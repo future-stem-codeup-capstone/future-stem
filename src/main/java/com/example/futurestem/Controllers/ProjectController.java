@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class ProjectController {
 	private final UserRepository userDao;
 	private final ProjectRepository projectDao;
-	private final EmailService emailService;
 
-	public ProjectController(UserRepository userDao, ProjectRepository projectDao, EmailService emailService) {
+	public ProjectController(UserRepository userDao, ProjectRepository projectDao) {
 		this.userDao = userDao;
 		this.projectDao = projectDao;
-		this.emailService = emailService;
 	}
 
 	//Map to home page
@@ -68,18 +66,24 @@ public class ProjectController {
 	public String editProject(@PathVariable long id, Model model) {
 		Project editProject = projectDao.getById(id);
 		model.addAttribute("projectToEdit", editProject);
-		System.out.println(editProject.getId());
-		System.out.println(editProject.getTitle());
-		System.out.println(editProject.getUser().getUsername());
+		model.addAttribute("id",editProject.getId());
+
 		return "views/project/edit";
 	}
 
 
-    @PostMapping("/project/edit")
-    public String saveProjectEdit(@ModelAttribute Project project, @PathVariable Model model) {
-		model.addAttribute("projectToEdit", project);
-        projectDao.save(project);
-        return "views/profile";
+    @PostMapping("/project/edit/{id}")
+    public String saveProjectEdit(@RequestParam (name = "title") String title, @RequestParam (name = "body") String body, @PathVariable long id, @RequestParam(name = "url") String url
+	) {
+		Project project1 = projectDao.getById(id);
+		project1.setTitle(title);
+		project1.setBody(body);
+		project1.setUrl(url);
+
+
+		projectDao.save(project1);
+        return "redirect:/profile";
+   
     }
 
 }

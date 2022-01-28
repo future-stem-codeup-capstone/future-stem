@@ -25,7 +25,7 @@ public class HobbyController {
     @GetMapping("/hobbies")
     public String hobbies(Model model){
         model.addAttribute("hobbies", hobbyDao.findAll());
-        return "views/home";
+        return "views/profile";
     }
 
     @GetMapping("/Hobby/create")
@@ -40,7 +40,7 @@ public class HobbyController {
         hobby.setUser(userDao.getById(1L));
         hobbyDao.save(hobby);
 
-        return "views/Hobby/create";
+        return "redirect:/profile";
     }
 
 

@@ -5,16 +5,16 @@
     <title>Edit</title>
 </head>
 <body>
-<form  method="post">
-    <label name="projectTitle">Title of Project:</label>
-    <input name="projectTitle" th:value="${projectToEdit.getTitle()}">
-
-    <label name="projectBody">Body of Project:</label>
-    <input name="projectBody" th:value="${projectToEdit.getBody()}">
-
-    <input name="projectId" type="hidden" th:value="${projectToEdit.getId()}">
+    <form th:action="@{/project/edit}" th:method="post" th:object="${project}">
+        Title:
+        <input type="text" th:field="*{title}" />
+        <br />
+        Description:
+        <input type="text" th:field="*{body}" />
+        <br />
+        <input type="submit" />
+    </form>
 
     <button type="submit">Submit edit</button>
-</form>
 </body>
 </html>
