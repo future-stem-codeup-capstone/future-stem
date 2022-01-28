@@ -68,14 +68,18 @@ public class ProjectController {
 	public String editProject(@PathVariable long id, Model model) {
 		Project editProject = projectDao.getById(id);
 		model.addAttribute("projectToEdit", editProject);
+		System.out.println(editProject.getId());
+		System.out.println(editProject.getTitle());
+		System.out.println(editProject.getUser().getUsername());
 		return "views/project/edit";
 	}
 
 
     @PostMapping("/project/edit")
-    public String saveProjectEdit(@ModelAttribute Project project) {
+    public String saveProjectEdit(@ModelAttribute Project project, @PathVariable Model model) {
+		model.addAttribute("projectToEdit", project);
         projectDao.save(project);
-        return "redirect:/profile";
+        return "views/profile";
     }
 
 }

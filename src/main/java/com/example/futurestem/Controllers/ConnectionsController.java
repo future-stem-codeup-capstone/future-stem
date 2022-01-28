@@ -1,22 +1,16 @@
 package com.example.futurestem.Controllers;
 
 import com.example.futurestem.Models.Connections;
-import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.ConnectionsRepository;
 import com.example.futurestem.Repository.UserRepository;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ConnectionsController {
@@ -33,37 +27,24 @@ public class ConnectionsController {
 		List<Connections> connectionsList = connectionsDao.findAllByOwnerUser(currentUser);
 		model.addAttribute("connection", connectionsList);
 		model.addAttribute("allUsers", userDao.findAll());
+		model.addAttribute("currentUser", currentUser);
 		model.addAttribute("connections", new Connections());
-		model.addAttribute("usersID", userDao.findAllById());
-		model.addAttribute("userId", userDao.findById());
 		return "views/connections";
 	}
 
 
-//	@GetMapping("/connection/{username}")
-//	public String showUsersProfile(Model model, @PathVariable String username) {
-//		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//		User userInDb = userDao.getOne(currentUser.getId());
-//		model.addAttribute("user", userInDb);
-//		model.addAttribute("friendsList", userInDb.getUserConnections());
-//		model.addAttribute("user", userDao.findByUsername(username));
-//		model.addAttribute("userName", userInDb.getUsername());
-//		return "views/connections";
-//	}
-
-	@PostMapping("/connection/{userId}/addconnection")
-	public String sendFriendRequest(@PathVariable long userId) {
+	@PostMapping("/connection/addconnection")
+	public String sendFriendRequest(@RequestParam (name = "addedUser")Long userId) {
 		User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User newUser = userDao.getById(userId);
 		Connections newConnection = new Connections();
-
 		newConnection.setAddedUser(newUser);
 		newConnection.setOwnerUser(loggedInUser);
 		connectionsDao.save(newConnection);
-		return "redirect:/connections";
+		return "redirect:/connection";
 	}
 ////getOne old findOne old now findByID
-//	@PostMapping("/profile/friends-request/delete")
+//	@PostMapping("/connection/delete")
 //	public String delete(@RequestParam long deleteFriendId){
 //		connectionsDao.deleteById(deleteFriendId);
 //		return "redirect:/profile";

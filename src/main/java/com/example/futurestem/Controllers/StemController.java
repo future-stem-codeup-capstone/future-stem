@@ -42,6 +42,8 @@ public class StemController {
     @GetMapping("/requests")
     public String showRequests() {return "views/friend-requests";}
 
+    @GetMapping("/map")
+    public String showMap() {return "views/map";}
 
 
 }

@@ -29,11 +29,16 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Hobby> userHobbies;
 
+    @OneToMany(mappedBy = "addedUser")
+    private List<Connections> connectionsAdded;
+
     @OneToMany(mappedBy = "ownerUser")
     private List<Connections> connectionsId;
 
-    @OneToMany(mappedBy = "addedUser")
-    private List<Connections> connectionsAdded;
+
+
+//    @OneToMany(mappedBy = "addedUser")
+//    private List<Connections> connectionsAdded;
 
     public List<Connections> getConnectionsId() {
         return connectionsId;

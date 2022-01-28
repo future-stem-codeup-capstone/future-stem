@@ -21,9 +21,17 @@ public class Connections {
 	@JoinColumn (name = "user_owner")
 	private User ownerUser;
 
+	public User getOwnerUser() {
+		return ownerUser;
+	}
+
+	public void setOwnerUser(User ownerUser) {
+		this.ownerUser = ownerUser;
+	}
+
 	public Connections(User addedUser, User ownerUser) {
 		this.addedUser = addedUser;
-		this.ownerUser = ownerUser;
+
 	}
 
 	public Connections() {}
@@ -36,13 +44,7 @@ public class Connections {
 		this.id = id;
 	}
 
-	public User getOwnerUser() {
-		return ownerUser;
-	}
 
-	public void setOwnerUser(User ownerUser) {
-		this.ownerUser = ownerUser;
-	}
 
 	public User getAddedUser() {
 		return addedUser;

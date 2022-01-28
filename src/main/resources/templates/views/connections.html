@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
 <head>
     <meta charset="UTF-8">
     <title>Connections</title>
 </head>
 <body>
-<h3>Your Friends</h3>
+<nav th:insert="fragments/navbar"></nav>
+<h3 style="margin-top: 5em">Your Friends</h3>
 <div th:each="connections : ${connection}">
-    <p th:text="${connections.getAddedUser().getUsername()}" />
+    <h5 th:text="${connections.getAddedUser().getUsername()}" />
 </div>
 <h3>All Users</h3>
-<div th:each="user : ${allUsers}">
-<div th:type="hidden" th:each="user : ${usersID}">
-    <form th:action="@{/connections/addconnection}" th:method="post" th:object="${connections}" >
-        <input type="hidden" th:field="*{addedUser}" />
-<!--        user.getId = addedUser-->
-        <input type="hidden" th:field="*{ownerUser}" />
-        <button type="submit">Send Friend Request</button>
+<div th:each="user : ${allUsers}" >
+<h5 th:text="${user.getUsername()}"></h5>
+    <form th:action="@{/connection/addconnection}" th:method="post" >
+        <input type="hidden" th:name="addedUser" th:value="${user.getId()}" />
+        <button type="submit" class="btn btn-primary">Add Connection</button>
     </form>
-</div>
-</div>
 
+</div>
+<div th:insert="fragments/scripts"></div>
 </body>
 </html>
 
