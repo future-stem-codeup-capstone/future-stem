@@ -8,7 +8,7 @@ public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 
 	@Column(nullable = false, length = 100)
 	private String title;
