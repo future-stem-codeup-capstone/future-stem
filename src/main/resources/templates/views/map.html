@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+	<meta charset="UTF-8">
+	<title>Map</title>
+</head>
+<body>
+	<nav th:insert="fragments/navbar"></nav>
+	
+	<div class="map-container">
+		<div>
+			<h1>Activities Map</h1>
+			<p>A simple map that you can use to filter categories and find activities for kids.</p>
+		</div>
+		<div class="d-flex mb-3">
+			<select id="places-select" style="font-size: 16px; padding:4px 8px;">
+				<option value="">Choose a category...</option>
+				<option value="Zoo">Zoos</option>
+				<option value="Aquarium">Aquariums</option>
+				<option value="Wild Animal Park">Wild Animal Parks</option>
+				<option value="Museum">Museums</option>
+				<option value="Consumer Electronics Store">Technology Stores</option>
+				<option value="Library">Libraries</option>
+				<option value="Education">Schools</option>
+				<option value="Parks and Outdoors">Parks and Outdoors</option>
+			</select>
+			<form action="" class="form-inline ml-5">
+				<label class="mx-1" for="location-input">Location</label>
+				<input class="mx-1" type="text" id="location-input" placeholder="City, State and/or Zipcode" style="width: 13rem">
+				<button class="btn btn-sm btn-dark mx-1" type="submit" id="location-button">Search</button>
+			</form>
+		</div>
+		
+		<div id="map"></div>
+	</div>
+	
+	
+	<div th:insert="fragments/scripts"></div>
+	<script th:src="@{/js/map.js}"></script>
+</body>
+</html>

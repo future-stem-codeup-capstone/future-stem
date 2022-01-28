@@ -4,15 +4,16 @@
 	<meta charset="UTF-8">
 	<title>Update Account</title>
 </head>
+<body class="bg-color">
 <nav th:insert="fragments/navbar"></nav>
-<div class="container">
+<div class="container margin-top15">
 	<h1>Account Details</h1>
 	<ul>
 		<li>Username: <span th:text="${loggedInUser.getUsername()}"></span></li>
 		<li>Email: <span th:text="${loggedInUser.getEmail()}"></span></li>
 	</ul>
-	<button class="btn edit-account-btn">Edit</button>
-	<div class="update-account-form" style="display: none">
+	<button class="btn btn-dark edit-account-btn">Edit</button>
+	<div class="update-account-form hidden">
 		<form th:action="@{/confirm-update}" th:method="post" th:object="${user}">
 			<div class="form-group">
 				<label for="username">Change Username:</label>
@@ -33,6 +34,8 @@
 
 </div>
 <div th:insert="fragments/scripts"></div>
+</body>
+
 </html>
 
 
