@@ -122,16 +122,20 @@
     </div>
     <div class="card">
         <div>
-            <form th:action="@{/Hobby/create}" th:method="POST" th:object="${hobbies}">
-
-                <!--            		<label for="hobbyName">Hobby:</label>-->
-                <!--            		<input type="text" th:field="*{name}" id="hobbyName">-->
-                <!--            		<hr>-->
-
-                <!--            		<input type="submit"/>-->
+            <form action="/Hobby/create" th:method="POST">
+                Hobby:
+                <input  name="name" >
+                <input type="submit"/>
             </form>
-            <div th:each="hobby : ${hobby}">
-                <p th:text="${hobby.getName}"></p>
+            <div th:each="Hobby : ${userHobbies}">
+                <p th:text="${Hobby.getName()}"></p>
+
+<!--                <form th:action="@{/Hobby/create}" th:method="POST" th:object="${add-hobby}">-->
+<!--                    Hobby:-->
+<!--                    <input  th:field="*{name}" >-->
+<!--                    <input type="submit"/>-->
+<!--                </form>-->
+
 
                 <form th:action="'/hobbies/delete/' + ${hobby.getId()}" method="POST">
 

@@ -100,7 +100,7 @@ public class UserController {
         model.addAttribute("username", loggedInUser.getUsername());
         model.addAttribute("email", loggedInUser.getEmail());
         model.addAttribute("userProjects", userProjects);
-        model.addAttribute("hobby", userHobbies);
+        model.addAttribute("userHobbies", userHobbies);
 
         return "views/profile";
     }
