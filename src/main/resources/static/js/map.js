@@ -53,7 +53,12 @@ map.once('load', () => {
 	
 	map.on('click', 'places-text', (e) => {
 		const places = e.features[0];
-		console.log(places);
+		const location = places.properties.Place_addr;
+		const term = places.properties.PlaceName;
+		
+		
+		
+	
 		
 		new mapboxgl.Popup()
 			.setHTML(`<b>${places.properties.PlaceName}</b><br>${places.properties.Place_addr}`)
@@ -127,3 +132,28 @@ $('#location-button').click((e) => {
 		})
 	
 })
+//
+// const yelpApi = "Bearer 1a8fb0f37emsh200ebe3b7607bbap195db5jsnd5e004c66f7b"
+//
+// const url = 'https://api.yelp.com/v3/businesses/Hx0yzXUpP54QRmIkLHZg4A';
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'Content-Type': 'application/json',
+// 		'Authorization': 'Bearer ' + yelpApi,
+// 		'Cache-Control': 'no-cache'
+// 	}
+// }
+//
+// fetch(url, options)
+//
+// 	.then((response) => {
+// 		console.log(response.json());
+// 		return response.json();
+// 	})
+// 	.then((data) => {
+// 		console.log(data)
+// 	})
+// 	.catch((error) => {
+// 		console.error(error)
+// 	})
