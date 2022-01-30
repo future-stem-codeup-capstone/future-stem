@@ -5,6 +5,7 @@ import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.HobbyRepository;
 import com.example.futurestem.Repository.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,32 +23,39 @@ public class HobbyController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/hobbies")
-    public String hobbies(Model model){
-        model.addAttribute("hobbies", hobbyDao.findAll());
-        return "views/profile";
-    }
+//    @GetMapping("/hobbies")
+//    public String hobbies(Model model){
+//        model.addAttribute("hobbies", hobbyDao.findAll());
+//        return "views/profile";
+//    }
+//
+//    @GetMapping("/Hobby/create")
+//    public String hobbiesCreateForm(Model model) {
+//        model.addAttribute("hobbies", new Hobby());
+//        return "views/Hobby/create";
+//    }
 
-    @GetMapping("/Hobby/create")
-    public String hobbiesCreateForm(Model model) {
-        model.addAttribute("hobbies", new Hobby());
-        return "views/Hobby/create";
-    }
-
-    @PostMapping("/Hobby/create")
+    @PostMapping("/create-hobby")
     public String createHobby(@ModelAttribute Hobby hobby) {
-
-        hobby.setUser(userDao.getById(1L));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = userDao.getById(user.getId());
+        hobby.setUser(loggedInUser);
         hobbyDao.save(hobby);
-
         return "redirect:/profile";
     }
 
 
-    @PostMapping("/hobbies/delete/{id}")
-    public String deletePost(@PathVariable long id) {
-        hobbyDao.deleteById(id);
+//    @PostMapping("/hobbies/delete/{id}")
+//    public String deletePost(@PathVariable long id) {
+//        hobbyDao.deleteById(id);
+//
+//        return "redirect:/home";
+//    }
 
-        return "redirect:/home";
+    @PostMapping("/hobby/delete/{id}")
+    public String deletePost(@PathVariable Long id) {
+        long deleteHobbyId = id;
+        hobbyDao.deleteById(deleteHobbyId);
+        return "redirect:/profile";
     }
 }
