@@ -20,36 +20,21 @@ public class HobbyController {
         this.userDao = userDao;
     }
 
-    @GetMapping("/show-hobbies")
-    public String hobbies(Model model){
-        model.addAttribute("show-hobbies", hobbyDao.findAll());
-        return "views/profile";
+
+        @PostMapping("/create-hobby")
+        public String createHobby(@ModelAttribute Hobby hobby) {
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            User loggedInUser = userDao.getById(user.getId());
+            hobby.setUser(loggedInUser);
+            hobbyDao.save(hobby);
+            return "redirect:/profile";
+        }
+
+
+        @PostMapping("/hobby/delete/{id}")
+        public String deletePost(@PathVariable Long id) {
+            long deleteHobbyId = id;
+            hobbyDao.deleteById(deleteHobbyId);
+            return "redirect:/profile";
+        }
     }
-
-
-
-
-//    @GetMapping("/Hobby/create")
-//    public String hobbiesCreateForm(Model model) {
-//        model.addAttribute("add-hobby", new Hobby());
-//        return "views/profile";
-//    }
-    @PostMapping("/Hobby/create")
-    public String createHobby(@ModelAttribute Hobby hobby, @RequestParam(name = "name") String name) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User loggedInUser = userDao.getById(user.getId());
-        hobby.setUser(loggedInUser);
-        hobby.setName(name);
-        hobbyDao.save(hobby);
-        return "redirect:/profile";
-    }
-
-
-
-
-    @PostMapping("/hobbies/delete/{id}")
-    public String deletePost(@PathVariable long id) {
-        hobbyDao.deleteById(id);
-        return "redirect:/profile";
-    }
-}

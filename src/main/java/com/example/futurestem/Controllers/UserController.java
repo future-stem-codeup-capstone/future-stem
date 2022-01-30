@@ -70,7 +70,7 @@ public class UserController {
         editUser.setId(loggedInUser.getId());
         editUser.setUsername(user.getUsername());
         editUser.setEmail(user.getEmail());
-
+        editUser.setAboutMe(user.getAboutMe());
 
         userDao.save(editUser);
         return "redirect:/profile";
@@ -97,10 +97,12 @@ public class UserController {
 
 //        model.addAttribute("user", loggedInUser);
         model.addAttribute("project", new Project());
+        model.addAttribute("newHobby", new Hobby());
         model.addAttribute("username", loggedInUser.getUsername());
         model.addAttribute("email", loggedInUser.getEmail());
         model.addAttribute("userProjects", userProjects);
         model.addAttribute("userHobbies", userHobbies);
+        model.addAttribute("userAboutMe",loggedInUser.getAboutMe());
 
         return "views/profile";
     }
