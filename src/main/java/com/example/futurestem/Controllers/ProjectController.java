@@ -42,7 +42,7 @@ public class ProjectController {
 		model.addAttribute("project", new Project());
 		return "views/project/create";
 	}
-	@PostMapping("/project/create")
+	@PostMapping("/create-project")
 	public String createProject(@ModelAttribute Project project) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = userDao.getById(user.getId());

@@ -97,10 +97,11 @@ public class UserController {
 
 //        model.addAttribute("user", loggedInUser);
         model.addAttribute("project", new Project());
+        model.addAttribute("newHobby", new Hobby());
         model.addAttribute("username", loggedInUser.getUsername());
         model.addAttribute("email", loggedInUser.getEmail());
         model.addAttribute("userProjects", userProjects);
-        model.addAttribute("hobby", userHobbies);
+        model.addAttribute("userHobbies", userHobbies);
 
         return "views/profile";
     }
