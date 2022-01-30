@@ -27,6 +27,10 @@
 				<label for="password">Change Password:</label>
 				<input type="password" class="form-control" id="password" th:field="*{password}" required>
 			</div>
+			<div class="form-group">
+				<label for="aboutMe">Add an About me to your profile!</label>
+				<input class="form-control" id="aboutMe" th:field="*{aboutMe}">
+			</div>
 			<input type="hidden" name="userId" th:value="${loggedInUser.getId()}" th:field="*{id}">
 			<input type="submit" value="Update Account">
 		</form>

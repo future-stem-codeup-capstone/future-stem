@@ -110,14 +110,14 @@
 		
 		</div>
 	</div>
-	<!--<div class="card">-->
+
 	<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
 		<label for="hobby">Add Hobby:</label>
 		<input id="hobby"  type="text" th:field="*{name}">
 		<button type="submit">Add</button>
 	</form>
 
-<!--	<br>-->
+
 	<h4>Hobbies</h4>
 	<div th:each="hobby : ${userHobbies}">
 		<p th:text="${hobby.getName()}"></p>
@@ -125,6 +125,7 @@
 			<button>Delete</button>
 		</form>
 	</div>
+	<h1 th:text="${userAboutMe}" ></h1>
 
 
     <div th:insert="fragments/scripts"></div>
