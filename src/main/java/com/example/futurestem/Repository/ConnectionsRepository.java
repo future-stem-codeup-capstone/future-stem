@@ -14,6 +14,7 @@ public interface ConnectionsRepository extends JpaRepository<Connections, Long> 
 //	@Query(value = "SELECT * FROM futurestem_db.user_connections  WHERE user_added >= 1 AND user_owner >= 2", nativeQuery = true)
 //	List<Connections> findByOwner_userAndAdded_user_idExists(long user_added, long user_owner);
 List<Connections> findAllByOwnerUser(User user);
+//	List<Connections> findAllByIdNotContaining(Long id);
 
 
 }
