@@ -21,6 +21,9 @@ public class User {
     @Column(length = 240)
     private String aboutMe;
 
+    @Column(length = 100)
+    private String profile_pic;
+
 
 
     @OneToMany(mappedBy = "user")
@@ -35,7 +38,13 @@ public class User {
     @OneToMany(mappedBy = "ownerUser")
     private List<Connections> connectionsId;
 
+    public String getProfile_pic() {
+        return profile_pic;
+    }
 
+    public void setProfile_pic(String profile_pic) {
+        this.profile_pic = profile_pic;
+    }
 
 //    @OneToMany(mappedBy = "addedUser")
 //    private List<Connections> connectionsAdded;

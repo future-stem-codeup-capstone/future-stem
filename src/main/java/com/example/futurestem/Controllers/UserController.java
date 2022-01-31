@@ -95,7 +95,7 @@ public class UserController {
         List<Hobby> userHobbies = loggedInUser.getUserHobbies();
         List<Project> userProjects = loggedInUser.getUserProjects();
 
-//        model.addAttribute("user", loggedInUser);
+        model.addAttribute("user", loggedInUser);
         model.addAttribute("project", new Project());
         model.addAttribute("newHobby", new Hobby());
         model.addAttribute("username", loggedInUser.getUsername());

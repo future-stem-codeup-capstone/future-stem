@@ -57,47 +57,13 @@
 	</div>
 
 </div>
-<<<<<<< HEAD
 
-=======
 <div th:each="connections : ${connection}">
-	<p th:text="${connections.getAddedUser().getUsername()}" />
+	<p th:text="${connections.getAddedUser().getUsername()}"></p>
 </div>
->>>>>>> 0023826dcaa094318a22ff94a1f5af37ced400db
 
 
 
 <div th:insert="fragments/scripts"></div>
-<script>
-	const category = 'sciencenature';
-	
-	fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
-		method: 'GET',
-		headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-		contentType: 'application/json'})
-		.then(function (response) {
-			return response.json();
-		})
-			.then(function (data) {
-		console.log(data);
-		let question = data[0].question;
-		let answer = data[0].answer;
-		console.log(question)
-		console.log(answer)
-		$('.question').append(question);
-		$('.answer').append(answer);
-		
-	})
-	// $.get({
-	// 	method: 'GET',
-	// 	url: 'https://api.api-ninjas.com/v1/trivia?category=' + category,
-	// 	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-	// 	contentType: 'application/json',
-	// 	success: function(result) {
-	// 		console.log(result);
-	// 		$('.random-fact').append(result)
-	// 	}
-	// });
-</script>
 </body>
 </html>
