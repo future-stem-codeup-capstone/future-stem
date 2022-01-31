@@ -5,6 +5,28 @@ const btn = document.getElementById('picker');
 const nameBox = document.getElementById('nameBox');
 const urlBox = document.getElementById('urlBox');
 
+const category = 'sciencenature';
+
+fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
+	method: 'GET',
+	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+	contentType: 'application/json'})
+	.then(function (response) {
+		return response.json();
+	})
+	.then(function (data) {
+		console.log(data);
+		let question = data[0].question;
+		let answer = data[0].answer;
+		console.log(question)
+		console.log(answer)
+		$('.question').append(question);
+		$('.answer').append(answer);
+		
+	})
+
+
+
 const getUserId = () => {
 	return new Promise((resolve) => {
 		resolve({

@@ -1,0 +1,42 @@
+.profile-pic {
+	position: relative;
+	left: 6rem;
+	margin: 0 auto;
+	/*padding: 1rem;*/
+}
+.about-me {
+	position: relative;
+	margin: 0 0 0 auto;
+	width: 500px;
+	height: fit-content;
+	/*padding: 1rem;*/
+}
+.profile-container {
+	margin: 10rem 15rem 0;
+}
+.top-of-page > * {
+	/*padding: 1rem;*/
+	/*height: 700px;*/
+	/*margin: 1rem*/
+	/*justify-content: space-evenly;*/
+}
+.trivia-section {
+	margin-top: 3rem;
+	width: 500px;
+	height: fit-content;
+	background-color: white;
+	box-shadow: 5px 8px 9px lightgray;
+	border-radius: 10px;
+	padding: 1rem;
+}
+.about-me {
+	width: 500px;
+	height: fit-content;
+	background-color: white;
+	box-shadow: 5px 8px 9px lightgray;
+	border-radius: 10px;
+	padding: 1rem;
+}
+.middle-section  {
+	justify-content: space-between;
+}

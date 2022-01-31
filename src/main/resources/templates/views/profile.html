@@ -42,90 +42,189 @@
 </div>
 	
 	
-	<div class="container margin-top15">
-		<div class="d-flex">
-			<h1 th:text="${username}"></h1>
-			<button class="ml-auto btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">
-				New
-				Project
-			</button>
+	<div class="profile-container">
+		<div class="top-of-page d-flex">
+			<div class="random-fact rf-2">
+				<h3>Science Fact!</h3>
+				<div class="question"></div>
+				<div class="answer"></div>
+			</div>
+			<div class="profile-pic">
+				<img style="width: 250px; height: 250px; border-radius: 50%" th:src="${user.getProfile_pic()}" alt="profile-pic" class="user-avatar">
+				<h3 th:text="${username}" style="text-align: center"></h3>
+			
+			</div>
+			<div class="about-me">
+				<h1 th:text="${userAboutMe}"></h1>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequatur, dolorum eos harum illo illum impedit magnam magni, minus mollitia obcaecati omnis perferendis placeat reiciendis repellat sapiente, temporibus vel veritatis?
+			</div>
 		</div>
 		
-		<div class="projects" th:each="currentProject : ${userProjects}">
-			<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
-			     data-toggle="modal" tabindex="-1"
-			     aria-labelledby="edit-project-modal">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" style="font-weight: bold">Edit Project!</h5>
-							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<form th:action="@{/project/edit/{id}(id=${currentProject.id})}" method="post"
-							      th:object="${currentProject}">
-								<h3 th:text="${currentProject.getId()}"></h3>
-								<div class="form-group">
-									<label for="edit-title">Title:</label>
-									<input class="form-control" th:value="${currentProject.getTitle()}" name="title"
-									       id="edit-title">
-								
+		
+		<div class="d-flex middle-section">
+			<div class="projects-section">
+				<button class="ml-auto btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
+				<div class="projects" th:each="currentProject : ${userProjects}">
+					<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
+					     data-toggle="modal" tabindex="-1"
+					     aria-labelledby="edit-project-modal">
+						<div class="modal-dialog modal-dialog-centered">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" style="font-weight: bold">Edit Project!</h5>
+									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
 								</div>
-								<div class="form-group">
-									<label for="edit-body">Description:</label>
-									<textarea class="form-control" th:value="${currentProject.getBody()}" name="body"
-									          id="edit-body" rows="3"></textarea>
+								<div class="modal-body">
+									<form th:action="@{/project/edit/{id}(id=${currentProject.id})}" method="post"
+									      th:object="${currentProject}">
+										<h3 th:text="${currentProject.getId()}"></h3>
+										<div class="form-group">
+											<label for="edit-title">Title:</label>
+											<input class="form-control" th:value="${currentProject.getTitle()}" name="title"
+											       id="edit-title">
+										
+										</div>
+										<div class="form-group">
+											<label for="edit-body">Description:</label>
+											<textarea class="form-control" th:value="${currentProject.getBody()}" name="body"
+											          id="edit-body" rows="3"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="edit-fileupload">Project Image URL:</label>
+											<input th:value="${currentProject.getUrl()}" name="url" id="edit-fileupload"
+											       class="form-control">
+											<button class="button" type="button" id="edit-picker">Pick file</button>
+										</div>
+										<input type="hidden" name="projectId" th:value="${project.getId()}">
+										<button type="submit" data-th-id="${currentProject.getId()}">Submit edit</button>
+									</form>
 								</div>
-								<div class="form-group">
-									<label for="edit-fileupload">Project Image URL:</label>
-									<input th:value="${currentProject.getUrl()}" name="url" id="edit-fileupload"
-									       class="form-control">
-									<button class="button" type="button" id="edit-picker">Pick file</button>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 								</div>
-								<input type="hidden" name="projectId" th:value="${project.getId()}">
-								<button type="submit" data-th-id="${currentProject.getId()}">Submit edit</button>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							</div>
 						</div>
 					</div>
+					<h3 th:text="${currentProject.getTitle()}"></h3>
+					<p th:text="${currentProject.getBody()}"></p>
+					<img th:src="${currentProject.getUrl()}" alt="image" width="400" height="300">
+					<div class="d-flex">
+						<button class="ml-auto btn btn-dark" type="button" data-th-id="${project.getId()}" data-toggle="modal"
+						        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
+							Project
+						</button>
+						<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${project.getId()}"
+						      th:method="POST">
+							<button class="btn btn-danger">Delete</button>
+						</form>
+					</div>
+				
 				</div>
 			</div>
-			<h3 th:text="${currentProject.getTitle()}"></h3>
-			<p th:text="${currentProject.getBody()}"></p>
-			<img th:src="${currentProject.getUrl()}" alt="image" width="400" height="300">
-			<div class="d-flex">
-				<button class="ml-auto btn btn-dark" type="button" data-th-id="${project.getId()}" data-toggle="modal"
-				        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
-					Project
-				</button>
-				<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${project.getId()}"
-				      th:method="POST">
-					<button class="btn btn-danger">Delete</button>
-				</form>
+			<div class="graphic">
+				<div id="1" class="ball-box col">
+					<ul class="white-ball" >
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					<ul class="red-ball">
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+						<li></li>
+					</ul>
+					
+				</div>
 			</div>
-		
+			<div class="trivia-section">
+				<h2>Trivia?</h2>
+				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto asperiores, dolorem esse
+					fugiat libero neque numquam pariatur praesentium quaerat temporibus. Commodi deleniti illo ipsum
+					nesciunt nostrum quidem? Eos, nam, sunt!
+				</div>
+				<div>Aperiam at autem dolore doloribus enim facilis laborum magnam modi, molestiae necessitatibus odio
+					porro quidem rem similique sunt suscipit tenetur voluptate. Consequatur deserunt dolore esse eveniet
+					ex quo tempore temporibus?
+				</div>
+				<div>Accusantium adipisci aliquam architecto assumenda beatae culpa deserunt exercitationem impedit
+					nihil, non placeat quos reiciendis sed, sequi soluta, totam velit voluptates! Doloremque facilis
+					laudantium magnam molestias, odit repellat reprehenderit voluptatibus!
+				</div>
+				<div>A accusamus amet asperiores, at consequuntur delectus distinctio dolore dolorum eaque et, eum fugit
+					ipsum nesciunt nisi nostrum odio officiis placeat porro possimus quis repellat repellendus sed sunt
+					tempore tenetur.
+				</div>
+			</div>
 		</div>
+		
+		<div class="hobbies-section">
+			<h4>Hobbies</h4>
+			<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
+				<label for="hobby">Add Hobby:</label>
+				<input id="hobby"  type="text" th:field="*{name}">
+				<button type="submit">Add</button>
+			</form>
+			<div class="d-flex" th:each="hobby : ${userHobbies}">
+				<div class="hobby d-flex">
+					<p th:text="${hobby.getName()}"></p>
+					<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
+						<button>Delete</button>
+					</form>
+				</div>
+				
+			</div>
+		</div>
+		
 	</div>
 
-	<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
-		<label for="hobby">Add Hobby:</label>
-		<input id="hobby"  type="text" th:field="*{name}">
-		<button type="submit">Add</button>
-	</form>
+	
 
 
-	<h4>Hobbies</h4>
-	<div th:each="hobby : ${userHobbies}">
-		<p th:text="${hobby.getName()}"></p>
-		<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
-			<button>Delete</button>
-		</form>
-	</div>
-	<h1 th:text="${userAboutMe}" ></h1>
+	
 
 
     <div th:insert="fragments/scripts"></div>
