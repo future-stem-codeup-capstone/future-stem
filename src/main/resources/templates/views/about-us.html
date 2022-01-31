@@ -5,61 +5,102 @@
     <meta charset="UTF-8">
     <title>About The Team</title>
 </head>
-<body class="bg-color">
+<body>
 <nav th:insert="fragments/navbar"></nav>
-<div class="container margin-top15">
-    <h1>Meet The Team</h1>
-    <div class="card">
-        <img src="" alt="img">
-        <h1>Jackie Dallas</h1>
-        <p class="title">Software Developer</p>
-        <p class="title">Full Stack Developer</p>
-        <div class="social-media">
-            <a href=""><i class="linkedin"></i></a>
-            <a href=""><i class="github"></i></a>
-        </div>
-        <button class="btn">Contact</button>
-    </div>
-    <div class="card">
-        <img src="" alt="img">
-        <h1>Ian McConihay</h1>
-        <p class="title">Software Developer</p>
-        <p class="title">Full Stack Developer</p>
-        <div class="social-media">
-            <a href=""><i class="linkedin"></i></a>
-            <a href=""><i class="github"></i></a>
-        </div>
-        <button class="btn">Contact</button>
-    </div>
-    <div class="card">
-        <img src="" alt="img">
-        <h1>Patric Noriega</h1>
-        <p class="title">Software Developer</p>
-        <p class="title">Full Stack Developer</p>
-        <div class="social-media">
-            <a href=""><i class="linkedin"></i></a>
-            <a href=""><i class="github"></i></a>
-        </div>
-        <button class="btn">Contact</button>
-    </div>
-    <div class="card">
-        <img src="" alt="img">
-        <h1>Robert Allison</h1>
-        <p class="title">Software Developer</p>
-        <p class="title">Full Stack Developer</p>
-        <div class="social-media">
-            <a href=""><i class="linkedin"></i></a>
-            <a href=""><i class="github"></i></a>
-        </div>
-        <button class="btn">Contact</button>
+
+<div id="our-team-section">
+
+    <div id="our-team-title">
+        Meet The Team
     </div>
 
 
+    <div id="team-tile-container">
+
+        <div id="team-left-tile" class="team-card">
+
+            <img class="team-headshot" src="">
+
+            <div class="team-name-bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum
+                dolore.
+            </div>
+
+            <div class="team-name-banner">Jackie Dallas</div>
+
+            <div class="team-title-banner">Software Developer</div>
+
+            <div class="team-social">
+
+                <a href=""><img class="linkedin-tile" src=""></a>
+
+                <a href=""> <img class="github-tile" src=""></a>
+            </div>
+        </div>
+
+        <div id="team-right-tile" class="team-card">
+
+            <img class="team-headshot" src="">
+
+            <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                essecillum dolore.
+            </div>
+
+            <div class="team-name-banner">Ian McConihay</div>
+
+            <div class="team-title-banner">Software Developer</div>
+
+            <div class="team-social">
+
+                <a href=""><img class="linkedin-tile" src=""></a>
+
+                <a href=""> <img class="github-tile" src=""></a>
+            </div>
+        </div>
+        <div id="team-btm-left-tile" class="team-card">
+
+            <img class="team-headshot" src="">
+
+            <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+                essecillum dolore.
+            </div>
+
+            <div class="team-name-banner">Patric Noriega</div>
+
+            <div class="team-title-banner">Software Developer</div>
+
+            <div class="team-social">
+
+                <a href=""><img class="linkedin-tile" src=""></a>
+
+                <a href=""> <img class="github-tile" src=""></a>
+            </div>
+        </div>
+    </div>
+    <div id="team-btm-right-tile" class="team-card">
+
+        <img class="team-headshot" src="">
+
+        <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            essecillum dolore.
+        </div>
+
+        <div class="team-name-banner">Robert Allsion</div>
+
+        <div class="team-title-banner">Software Developer</div>
+
+        <div class="team-social">
+            <a href=""><img class="linkedin-tile" src=""></a>
+
+            <a href=""> <img class="github-tile" src=""></a>
+        </div>
+    </div>
 </div>
 
-
 <div th:insert="fragments/scripts"></div>
-
 
 </body>
 </html>
