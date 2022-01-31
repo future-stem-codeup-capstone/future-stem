@@ -11,8 +11,11 @@ import org.springframework.stereotype.Controller;
 public class StemController {
     private final HobbyRepository hobbyDao;
     private final ProjectRepository projectDao;
-    public StemController(ProjectRepository projectDao, HobbyRepository hobbyDao) {this.projectDao = projectDao; this.hobbyDao = hobbyDao;}
 
+    public StemController(ProjectRepository projectDao, HobbyRepository hobbyDao) {
+        this.projectDao = projectDao;
+        this.hobbyDao = hobbyDao;
+    }
 
 
     @GetMapping("/")
@@ -20,6 +23,7 @@ public class StemController {
         model.addAttribute("user", new User());
         return "views/landing-page";
     }
+
     @GetMapping("/info")
     public String showInfoPage(Model model) {
         model.addAttribute("user", new User());
@@ -34,10 +38,10 @@ public class StemController {
     }
 
 
-
-
     @GetMapping("/requests")
-    public String showRequests() {return "views/friend-requests";}
+    public String showRequests() {
+        return "views/friend-requests";
+    }
 
     @GetMapping("/map")
     public String showMap(Model model) {
@@ -45,9 +49,15 @@ public class StemController {
         return "views/map";
     }
 
+
+    @GetMapping("/aboutUs")
+    public String aboutUs(Model model) {
+        return "views/about-us";
+
     @GetMapping("/education")
     public String showEducation(Model model) {
 //        model.addAttribute("yelpAPI", apiKey);
         return "views/education";
+
     }
 }
