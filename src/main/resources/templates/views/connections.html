@@ -10,6 +10,9 @@
 <h3 style="margin-top: 5em">Your Friends</h3>
 <div th:each="connections : ${connection}">
     <h5 th:text="${connections.getAddedUser().getUsername()}" />
+    <form th:action="'/connection-delete/' + ${connections.getId()}" method="POST">
+        <button>Delete</button>
+    </form>
 </div>
 <h3>All Users</h3>
 <div th:each="user : ${allUsers}" >

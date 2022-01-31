@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
@@ -26,7 +27,7 @@ public class ConnectionsController {
 		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		List<Connections> connectionsList = connectionsDao.findAllByOwnerUser(currentUser);
 		model.addAttribute("connection", connectionsList);
-		model.addAttribute("allUsers", userDao.findAll());
+		model.addAttribute("allUsers", userDao.findAllByIdNotLike(currentUser.getId()));
 		model.addAttribute("currentUser", currentUser);
 		model.addAttribute("connections", new Connections());
 		return "views/connections";
@@ -43,10 +44,11 @@ public class ConnectionsController {
 		connectionsDao.save(newConnection);
 		return "redirect:/connection";
 	}
-////getOne old findOne old now findByID
-//	@PostMapping("/connection/delete")
-//	public String delete(@RequestParam long deleteFriendId){
-//		connectionsDao.deleteById(deleteFriendId);
-//		return "redirect:/profile";
-//	}
+
+	@PostMapping("/connection-delete/{id}")
+	public String deleteConnection(@PathVariable Long id){
+		long deleteConnectionId = id;
+		connectionsDao.deleteById(deleteConnectionId);
+		return "redirect:/connection";
+	}
 }
