@@ -49,8 +49,15 @@ public class StemController {
         return "views/map";
     }
 
+
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {
         return "views/about-us";
+
+    @GetMapping("/education")
+    public String showEducation(Model model) {
+//        model.addAttribute("yelpAPI", apiKey);
+        return "views/education";
+
     }
 }
