@@ -24,6 +24,9 @@
 				<a href="/quizzes" class="nav-link">Quiz</a>
 			</li>
 			<li class="nav-item">
+				<a href="/stemquiz" class="nav-link">STEM Quiz</a>
+			</li>
+			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/connection">Connections</a>
 			</li>
 			<li class="nav-item">
@@ -35,16 +38,19 @@
 <!--			<li class="nav-item">-->
 <!--				<a href="#" class="nav-link" data-toggle="modal" data-target="#register-modal">Register</a>-->
 <!--			</li>-->
-			<li class="nav-item dropdown">
-				<a sec:authorize="isAuthenticated()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Settings
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="/update-account">Edit Account</a>
-					<a class="dropdown-item" href="#">Switch to Child</a>
-					<div class="dropdown-divider"></div>
-				</div>
+			<li class="nav-item">
+				<a sec:authorize="isAuthenticated()" class="nav-link" href="/update-account">Edit Account</a>
 			</li>
+<!--			<li class="nav-item dropdown">-->
+<!--				<a sec:authorize="isAuthenticated()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--					Settings-->
+<!--				</a>-->
+<!--				<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--					<a class="dropdown-item" href="/update-account">Edit Account</a>-->
+<!--					<a class="dropdown-item" href="#">Switch to Child</a>-->
+<!--					<div class="dropdown-divider"></div>-->
+<!--				</div>-->
+<!--			</li>-->
 			
 		</ul>
 		<div sec:authorize="isAuthenticated()">
@@ -52,10 +58,10 @@
 				<button class="btn-link btn">Logout</button>
 			</form>
 		</div>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
+<!--		<form class="form-inline my-2 my-lg-0">-->
+<!--			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+<!--		</form>-->
 	</div>
 </nav>
 </html>
