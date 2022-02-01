@@ -11,6 +11,8 @@
 	<ul>
 		<li>Username: <span th:text="${loggedInUser.getUsername()}"></span></li>
 		<li>Email: <span th:text="${loggedInUser.getEmail()}"></span></li>
+		<li>About Me: <span th:text="${loggedInUser.getAboutMe()}"></span></li>
+		<li>Avatar: <img th:src="${loggedInUser.getProfile_pic()}"  class="user-avatar" width="230" height="200"></img></li>
 	</ul>
 	<button class="btn btn-dark edit-account-btn">Edit</button>
 	<div class="update-account-form hidden">
@@ -21,7 +23,7 @@
 			</div>
 			<div class="form-group">
 				<label for="email">Change E-Mail Address:</label>
-				<input id="email" class="form-control" th:value="${loggedInUser.getEmail()}" th:field="*{email}" required>
+				<input th:value="${loggedInUser.getEmail()}"  id="email" class="form-control" th:field="*{email}" required>
 			</div>
 			<div class="form-group">
 				<label for="password">Change Password:</label>
@@ -29,7 +31,7 @@
 			</div>
 			<div class="form-group">
 				<label for="aboutMe">Add an About me to your profile!</label>
-				<input class="form-control" id="aboutMe" th:field="*{aboutMe}">
+				<input th:value="${loggedInUser.getAboutMe()}" class="form-control" id="aboutMe" th:field="*{aboutMe}">
 			</div>
 			<div class="form-group">
 				<label for="fileupload">Avatar Image URL:</label>
