@@ -1,23 +1,28 @@
 package com.example.futurestem.Controllers;
 
+import com.example.futurestem.Models.Connections;
 import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
+import com.example.futurestem.Repository.ConnectionsRepository;
 import com.example.futurestem.Repository.ProjectRepository;
 import com.example.futurestem.Repository.UserRepository;
-import com.example.futurestem.Services.EmailService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class ProjectController {
 	private final UserRepository userDao;
 	private final ProjectRepository projectDao;
+	private final ConnectionsRepository connectionsDao;
 
-	public ProjectController(UserRepository userDao, ProjectRepository projectDao) {
+	public ProjectController(UserRepository userDao, ProjectRepository projectDao, ConnectionsRepository connectionsDao) {
 		this.userDao = userDao;
 		this.projectDao = projectDao;
+		this.connectionsDao = connectionsDao;
 	}
 
 	//Map to home page
@@ -31,7 +36,10 @@ public class ProjectController {
 	//	Show on home page
 	@GetMapping("/project")
 	public String showProjectsHome(Model model){
-		model.addAttribute("projects", projectDao.findAll());
+		User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		List<Connections> connectionsList = connectionsDao.findAllByAddedUser(currentUser);
+//		model.addAttribute("projects", projectDao.findAll());
+		model.addAttribute("projects", connectionsList);
 		return "views/home";
 	}
 
