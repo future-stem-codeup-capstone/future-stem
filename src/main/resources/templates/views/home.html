@@ -13,39 +13,6 @@
 		<div class="answer"></div>
 	</div>
 	<div class="main-content row">
-		<div id="1" class="ball-box col" style="margin-left: 15em">
-			
-			<ul class="white-ball" >
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-			<ul class="red-ball">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		
-		</div>
-		
 		<div class="projects-container col">
 			<div class="projects" th:each="project : ${project}">
 				<h3 th:text="${project.getTitle()}"></h3>
@@ -67,3 +34,34 @@
 <div th:insert="fragments/scripts"></div>
 </body>
 </html>
+
+<!--<div id="1" class="ball-box col" style="margin-left: 15em">-->
+<!--	<ul class="white-ball" >-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--	</ul>-->
+<!--	<ul class="red-ball">-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--		<li></li>-->
+<!--	</ul>-->
+<!--</div>-->

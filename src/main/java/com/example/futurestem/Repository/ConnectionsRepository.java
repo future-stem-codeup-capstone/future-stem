@@ -5,7 +5,6 @@ import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 
 public interface ConnectionsRepository extends JpaRepository<Connections, Long> {
