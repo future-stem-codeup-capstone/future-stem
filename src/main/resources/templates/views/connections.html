@@ -7,10 +7,7 @@
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<form style="margin-top: 10em">
-    <input  type="search" placeholder="Search Username" aria-label="Search">
-    <button type="submit">Search</button>
-</form>
+
 <h3 style="margin-top: 1em">Your Friends</h3>
 <div class="projects" th:each="connections : ${connection}">
     <h5 th:text="${connections.getAddedUser().getUsername()}" />
@@ -22,6 +19,20 @@
     </form>
 </div>
 <h3 style="margin-top: 1em">All Users</h3>
+<form style="margin-top: 10em">
+    <input  id="search-username" type="search" placeholder="Search Username" >
+    <button  type="submit" id="search-username-btn">Search</button>
+</form>
+
+<!--<script>-->
+<!--$('#search-username-btn').click((e) => {-->
+<!--e.preventDefault();-->
+<!--console.log(document.querySelector('#search-Dictionary').value)-->
+<!--fetchAPIDictionary(document.querySelector('#search-username').value)-->
+<!--})-->
+<!--</script>-->
+
+
 <div th:each="user : ${allUsers}" >
 <h5 th:text="${user.getUsername()}"></h5>
     <form th:action="@{/connection/addconnection}" th:method="post" >
