@@ -70,7 +70,7 @@ public class UserController {
         editUser.setId(loggedInUser.getId());
         editUser.setUsername(user.getUsername());
         editUser.setEmail(user.getEmail());
-
+        editUser.setAboutMe(user.getAboutMe());
 
         userDao.save(editUser);
         return "redirect:/profile";
@@ -95,22 +95,20 @@ public class UserController {
         List<Hobby> userHobbies = loggedInUser.getUserHobbies();
         List<Project> userProjects = loggedInUser.getUserProjects();
 
-//        model.addAttribute("user", loggedInUser);
+        model.addAttribute("user", loggedInUser);
         model.addAttribute("project", new Project());
+        model.addAttribute("newHobby", new Hobby());
         model.addAttribute("username", loggedInUser.getUsername());
         model.addAttribute("email", loggedInUser.getEmail());
         model.addAttribute("userProjects", userProjects);
-        model.addAttribute("hobby", userHobbies);
+        model.addAttribute("userHobbies", userHobbies);
+        model.addAttribute("userAboutMe",loggedInUser.getAboutMe());
 
         return "views/profile";
     }
 
 
-    @GetMapping("/user")
-    public String findAllUsers(Model model){
-        model.addAttribute("user", userDao.findAll());
-        return "views/home";
-    }
+
 
 
 

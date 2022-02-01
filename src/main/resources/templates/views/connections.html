@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
+<head>
+    <meta charset="UTF-8">
+    <title>Connections</title>
+</head>
+<body>
+<nav th:insert="fragments/navbar"></nav>
+<h3 style="margin-top: 5em">Your Friends</h3>
+<div th:each="connections : ${connection}">
+    <h5 th:text="${connections.getAddedUser().getUsername()}" />
+    <form th:action="'/connection-delete/' + ${connections.getId()}" method="POST">
+        <button>Delete</button>
+    </form>
+</div>
+<h3>All Users</h3>
+<div th:each="user : ${allUsers}" >
+<h5 th:text="${user.getUsername()}"></h5>
+    <form th:action="@{/connection/addconnection}" th:method="post" >
+        <input type="hidden" th:name="addedUser" th:value="${user.getId()}" />
+        <button type="submit" class="btn btn-primary">Add Connection</button>
+    </form>
+
+</div>
+<div th:insert="fragments/scripts"></div>
+</body>
+</html>
+

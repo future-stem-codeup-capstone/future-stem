@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Update Account</title>
 </head>
+<body class="bg-color">
 <nav th:insert="fragments/navbar"></nav>
 <div class="container margin-top15">
 	<h1>Account Details</h1>
@@ -11,20 +12,24 @@
 		<li>Username: <span th:text="${loggedInUser.getUsername()}"></span></li>
 		<li>Email: <span th:text="${loggedInUser.getEmail()}"></span></li>
 	</ul>
-	<button class="btn edit-account-btn">Edit</button>
-	<div class="update-account-form" style="display: none">
+	<button class="btn btn-dark edit-account-btn">Edit</button>
+	<div class="update-account-form hidden">
 		<form th:action="@{/confirm-update}" th:method="post" th:object="${user}">
 			<div class="form-group">
 				<label for="username">Change Username:</label>
-				<input th:value="${loggedInUser.getUsername()}" class="form-control" id="username" th:field="*{username}">
+				<input th:value="${loggedInUser.getUsername()}" class="form-control" id="username" th:field="*{username}" required>
 			</div>
 			<div class="form-group">
 				<label for="email">Change E-Mail Address:</label>
-				<input id="email" class="form-control" th:value="${loggedInUser.getEmail()}" th:field="*{email}">
+				<input id="email" class="form-control" th:value="${loggedInUser.getEmail()}" th:field="*{email}" required>
 			</div>
 			<div class="form-group">
 				<label for="password">Change Password:</label>
-				<input type="password" class="form-control" id="password" th:field="*{password}">
+				<input type="password" class="form-control" id="password" th:field="*{password}" required>
+			</div>
+			<div class="form-group">
+				<label for="aboutMe">Add an About me to your profile!</label>
+				<input class="form-control" id="aboutMe" th:field="*{aboutMe}">
 			</div>
 			<input type="hidden" name="userId" th:value="${loggedInUser.getId()}" th:field="*{id}">
 			<input type="submit" value="Update Account">
@@ -33,6 +38,8 @@
 
 </div>
 <div th:insert="fragments/scripts"></div>
+</body>
+
 </html>
 
 

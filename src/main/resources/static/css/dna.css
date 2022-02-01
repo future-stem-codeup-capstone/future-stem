@@ -1,7 +1,7 @@
-body {
-    background-color: #313131;
-    display: flex;
-}
+/*body {*/
+/*    background-color: #313131;*/
+/*    display: flex;*/
+/*}*/
 
 .ball-box {
     width: 50%;
@@ -25,10 +25,10 @@ ul {
 }
 li {
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
-    background-color: #0ff;
+    background-color: #8fa1a1;
     list-style-type: none;
     box-shadow: 0px 0px 15px 0px #fff;
     opacity: 0;
@@ -37,7 +37,7 @@ li {
     animation-name: upwards;
 }
 .red-ball li {
-    background-color: #0ff;
+    background-color: #91a6a6;
     animation-name: downwards;
 }
 li:nth-child(2) {

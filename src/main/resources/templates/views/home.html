@@ -3,65 +3,67 @@
 <head th:insert="fragments/head">
 	<meta charset="UTF-8">
 	<title>Home</title>
-<!--	<script>src="factAPI.js"</script>-->
 </head>
-<body style="background-color: #d3d3d326">
+<body class="bg-color">
 <nav th:insert="fragments/navbar"></nav>
-<div class="container margin-top15">
+<div class="container home-container">
+	<div class="random-fact">
+		<h3>Science Fact!</h3>
+		<div class="question"></div>
+		<div class="answer"></div>
+	</div>
 	<div class="main-content row">
-		<div class="random-fact col">
-			<h3>Science Fact!</h3>
-			<div class="question"></div>
-			<div class="answer"></div>
+		<div id="1" class="ball-box col" style="margin-left: 15em">
+			
+			<ul class="white-ball" >
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<ul class="red-ball">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		
 		</div>
+		
 		<div class="projects-container col">
 			<div class="projects" th:each="project : ${project}">
 				<h3 th:text="${project.getTitle()}"></h3>
 				<p th:text="${project.getBody()}"></p>
 				<img th:src="${project.getUrl()}" alt="image" width="350" height="300">
+				<p>Posted by: <span th:text="${project.getUser().getUsername()}"></span></p>
 			</div>
 		</div>
 	</div>
 
 </div>
-<p>hello world</p>
+
 <div th:each="connections : ${connection}">
-	<p th:text="${connections.getAddedUser().getUsername()}" />
+	<p th:text="${connections.getAddedUser().getUsername()}"></p>
 </div>
 
 
 
 <div th:insert="fragments/scripts"></div>
-<script>
-	const category = 'sciencenature';
-	
-	fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
-		method: 'GET',
-		headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-		contentType: 'application/json'})
-		.then(function (response) {
-			return response.json();
-		})
-			.then(function (data) {
-		console.log(data);
-		let question = data[0].question;
-		let answer = data[0].answer;
-		console.log(question)
-		console.log(answer)
-		$('.question').append(question);
-		$('.answer').append(answer);
-		
-	})
-	// $.get({
-	// 	method: 'GET',
-	// 	url: 'https://api.api-ninjas.com/v1/trivia?category=' + category,
-	// 	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-	// 	contentType: 'application/json',
-	// 	success: function(result) {
-	// 		console.log(result);
-	// 		$('.random-fact').append(result)
-	// 	}
-	// });
-</script>
 </body>
 </html>

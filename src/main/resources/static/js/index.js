@@ -5,6 +5,28 @@ const btn = document.getElementById('picker');
 const nameBox = document.getElementById('nameBox');
 const urlBox = document.getElementById('urlBox');
 
+// const category = 'sciencenature';
+//
+// fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
+// 	method: 'GET',
+// 	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+// 	contentType: 'application/json'})
+// 	.then(function (response) {
+// 		return response.json();
+// 	})
+// 	.then(function (data) {
+// 		console.log(data);
+// 		let question = data[0].question;
+// 		let answer = data[0].answer;
+// 		console.log(question)
+// 		console.log(answer)
+// 		$('.question').append(question);
+// 		$('.answer').append(answer);
+//
+// 	})
+
+
+
 const getUserId = () => {
 	return new Promise((resolve) => {
 		resolve({
@@ -31,6 +53,9 @@ window.addEventListener('DOMContentLoaded', function () {
 			onUploadDone: updateForm,
 			accept: ["image/*"],
 			uploadInBackground: false,
+			// maxSize: 1024,
+			// maxFiles: 4,
+			// failOverMaxFiles: false,
 			onFileUploadFinished: (response) => {
 				saveUserData({
 					userId,
@@ -76,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 // edit account button
 $('.edit-account-btn').click(function () {
-	$('.update-account-form').css('display', 'contents');
+	$('.update-account-form').toggleClass('hidden')
 })
 
 
