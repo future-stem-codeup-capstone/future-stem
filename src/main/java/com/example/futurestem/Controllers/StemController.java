@@ -64,6 +64,11 @@ public class StemController {
         return "views/quizzes";
     }
 
+    @GetMapping("/stemquiz")
+    public String showSTEMQuiz() {
+        return "views/stemquiz";
+    }
+
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {

@@ -1,4 +1,4 @@
-package com.example.futurestem.services;
+package com.example.futurestem.Services;
 
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Models.UserWithRoles;
