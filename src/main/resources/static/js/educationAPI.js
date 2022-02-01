@@ -4,8 +4,9 @@ const math = "mathematics";
 const gen = "general";
 const lang = "language";
 
-function fetchAPI(category) {
+const searchBar = document.getElementById("search-Dictionary");
 
+function fetchAPI(category) {
     fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
         method: 'GET',
         headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
@@ -24,7 +25,6 @@ function fetchAPI(category) {
             $('.answer').text(answer);
         })
 }
-
 $('.sciButton').click((e) => {
     e.preventDefault();
     fetchAPI(sci)
@@ -44,6 +44,33 @@ $('.genButton').click((e) => {
 $('.langButton').click((e) => {
     e.preventDefault();
     fetchAPI(lang)
-
 })
 fetchAPI()
+
+
+
+function fetchAPIDictionary(word) {
+    fetch('https://api.api-ninjas.com/v1/dictionary?word=' + word, {
+        method: 'GET',
+        headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+        contentType: 'application/json'
+    })
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            // let definition = data[0].definition;
+            // console.log(data)
+            $('.definition').text(data.definition);
+        })
+}
+$('#searchDictionarybtn').click((e) => {
+    e.preventDefault();
+    console.log(document.querySelector('#search-Dictionary').value)
+    fetchAPIDictionary(document.querySelector('#search-Dictionary').value)
+})
+
+searchBar.addEventListener("submit", e => {
+    fetchAPIDictionary($('#search-Dictionary').value)
+});

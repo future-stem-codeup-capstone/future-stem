@@ -71,6 +71,7 @@ public class UserController {
         editUser.setUsername(user.getUsername());
         editUser.setEmail(user.getEmail());
         editUser.setAboutMe(user.getAboutMe());
+        editUser.setProfile_pic(user.getProfile_pic());
 
         userDao.save(editUser);
         return "redirect:/profile";
