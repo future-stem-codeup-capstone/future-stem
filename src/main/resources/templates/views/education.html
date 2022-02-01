@@ -1,30 +1,236 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head th:insert="fragments/head">
-<head>
     <meta charset="UTF-8">
     <title>Education</title>
 </head>
 <body>
 <nav th:insert="fragments/navbar"></nav>
-<div class="category" style="margin-top: 10rem">
-    <div class="question"></div>
-    <div class="answer"></div>
-    <button class="sciButton">Science</button>
-    <button class="geoButton">Geography</button>
-    <button class="mathButton">Mathematics</button>
-    <button class="genButton">General</button>
-    <button class="langButton">Language</button>
-</div>
 
-<form action=""style="margin-top: 10rem" >
-    <label for="search-Dictionary">Digital Dictionary</label>
-    <input type="text" id="search-Dictionary" placeholder="Enter a word">
-    <button type="submit" id="searchDictionarybtn">Search</button>
-</form>
-<div class="definition"></div>
+<div class="container quiz-container">
+	<div class="category mb-5" style="margin-top: 10rem">
+		<div class="question"></div>
+		<div class="answer"></div>
+		<button class="sciButton">Science</button>
+		<button class="geoButton">Geography</button>
+		<button class="mathButton">Mathematics</button>
+		<button class="genButton">General</button>
+		<button class="langButton">Language</button>
+	</div>
+	
+	<h1>Pop Quizzes</h1>
+	<div id="quiz"></div>
+	<div class="d-flex">
+		<button id="submit" class="mr-1">Submit</button>
+		<button id="reset" class="ml-1">Reset</button>
+	</div>
+	<div id="results"></div>
+	
+	<div class="mt-5">
+		<form action="" style="margin-top: 10rem" >
+			<label for="search-Dictionary">Digital Dictionary</label>
+			<input type="text" id="search-Dictionary" placeholder="Enter a word">
+			<button type="submit" id="searchDictionarybtn">Search</button>
+		</form>
+		<div class="definition"></div>
+	</div>
+	
+</div>
 
 
 <div th:insert="fragments/scripts"></div>
+<script>
+	
+	// education api code
+	const sci = "sciencenature";
+	const geo = "geography";
+	const math = "mathematics";
+	const gen = "general";
+	const lang = "language";
+	
+	function fetchAPI(category) {
+		
+		fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
+			method: 'GET',
+			headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+			contentType: 'application/json'
+		})
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (data) {
+					console.log(data);
+					let question = data[0].question;
+					let answer = data[0].answer;
+					console.log(question)
+					console.log(answer)
+					$('.question').text(question);
+					$('.answer').text(answer);
+				})
+	}
+	
+	$('.sciButton').click((e) => {
+		e.preventDefault();
+		fetchAPI(sci)
+	})
+	$('.geoButton').click((e) => {
+		e.preventDefault();
+		fetchAPI(geo)
+	})
+	$('.mathButton').click((e) => {
+		e.preventDefault();
+		fetchAPI(math)
+	})
+	$('.genButton').click((e) => {
+		e.preventDefault();
+		fetchAPI(gen)
+	})
+	$('.langButton').click((e) => {
+		e.preventDefault();
+		fetchAPI(lang)
+		
+	})
+	fetchAPI()
+	// education api code end
+	
+	// quiz code
+	const scienceQuestions = [
+		{
+			questions: 'What is the name of the molten rock that pours from volcanoes?',
+			answers: {
+				a: 'Lava',
+				b: 'Fire',
+				c: 'Sand'
+			},
+			correctAnswer: 'a'
+		},
+		{
+			questions: 'Which is not owned or created by Microsoft:',
+			answers: {
+				a: 'Minecraft',
+				b: 'Xbox',
+				c: 'Fortnite'
+			},
+			correctAnswer: 'c'
+		},
+		{
+			questions: 'The human body is what percentage of water?',
+			answers: {
+				a: '25%',
+				b: '60%',
+				c: '2%'
+			},
+			correctAnswer: 'b'
+		},
+		{
+			questions: 'What kind of animals can live on both water and land?',
+			answers: {
+				a: 'Reptiles',
+				b: 'Amphibians',
+				c: 'Mammals'
+			},
+			correctAnswer: 'b'
+		},
+		{
+			questions: 'At what temperature does water freeze?',
+			answers: {
+				a: '0 degrees Fahrenheit',
+				b: '20 degrees Fahrenheit',
+				c: '32 degrees Fahrenheit'
+			},
+			correctAnswer: 'c'
+		}
+	]
+	const quizContainer = document.getElementById('quiz');
+	const resultsContainer = document.getElementById('results');
+	const submitQuiz = document.getElementById('submit');
+	
+	
+	function buildQuiz() {
+		const output = [];
+		
+		scienceQuestions.forEach((currentQuestion, questionNumber) => {
+			const answers = [];
+			
+			// let label = `<label>
+			//     <input type="radio" name="question${questionNumber}" value="${letter}">
+			//     ${letter} :
+			//     ${currentQuestion.answers[letter]}
+			//   </label>`;
+			
+			for (let letter in currentQuestion.answers) {
+				answers.push(`<label>
+            <input class="m-3" type="radio" name="question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.answers[letter]}
+          </label>`);
+			}
+			
+			// let output = `<div class="question"> ${currentQuestion.question} </div>
+			// <div class="answers"> ${answers.join('')} </div>`;
+			
+			output.push(`<div class="quizQuestion"> ${currentQuestion.questions} </div>
+        <div class="quizAnswers"> ${answers.join('')} </div>`);
+		})
+		quizContainer.innerHTML = output.join('');
+		resultsContainer.innerHTML = '';
+	}
+	buildQuiz();
+	
+	function showResults() {
+		
+		const answerContainers = quizContainer.querySelectorAll('.quizAnswers')
+		let numCorrect = 0;
+		
+		scienceQuestions.forEach((currentQuestion, questionNumber) => {
+			const answerContainer = answerContainers[questionNumber];
+			const selector = `input[name=question${questionNumber}]:checked`;
+			const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+			
+			if (userAnswer === currentQuestion.correctAnswer) {
+				numCorrect++;
+				answerContainers[questionNumber].style.color = 'lightgreen';
+			} else {
+				answerContainers[questionNumber].style.color = 'red';
+			}
+		});
+		
+		resultsContainer.innerHTML = `<h3>${numCorrect} out of ${scienceQuestions.length} questions correct.</h3>`;
+		
+	}
+	$('#submit').click(() => {showResults()})
+	$('#reset').click(() => {buildQuiz()})
+	// quiz code end
+	
+	// dictionary code start
+	function fetchAPIDictionary(word) {
+		fetch('https://api.api-ninjas.com/v1/dictionary?word=' + word, {
+			method: 'GET',
+			headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+			contentType: 'application/json'
+		})
+				.then(function (response) {
+					return response.json();
+				})
+				.then(function (data) {
+					console.log(data);
+					// let definition = data[0].definition;
+					// console.log(data)
+					$('.definition').text(data.definition);
+				})
+	}
+	
+	$('#searchDictionarybtn').click((e) => {
+		e.preventDefault();
+		console.log(document.querySelector('#search-Dictionary').value)
+		fetchAPIDictionary(document.querySelector('#search-Dictionary').value)
+	})
+	
+	searchBar.addEventListener("submit", e => {
+		fetchAPIDictionary($('#search-Dictionary').value)
+	});
+	// dictionary code end
+</script>
 </body>
 </html>
