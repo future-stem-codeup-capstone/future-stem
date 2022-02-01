@@ -31,6 +31,11 @@
 				<label for="aboutMe">Add an About me to your profile!</label>
 				<input class="form-control" id="aboutMe" th:field="*{aboutMe}">
 			</div>
+			<div class="form-group">
+				<label for="fileupload">Avatar Image URL:</label>
+				<input th:field="*{profile_pic}" id="fileupload" class="form-control">
+				<button class="button" type="button" id="picker">Pick file</button>
+			</div>
 			<input type="hidden" name="userId" th:value="${loggedInUser.getId()}" th:field="*{id}">
 			<input type="submit" value="Update Account">
 		</form>
