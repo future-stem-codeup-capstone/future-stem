@@ -4,31 +4,6 @@ const fileInput = document.getElementById('fileupload');
 const btn = document.getElementById('picker');
 const nameBox = document.getElementById('nameBox');
 const urlBox = document.getElementById('urlBox');
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitQuiz = document.getElementById('submit');
-
-// const category = 'sciencenature';
-//
-// fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
-// 	method: 'GET',
-// 	headers: { 'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-// 	contentType: 'application/json'})
-// 	.then(function (response) {
-// 		return response.json();
-// 	})
-// 	.then(function (data) {
-// 		console.log(data);
-// 		let question = data[0].question;
-// 		let answer = data[0].answer;
-// 		console.log(question)
-// 		console.log(answer)
-// 		$('.question').append(question);
-// 		$('.answer').append(answer);
-//
-// 	})
-
-
 
 const getUserId = () => {
 	return new Promise((resolve) => {
@@ -102,96 +77,14 @@ window.addEventListener('DOMContentLoaded', function () {
 	});
 });
 
-// edit account button
-$('.edit-account-btn').click(function () {
-	$('.update-account-form').toggleClass('hidden')
-})
-
-const scienceQuestions = [
-	{
-		question: 'What is the name of the molten rock that pours from volcanoes?',
-		answers: {
-			a: 'Lava',
-			b: 'Fire',
-			c: 'Sand'
-		},
-		correctAnswer: 'a'
-	},
-	{
-		question: 'Which is not owned or created by Microsoft:',
-		answers: {
-			a: 'Minecraft',
-			b: 'Xbox',
-			c: 'Fortnite'
-		},
-		correctAnswer: 'c'
-	},
-	{
-		question: 'The human body is what percentage of water?',
-		answers: {
-			a: '25%',
-			b: '60%',
-			c: '2%'
-		},
-		correctAnswer: 'b'
-	},
-	{
-		question: 'What kind of animals can live on both water and land?',
-		answers: {
-			a: '45%',
-			b: '60%',
-			c: '2%'
-		},
-		correctAnswer: 'b'
-	},
-	{
-		question: 'At what temperature does water freeze?',
-		answers: {
-			a: '0 degrees Fahrenheit',
-			b: '20 degrees Fahrenheit',
-			c: '32 degrees Fahrenheit'
-		},
-		correctAnswer: 'c'
-	}
-]
 
 
 
-function buildQuiz() {
-	const output = [];
-	
-	scienceQuestions.forEach((currentQuestion, questionNumber) => {
-		const answers = [];
-		
-		// let label = `<label>
-        //     <input type="radio" name="question${questionNumber}" value="${letter}">
-        //     ${letter} :
-        //     ${currentQuestion.answers[letter]}
-        //   </label>`;
-		
-		for (let letter in currentQuestion.answers) {
-			answers.push(`<label>
-            <input type="radio" name="question${questionNumber}" value="${letter}">
-            ${letter} :
-            ${currentQuestion.answers[letter]}
-          </label>`);
-		}
-		
-		// let output = `<div class="question"> ${currentQuestion.question} </div>
-        // <div class="answers"> ${answers.join('')} </div>`;
-		
-		output.push(`<div class="question"> ${currentQuestion.question} </div>
-        <div class="answers"> ${answers.join('')} </div>`);
-	})
-	quizContainer.innerHTML = output.join('');
-}
-buildQuiz();
 
-function showResults() {
 
-}
 
-submitQuiz.addEventListener('click', showResults);
+
+
 
 
 

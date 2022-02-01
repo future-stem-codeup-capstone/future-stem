@@ -44,7 +44,133 @@
 	</div>
 
 </div>
+<!--<div class="container margin-top15">-->
+<!--	<h1>Account Details</h1>-->
+<!--	<ul>-->
+<!--		<li>Username: <span th:text="${loggedInUser.getUsername()}"></span></li>-->
+<!--		<li>Email: <span th:text="${loggedInUser.getEmail()}"></span></li>-->
+<!--	</ul>-->
+<!--	<button class="btn btn-dark edit-account-btn">Edit</button>-->
+<!--	<div class="update-account-form hidden">-->
+<!--		<form th:action="@{/confirm-update}" th:method="post" th:object="${user}">-->
+<!--			<div class="form-group">-->
+<!--				<label for="username">Change Username:</label>-->
+<!--				<input th:value="${loggedInUser.getUsername()}" class="form-control" id="username" th:field="*{username}" required>-->
+<!--			</div>-->
+<!--			<div class="form-group">-->
+<!--				<label for="email">Change E-Mail Address:</label>-->
+<!--				<input id="email" class="form-control" th:value="${loggedInUser.getEmail()}" th:field="*{email}" required>-->
+<!--			</div>-->
+<!--			<div class="form-group">-->
+<!--				<label for="password">Change Password:</label>-->
+<!--				<input type="password" class="form-control" id="password" th:field="*{password}" required>-->
+<!--			</div>-->
+<!--			<div class="form-group">-->
+<!--				<label for="aboutMe">Add an About me to your profile!</label>-->
+<!--				<input class="form-control" id="aboutMe" th:field="*{aboutMe}">-->
+<!--			</div>-->
+<!--			<div class="form-group">-->
+<!--				<label for="fileupload">Avatar Image URL:</label>-->
+<!--				<input th:field="*{profile_pic}" id="fileupload" class="form-control">-->
+<!--				<button class="button" type="button" id="picker">Pick file</button>-->
+<!--			</div>-->
+<!--			<input type="hidden" name="userId" th:value="${loggedInUser.getId()}" th:field="*{id}">-->
+<!--			<input type="submit" value="Update Account">-->
+<!--		</form>-->
+<!--	</div>-->
+
+<!--</div>-->
 <div th:insert="fragments/scripts"></div>
+<script>
+	// edit account button
+	$('.edit-account-btn').click(function () {
+		$('.update-account-form').toggleClass('hidden')
+	})
+	// edit account end
+	
+	// filestack code start
+	
+	// references to the DOM elements
+	const form = document.getElementById('upload');
+	const fileInput = document.getElementById('fileupload');
+	const btn = document.getElementById('picker');
+	const nameBox = document.getElementById('nameBox');
+	const urlBox = document.getElementById('urlBox');
+	
+	const getUserId = () => {
+		return new Promise((resolve) => {
+			resolve({
+				userId: 1
+			})
+		});
+	};
+	//  function for saving user data
+	const saveUserData = (data) => {
+		return new Promise((resolve) => {
+			console.log(data);
+			resolve({
+				success: true
+			})
+		});
+	};
+	
+	window.addEventListener('DOMContentLoaded', function () {
+		getUserId().then((response) => {
+			const userId = response.userId;
+			const apikey = 'AQ87ePcflS1GG7yCbmaMoz';
+			const client = filestack.init(apikey);
+			const options = {
+				onUploadDone: updateForm,
+				accept: ["image/*"],
+				uploadInBackground: false,
+				// maxSize: 1024,
+				// maxFiles: 4,
+				// failOverMaxFiles: false,
+				onFileUploadFinished: (response) => {
+					saveUserData({
+						userId,
+						fileHandle: response.handle,
+						url: response.url
+					}).then((response) => {
+						console.log('User data has been saved', response);
+						form.addEventListener('submit', function (event) {
+							
+							$('#fileupload').val(response.url);
+							event.preventDefault();
+							alert('Submitting: ' + fileInput.value);
+						});
+					})
+				}
+			};
+			const picker = client.picker(options);
+
+
+
+// our event listeners
+			btn.addEventListener('click', function (event) {
+				event.preventDefault();
+				picker.open();
+			});
+
+// overwrite the field input value
+			function updateForm(result) {
+				const fileData = result.filesUploaded[0];
+				fileInput.value = fileData.url;
+
+//     DOM code to show some data.
+				const name = document.createTextNode('Selected: ' + fileData.filename);
+				const url = document.createElement('a');
+				url.href = fileData.url;
+				url.appendChild(document.createTextNode(fileData.url));
+				nameBox.appendChild(name);
+				urlBox.appendChild(document.createTextNode('Uploaded to: '));
+				urlBox.appendChild(url);
+			}
+		});
+	});
+	
+	// filestack code end
+</script>
 </body>
 
 </html>

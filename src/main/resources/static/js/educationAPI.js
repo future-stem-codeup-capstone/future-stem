@@ -74,3 +74,4 @@ $('#searchDictionarybtn').click((e) => {
 searchBar.addEventListener("submit", e => {
     fetchAPIDictionary($('#search-Dictionary').value)
 });
+
