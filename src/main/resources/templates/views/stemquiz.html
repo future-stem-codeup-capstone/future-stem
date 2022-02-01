@@ -5,74 +5,79 @@
     <title>STEM Quiz</title>
 </head>
 <body>
-<h1>Find out which STEM category most fits you</h1>
-<!--Science = 1-->
-<!--Tech = 2-->
-<!--Engin = 3-->
-<!--Math = 4-->
+<nav th:insert="fragments/navbar"></nav>
+<div class="container margin-top15">
+<!--	<h1>Add STEM quiz here</h1>-->
+	<h1>Find out which STEM category most fits you</h1>
+	<!--Science = 1-->
+	<!--Tech = 2-->
+	<!--Engin = 3-->
+	<!--Math = 4-->
+	<p><b>1. Which of these do you prefer doing:</b><br>
 
-<p><b>1. Which of these do you prefer doing:</b><br>
-   <input type="radio" name="hobby" id="Legos" value=3>
-    <label for="Legos">1. Legos</label><br>
-    <input type="radio" name="hobby" id="VideoGames" value=2>
-    <label for="VideoGames">2. Video Games</label><br>
-    <input type="radio" name="hobby" id="Puzzles" value=4>
-    <label for="Puzzles">3. Puzzles</label><br>
-    <input type="radio" name="hobby" id="Cooking" value=1>
-    <label for="Cooking"> 4. Cooking</label><br>
-    <br>
-    <b>2. Do you prefer following examples or trial and error?</b><br>
-    <input type="radio" name="trial" id="Examples" value=1>
-    <label for="Examples">1. Examples</label><br>
-    <input type="radio" name="trial" id="Trial" value=2>
-    <label for="Trial">2. Trial and error</label><br>
-    <br>
-    <b>3. Do you like working in groups or individually?</b><br>
-    <input type="radio" name="group" id="Groups" value=3>
-    <label for="Groups">1. Groups</label><br>
-    <input type="radio" name="group" id="Individually" value=4>
-        <label for="Individually">2. Individually</label><br>
-    <br>
-    <b>4. Which homework would you prefer?</b><br>
-    <input type="radio" name="homework" id="Math" value=4>
-        <label for="Math">1. Math worksheet</label><br>
-    <input type="radio" name="homework" id="Project" value=1>
-        <label for="Project">2. Creative project</label><br>
-    <br>
-    <b>5. Would you rather research planets or skyscrapers?</b><br>
-    <input type="radio" name="study" id="Planets" value=1>
-        <label for="Planets">1. Planets</label><br>
-    <input type="radio" name="study" id="Skyscrapers" value=3>
-        <label for="Skyscrapers">2. Skyscrapers</label><br>
-    <br>
-    <b>6. Which describes you best?</b><br>
-    <input type="radio" name="best" id="communicate" value=1>
-        <label for="communicate">1. Good communicator and listener</label><br>
-    <input type="radio" name="best" id="logical" value=3>
-        <label for="logical">2. Logical, problem solver</label><br>
-    <br>
-        <b>7. Would you rather learn about gardening or how computers work?</b><br>
-    <input type="radio" name="learn" id="gardening" value=1>
-        <label for="gardening">1. Gardening</label><br>
-    <input type="radio" name="learn" id="computers" value=2>
-        <label for="computers">2. Computers</label><br>
-    <br>
+		<input type="radio" name="hobby" id="Legos" value=3>
+		<label for="Legos">1. Legos</label><br>
+		<input type="radio" name="hobby" id="VideoGames" value=2>
+		<label for="VideoGames">2. Video Games</label><br>
+		<input type="radio" name="hobby" id="Puzzles" value=4>
+		<label for="Puzzles">3. Puzzles</label><br>
+		<input type="radio" name="hobby" id="Cooking" value=1>
+		<label for="Cooking"> 4. Cooking</label><br>
+		<br>
+		<b>2. Do you prefer following examples or trial and error?</b><br>
 
-    <script>
-        function showResults() {
-            // var hobby = document.getElementsByTagName("radio");
-            //
-            // for (i = 0; i < hobby.length; i++) {
-            //     if(hobby[i].checked)
-            // }
+		<input type="radio" name="trial" id="Examples" value=1>
+		<label for="Examples">1. Examples</label><br>
+		<input type="radio" name="trial" id="Trial" value=2>
+		<label for="Trial">2. Trial and error</label><br>
+		<br>
+		<b>3. Do you like working in groups or individually?</b><br>
 
-            document.write("From these results, it seems that you have an aptitude for Technology. This is a very broad branch allowing you to do most anything from designing websites to creating your own video games!")
-        }
+		<input type="radio" name="group" id="Groups" value=3>
+		<label for="Groups">1. Groups</label><br>
+		<input type="radio" name="group" id="Individually" value=4>
+		<label for="Individually">2. Individually</label><br>
+		<br>
+		<b>4. Which homework would you prefer?</b><br>
 
-    </script>
-    <button type="button" onclick="showResults()">Submit</button>
-</p>
+		<input type="radio" name="homework" id="Math" value=4>
+		<label for="Math">1. Math worksheet</label><br>
+		<input type="radio" name="homework" id="Project" value=1>
+		<label for="Project">2. Creative project</label><br>
+		<br>
+		<b>5. Would you rather research planets or skyscrapers?</b><br>
 
+		<input type="radio" name="study" id="Planets" value=1>
+		<label for="Planets">1. Planets</label><br>
+		<input type="radio" name="study" id="Skyscrapers" value=3>
+		<label for="Skyscrapers">2. Skyscrapers</label><br>
+		<br>
+		<b>6. Which describes you best?</b><br>
 
+		<input type="radio" name="best" id="communicate" value=1>
+		<label for="communicate">1. Good communicator and listener</label><br>
+		<input type="radio" name="best" id="logical" value=3>
+		<label for="logical">2. Logical, problem solver</label><br>
+		<br>
+		<b>7. Would you rather learn about gardening or how computers work?</b><br>
+
+		<input type="radio" name="learn" id="gardening" value=1>
+		<label for="gardening">1. Gardening</label><br>
+		<input type="radio" name="learn" id="computers" value=2>
+		<label for="computers">2. Computers</label>
+</div>
+<button type="button" onclick="showResults()">Submit</button>
+
+<div th:insert="fragments/scripts"></div>
+<script>
+	function showResults() {
+		// var hobby = document.getElementsByTagName("radio");
+		//
+		// for (i = 0; i < hobby.length; i++) {
+		//     if(hobby[i].checked)
+		// }
+		document.write("From these results, it seems that you have an aptitude for Technology. This is a very broad branch allowing you to do most anything from designing websites to creating your own video games!")
+	}
+</script>
 </body>
 </html>
