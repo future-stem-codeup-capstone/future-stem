@@ -1,27 +1,26 @@
 package com.example.futurestem.Controllers;
-import com.example.futurestem.Models.Connections;
-import com.example.futurestem.Models.Project;
 import com.example.futurestem.Models.User;
 import com.example.futurestem.Repository.ConnectionsRepository;
 import com.example.futurestem.Repository.HobbyRepository;
 import com.example.futurestem.Repository.ProjectRepository;
+import com.example.futurestem.Repository.UserRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
-
-import java.util.List;
 
 @Controller
 public class StemController {
     private final HobbyRepository hobbyDao;
     private final ProjectRepository projectDao;
     private final ConnectionsRepository connectionsDao;
+    private final UserRepository userDao;
 
-    public StemController(ProjectRepository projectDao, HobbyRepository hobbyDao, ConnectionsRepository connectionsDao) {
+    public StemController(ProjectRepository projectDao, HobbyRepository hobbyDao, ConnectionsRepository connectionsDao, UserRepository userDao) {
         this.projectDao = projectDao;
         this.hobbyDao = hobbyDao;
         this.connectionsDao = connectionsDao;
+        this.userDao = userDao;
     }
 
 
@@ -39,8 +38,9 @@ public class StemController {
 
     @GetMapping("/home")
     public String showHome(Model model) {
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = userDao.getById(user.getId());
+        model.addAttribute("usernameNav", loggedInUser.getUsername());
 
         model.addAttribute("project", projectDao.findAll());
         model.addAttribute("hobby", hobbyDao.findAll());
@@ -85,4 +85,7 @@ public class StemController {
         return "views/education";
 
     }
+
+
+
 }

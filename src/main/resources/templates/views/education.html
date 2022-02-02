@@ -18,7 +18,7 @@
 		<button class="genButton">General</button>
 		<button class="langButton">Language</button>
 	</div>
-	<div class="d-flex">
+	<div class="d-flex flex-wrap">
 		<div class="mr-3" style="width: 800px; height: 650px">
 			<h1>Science Quiz</h1>
 			<div id="scienceQuiz"></div>
@@ -43,6 +43,31 @@
 			</footer>
 			<div id="techResults"></div>
 		</div>
+		<div class="ml-3" style="width: 800px; height: 650px">
+			<h1>Engineering Quiz</h1>
+			<div id="engineerQuiz"></div>
+			<div class="d-flex">
+				<button id="submit-engineer" class="mr-1">Submit</button>
+				<button id="reset-engineer" class="ml-1">Reset</button>
+			</div>
+			<footer class="mt-1">
+				<p class="text-muted">All content is copyright &copy; Science Kids</p>
+			</footer>
+			<div id="engineerResults"></div>
+		</div>
+		<div class="ml-3" style="width: 800px; height: 650px">
+			<h1>Math Quiz</h1>
+			<div id="mathQuiz"></div>
+			<div class="d-flex">
+				<button id="submit-math" class="mr-1">Submit</button>
+				<button id="reset-math" class="ml-1">Reset</button>
+			</div>
+			<footer class="mt-1">
+				<p class="text-muted">All content is copyright &copy; Science Kids</p>
+			</footer>
+			<div id="mathResults"></div>
+		</div>
+	
 	
 	</div>
 	
@@ -464,12 +489,371 @@
 				correctTechAnswers: 'a'
 			}
 		]
+		const engineeringQuestions = [
+			{
+				engineerQuestions: 'What kind of bridge is the Golden Gate Bridge in San Francisco?',
+				engineerAnswer: {
+					a: 'Suspension Bridge',
+					b: 'Mechanical Bridge',
+					c: 'Underground Bridge'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'In electricity, voltage is measured in volts while current is measured in....?',
+				engineerAnswer: {
+					a: 'Kelvin',
+					b: 'Amperes (amps)',
+					c: 'Degrees'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'The Panama Canal joins which two oceans?',
+				engineerAnswer: {
+					a: 'Antarctic and Gulf',
+					b: 'Pacific and Indian',
+					c: 'Atlantic and Pacific'
+				},
+				correctEngineerAnswer: 'c'
+			},
+			{
+				engineerQuestions: 'Is a mangonel a type of catapult or bridge?',
+				engineerAnswer: {
+					a: 'bridge',
+					b: 'catapult'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'The Hoover dam is on the border of which two U.S. states?',
+				engineerAnswer: {
+					a: 'Arizona and Nevada',
+					b: 'New Mexico and California',
+					c: 'Montana and Wyoming'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'In what country is the Taj Mahal found?',
+				engineerAnswer: {
+					a: 'India',
+					b: 'Qatar',
+					c: 'Russia'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'Did the Eiffel Tower open in 1789 or 1889?',
+				engineerAnswer: {
+					a: '1789',
+					b: '1889'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'The Great Sphinx of Giza has the head of a human and the body of a what?',
+				engineerAnswer: {
+					a: 'Jaguar',
+					b: 'Tiger',
+					c: 'Lion'
+				},
+				correctEngineerAnswer: 'c'
+			},
+			{
+				engineerQuestions: 'In terms of engineering software, what does CAD stand for?',
+				engineerAnswer: {
+					a: 'Computer Aided Design',
+					b: 'Computer Aided Distribution',
+					c: 'Computer Access Database'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'Which country gave the Statue of Liberty to the USA as a gift?',
+				engineerAnswer: {
+					a: 'France',
+					b: 'Belgium',
+					c: 'Italy'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'Who invented the light bulb?',
+				engineerAnswer: {
+					a: 'Nikola Tesla',
+					b: 'Thomas Edison',
+					c: 'Albert Einstein'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'True or False? Some planes can fly faster than the speed of sound.',
+				engineerAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'In what century was the first mechanical clock invented?',
+				engineerAnswer: {
+					a: 'The 13th Century',
+					b: 'The 14th Century',
+					c: 'The 17th Century'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'Which of the kitchen appliances was invented by accident? The stove, toaster, or microwave.',
+				engineerAnswer: {
+					a: 'Stove',
+					b: 'Toaster',
+					c: 'Microwave'
+				},
+				correctEngineerAnswer: 'c'
+			},
+			{
+				engineerQuestions: 'How much did the world\'s first computer weigh?',
+				engineerAnswer: {
+					a: '50 tons',
+					b: '50 pounds',
+					c: '50 kilograms'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'Which was invented first the steam train or the bicycle?',
+				engineerAnswer: {
+					a: 'The steam train',
+					b: 'The bicycle'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'Which was invented first the telephone or the light bulb?',
+				engineerAnswer: {
+					a: 'The light bulb',
+					b: 'The telephone'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'True or False? Diamonds can only be found in nature.',
+				engineerAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctEngineerAnswer: 'b'
+			},
+			{
+				engineerQuestions: 'How long is the longest bridge?',
+				engineerAnswer: {
+					a: '114 kilometers',
+					b: '75 kilometers',
+					c: '500 kilometers'
+				},
+				correctEngineerAnswer: 'a'
+			},
+			{
+				engineerQuestions: 'What was the first synthetic element created in a laboratory?',
+				engineerAnswer: {
+					a: 'Plutonium',
+					b: 'Kryptonite',
+					c: 'Technetium'
+				},
+				correctEngineerAnswer: 'c'
+			}
+			
+			
+		]
+		const mathQuestions = [
+			{
+				mathQuestion: 'What is the next prime number after 7?',
+				mathAnswer: {
+					a: '11',
+					b: '9',
+					c: '8'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'The perimeter of a circle is also known as what?',
+				mathAnswer: {
+					a: 'The radius',
+					b: 'The circumference',
+					c: 'The diameter'
+				},
+				correctMathAnswer: 'b'
+			},
+			{
+				mathQuestion: '65 - 43 = ?',
+				mathAnswer: {
+					a: '22',
+					b: '15',
+					c: '21'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'True or False? A convex shape curves outwards.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'What does the square root of 144 equal?',
+				mathAnswer: {
+					a: '72',
+					b: '15',
+					c: '12'
+				},
+				correctMathAnswer: 'c'
+			},
+			{
+				mathQuestion: 'True or False? Pi can be correctly written as a fraction.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'What comes after a million, billion, and trillion?',
+				mathAnswer: {
+					a: 'A octillion',
+					b: 'A zillion',
+					c: 'A quadrillion'
+				},
+				correctMathAnswer: 'c'
+			},
+			{
+				mathQuestion: '52 divided by 4 equals what?',
+				mathAnswer: {
+					a: '13',
+					b: '12',
+					c: '19'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'What is the bigger number, a googol or a billion?',
+				mathAnswer: {
+					a: 'A googol',
+					b: 'A billion'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'True or False? Opposite angles of a parallelogram are equal.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: '87 + 56 = ?',
+				mathAnswer: {
+					a: '119',
+					b: '143',
+					c: '176'
+				},
+				correctMathAnswer: 'b'
+			},
+			{
+				mathQuestion: 'How many sides does a nonagon have?',
+				mathAnswer: {
+					a: '19',
+					b: '8',
+					c: '9'
+				},
+				correctMathAnswer: 'c'
+			},
+			{
+				mathQuestion: 'True or False? -2 is an integer.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'What is the next prime number after 11?',
+				mathAnswer: {
+					a: '17',
+					b: '12',
+					c: '13'
+				},
+				correctMathAnswer: 'c'
+			},
+			{
+				mathQuestion: '7 x 9 = ?',
+				mathAnswer: {
+					a: '63',
+					b: '73',
+					c: '53'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'True or False? In an isosceles triangle all sides are unequal.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'b'
+			},
+			{
+				mathQuestion: 'In statistics, the middle value of an ordered set of values is called what?',
+				mathAnswer: {
+					a: 'The sum',
+					b: 'The average',
+					c: 'The median'
+				},
+				correctMathAnswer: 'c'
+			},
+			{
+				mathQuestion: 'What does 3 squared equal?',
+				mathAnswer: {
+					a: '9',
+					b: '7',
+					c: '15'
+				},
+				correctMathAnswer: 'a'
+			},
+			{
+				mathQuestion: 'True or False? -4 is a natural number.',
+				mathAnswer: {
+					a: 'True',
+					b: 'False'
+				},
+				correctMathAnswer: 'b'
+			},
+			{
+				mathQuestion: '5 to the power of 0 equals what?',
+				mathAnswer: {
+					a: '0',
+					b: '9',
+					c: '1'
+				},
+				correctMathAnswer: 'c'
+			}
+		]
+		
 		const scienceQuizContainer = document.getElementById('scienceQuiz');
-		const techQuizContainer = document.getElementById('techQuiz');
 		const scienceResultsContainer = document.getElementById('scienceResults');
+		
+		const techQuizContainer = document.getElementById('techQuiz');
 		const techResultsContainer = document.getElementById('techResults');
-		// let n = 5;
-		// let y = 5;
+		
+		const engineerQuizContainer = document.getElementById('engineerQuiz');
+		const engineerResultsContainer = document.getElementById('engineerResults');
+		
+		const mathQuizContainer = document.getElementById('mathQuiz');
+		const mathResultsContainer = document.getElementById('mathResults');
 		
 		function buildScienceQuiz() {
 			const randomScienceQuestions = scienceQuestions.sort(() => .5 - Math.random())
@@ -538,6 +922,7 @@
 				output.push(`<div class="techQuizQuestion"> ${currentQuestion.techQuestions} </div>
         <div class="techQuizAnswers"> ${answers.join('')} </div>`);
 			})
+			
 			techQuizContainer.innerHTML = output.join('');
 			techResultsContainer.innerHTML = '';
 			function showTechResults(){
@@ -562,13 +947,106 @@
 			$('#submit-tech').click(() => {showTechResults()})
 			
 		}
+		function buildEngineerQuiz() {
+			const output = [];
+			const randomEngineerQuestions = engineeringQuestions.sort(() => .5 - Math.random());
+			const selectedEngineerQuestions = randomEngineerQuestions.slice(0, 5);
+			
+			selectedEngineerQuestions.forEach((currentQuestion, questionNumber) => {
+				const answers = [];
+				
+				for (let letter in currentQuestion.engineerAnswer) {
+					answers.push(`<label>
+            <input class="m-2" type="radio" name="engineer-question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.engineerAnswer[letter]}
+          </label>`);
+				}
+				
+				output.push(`<div class="engineerQuizQuestion"> ${currentQuestion.engineerQuestions} </div>
+        <div class="engineerQuizAnswers"> ${answers.join('')} </div>`);
+				
+			})
+			
+			engineerQuizContainer.innerHTML = output.join('');
+			engineerResultsContainer.innerHTML = '';
+			function showEngineerResults() {
+				const answerContainers = engineerQuizContainer.querySelectorAll('.engineerQuizAnswers')
+				let numCorrect = 0;
+				
+				selectedEngineerQuestions.forEach((currentQuestion, questionNumber) => {
+					const answerContainer = answerContainers[questionNumber];
+					const userAnswer = $(answerContainer.querySelector(`input[name=engineer-question${questionNumber}]:checked`) || {}).val();
+					
+					if (userAnswer === currentQuestion.correctEngineerAnswer) {
+						numCorrect++;
+						answerContainers[questionNumber].style.color = 'lightgreen';
+					} else {
+						answerContainers[questionNumber].style.color = 'red';
+					}
+					
+					engineerResultsContainer.innerHTML = `<h3>${numCorrect} out of ${selectedEngineerQuestions.length} questions correct.</h3>`;
+					
+				});
+			}
+			$('#submit-engineer').click(() => {showEngineerResults()})
+			
+		}
+		function buildMathQuiz() {
+			const output = [];
+			const randomMathQuestions = mathQuestions.sort(() => .5 - Math.random());
+			const selectedMathQuestions = randomMathQuestions.slice(0, 5);
+			
+			selectedMathQuestions.forEach((currentQuestion, questionNumber) => {
+				const answers = [];
+				
+				for (let letter in currentQuestion.mathAnswer) {
+					answers.push(`<label>
+            <input class="m-2" type="radio" name="math-question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.mathAnswer[letter]}
+          </label>`);
+				}
+				
+				output.push(`<div class="mathQuizQuestion"> ${currentQuestion.mathQuestion} </div>
+        <div class="mathQuizAnswers"> ${answers.join('')} </div>`);
+				
+			})
+			
+			mathQuizContainer.innerHTML = output.join('');
+			mathResultsContainer.innerHTML = '';
+			function showMathResults() {
+				const answerContainers = mathQuizContainer.querySelectorAll('.mathQuizAnswers')
+				let numCorrect = 0;
+				
+				selectedMathQuestions.forEach((currentQuestion, questionNumber) => {
+					const answerContainer = answerContainers[questionNumber];
+					const userAnswer = $(answerContainer.querySelector(`input[name=math-question${questionNumber}]:checked`) || {}).val();
+					
+					if (userAnswer === currentQuestion.correctMathAnswer) {
+						numCorrect++;
+						answerContainers[questionNumber].style.color = 'lightgreen';
+					} else {
+						answerContainers[questionNumber].style.color = 'red';
+					}
+					
+					mathResultsContainer.innerHTML = `<h3>${numCorrect} out of ${selectedMathQuestions.length} questions correct.</h3>`;
+					
+				});
+			}
+			$('#submit-math').click(() => {showMathResults()})
+		}
 		
 		buildScienceQuiz();
 		buildTechQuiz();
+		buildEngineerQuiz();
+		buildMathQuiz();
 		
 		
 		$('#reset-sci').click(() => {buildScienceQuiz()})
 		$('#reset-tech').click(() => {buildTechQuiz()})
+		$('#reset-engineer').click(() => {buildEngineerQuiz()})
+		$('#reset-math').click(() => {buildMathQuiz()})
 		// quiz code end
 		
 		// dictionary code start

@@ -16,67 +16,100 @@
 	<p><b>1. Which of these do you prefer doing:</b><br>
 
 		<input type="radio" name="hobby" id="Legos" value=3>
-		<label for="Legos">1. Legos</label><br>
+		<label for="Legos">Legos</label><br>
 		<input type="radio" name="hobby" id="VideoGames" value=2>
-		<label for="VideoGames">2. Video Games</label><br>
+		<label for="VideoGames">Video Games</label><br>
 		<input type="radio" name="hobby" id="Puzzles" value=4>
-		<label for="Puzzles">3. Puzzles</label><br>
+		<label for="Puzzles">Puzzles</label><br>
 		<input type="radio" name="hobby" id="Cooking" value=1>
-		<label for="Cooking"> 4. Cooking</label><br>
+		<label for="Cooking"> Cooking</label><br>
 		<br>
 		<b>2. Do you prefer following examples or trial and error?</b><br>
 
 		<input type="radio" name="trial" id="Examples" value=1>
-		<label for="Examples">1. Examples</label><br>
+		<label for="Examples">Examples</label><br>
 		<input type="radio" name="trial" id="Trial" value=2>
-		<label for="Trial">2. Trial and error</label><br>
+		<label for="Trial">Trial and error</label><br>
 		<br>
 		<b>3. Do you like working in groups or individually?</b><br>
 
 		<input type="radio" name="group" id="Groups" value=3>
-		<label for="Groups">1. Groups</label><br>
+		<label for="Groups">Groups</label><br>
 		<input type="radio" name="group" id="Individually" value=4>
-		<label for="Individually">2. Individually</label><br>
+		<label for="Individually">Individually</label><br>
 		<br>
 		<b>4. Which homework would you prefer?</b><br>
 
 		<input type="radio" name="homework" id="Math" value=4>
-		<label for="Math">1. Math worksheet</label><br>
+		<label for="Math">Math worksheet</label><br>
 		<input type="radio" name="homework" id="Project" value=1>
-		<label for="Project">2. Creative project</label><br>
+		<label for="Project">Creative project</label><br>
 		<br>
 		<b>5. Would you rather research planets or skyscrapers?</b><br>
 
 		<input type="radio" name="study" id="Planets" value=1>
-		<label for="Planets">1. Planets</label><br>
+		<label for="Planets">Planets</label><br>
 		<input type="radio" name="study" id="Skyscrapers" value=3>
-		<label for="Skyscrapers">2. Skyscrapers</label><br>
+		<label for="Skyscrapers">Skyscrapers</label><br>
 		<br>
 		<b>6. Which describes you best?</b><br>
 
 		<input type="radio" name="best" id="communicate" value=1>
-		<label for="communicate">1. Good communicator and listener</label><br>
+		<label for="communicate">Good communicator and listener</label><br>
 		<input type="radio" name="best" id="logical" value=3>
-		<label for="logical">2. Logical, problem solver</label><br>
+		<label for="logical">Logical, problem solver</label><br>
 		<br>
 		<b>7. Would you rather learn about gardening or how computers work?</b><br>
 
 		<input type="radio" name="learn" id="gardening" value=1>
-		<label for="gardening">1. Gardening</label><br>
+		<label for="gardening">Gardening</label><br>
 		<input type="radio" name="learn" id="computers" value=2>
-		<label for="computers">2. Computers</label>
+		<label for="computers">Computers</label><br>
+		<br>
+
+		<b>8. Do you prefer working outside or inside?</b><br>
+	<input type="radio" name="outside" id="outside" value=1>
+		<label for="outside">Outside</label><br>
+	<input type="radio" name="outside" id="inside" value=4>
+		<label for="inside">Inside</label><br>
+	<br>
+
+		<b>9. Do you like seeing immediate results of your work?</b><br>
+	<input type="radio" name="results" id="yes" value=2>
+		<label for="yes">Yes, I like instant results</label><br>
+	<input type="radio" name="results" id="no" value=4>
+		<label for="no">I could wait a couple of months</label><br>
+	<br>
+		<b>10. Do you prefer working with words or numbers?</b><br>
+	<input type="radio" name="language" id="words" value=1>
+		<label for="words">Words</label><br>
+	<input type="radio" name="language" id="numbers" value=4>
+		<label for="numbers">Numbers</label><br>
+	<input type="radio" name="language" id="both" value="2">
+		<label for="both">I like some of both</label><br>
 </div>
 <button type="button" onclick="showResults()">Submit</button>
 
 <div th:insert="fragments/scripts"></div>
 <script>
 	function showResults() {
-		// var hobby = document.getElementsByTagName("radio");
-		//
-		// for (i = 0; i < hobby.length; i++) {
-		//     if(hobby[i].checked)
-		// }
-		document.write("From these results, it seems that you have an aptitude for Technology. This is a very broad branch allowing you to do most anything from designing websites to creating your own video games!")
+		var number = 0;
+		var hobby = document.getElementsByName("hobby");
+
+		for (var a = 0; a < hobby.length; a++) {
+		    if(hobby[a].checked)
+				number = number + parseInt(hobby[a].checked.value);
+			console.log(hobby[a].checked.value);
+			// console.log(number);
+		}
+		var trial = document.getElementsByName("trial");
+		for (var i = 0; i < trial.length; i++) {
+			if(trial[i].checked)
+				number = number + parseInt(trial[i].checked.value);
+			console.log(trial[i].checked.value);
+			// console.log(number);
+		}
+		// document.write("Tech super cool")
 	}
 </script>
 </body>
