@@ -98,14 +98,14 @@
 
 		for (var a = 0; a < hobby.length; a++) {
 		    if(hobby[a].checked)
-				number = number + parseInt(hobby[a].value);
+				number = number + parseInt(hobby[a].checked.value);
 			console.log(hobby[a].checked.value);
 			// console.log(number);
 		}
 		var trial = document.getElementsByName("trial");
 		for (var i = 0; i < trial.length; i++) {
 			if(trial[i].checked)
-				number = number + parseInt(trial[i].value);
+				number = number + parseInt(trial[i].checked.value);
 			console.log(trial[i].checked.value);
 			// console.log(number);
 		}
