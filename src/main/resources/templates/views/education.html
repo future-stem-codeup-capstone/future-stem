@@ -6,9 +6,9 @@
     <title>Education</title>
 </head>
 <body>
-<nav th:insert="fragments/navbar"></nav>
+	<nav th:insert="fragments/navbar"></nav>
 
-<div class="container quiz-container">
+	<div class="quiz-container m-5">
 	<div class="category mb-5" style="margin-top: 10rem">
 		<div class="question"></div>
 		<div class="answer"></div>
@@ -18,17 +18,37 @@
 		<button class="genButton">General</button>
 		<button class="langButton">Language</button>
 	</div>
-	
-	<h1>Pop Quizzes</h1>
-	<div id="quiz"></div>
 	<div class="d-flex">
-		<button id="submit" class="mr-1">Submit</button>
-		<button id="reset" class="ml-1">Reset</button>
+		<div class="mr-3" style="width: 800px; height: 650px">
+			<h1>Science Quiz</h1>
+			<div id="scienceQuiz"></div>
+			<div class="d-flex">
+				<button id="submit-sci" class="mr-1">Submit</button>
+				<button id="reset-sci" class="ml-1">Reset</button>
+			</div>
+			<footer class="mt-1">
+				<p class="text-muted">All content is copyright &copy; Dr. Moku.</p>
+			</footer>
+			<div id="scienceResults"></div>
+		</div>
+		<div class="ml-3" style="width: 800px; height: 650px">
+			<h1>Technology Quiz</h1>
+			<div id="techQuiz"></div>
+			<div class="d-flex">
+				<button id="submit-tech" class="mr-1">Submit</button>
+				<button id="reset-tech" class="ml-1">Reset</button>
+			</div>
+			<footer class="mt-1">
+				<p class="text-muted">All content is copyright &copy; Science Kids</p>
+			</footer>
+			<div id="techResults"></div>
+		</div>
+	
 	</div>
-	<div id="results"></div>
+	
 	
 	<div class="mt-5">
-		<form action="" style="margin-top: 10rem" >
+		<form action="">
 			<label for="search-Dictionary">Digital Dictionary</label>
 			<input type="text" id="search-Dictionary" placeholder="Enter a word">
 			<button type="submit" id="searchDictionarybtn">Search</button>
@@ -37,200 +57,552 @@
 	</div>
 	
 </div>
-
-
-<div th:insert="fragments/scripts"></div>
-<script>
 	
-	// education api code
-	const sci = "sciencenature";
-	const geo = "geography";
-	const math = "mathematics";
-	const gen = "general";
-	const lang = "language";
+	<div th:insert="fragments/scripts"></div>
 	
-	function fetchAPI(category) {
+	<script>
+	$(document).ready(function () {
 		
-		fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
-			method: 'GET',
-			headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-			contentType: 'application/json'
-		})
-				.then(function (response) {
-					return response.json();
-				})
-				.then(function (data) {
-					console.log(data);
-					let question = data[0].question;
-					let answer = data[0].answer;
-					console.log(question)
-					console.log(answer)
-					$('.question').text(question);
-					$('.answer').text(answer);
-				})
-	}
-	
-	$('.sciButton').click((e) => {
-		e.preventDefault();
-		fetchAPI(sci)
-	})
-	$('.geoButton').click((e) => {
-		e.preventDefault();
-		fetchAPI(geo)
-	})
-	$('.mathButton').click((e) => {
-		e.preventDefault();
-		fetchAPI(math)
-	})
-	$('.genButton').click((e) => {
-		e.preventDefault();
-		fetchAPI(gen)
-	})
-	$('.langButton').click((e) => {
-		e.preventDefault();
-		fetchAPI(lang)
+		// education api code
+		const sci = "sciencenature";
+		const geo = "geography";
+		const math = "mathematics";
+		const gen = "general";
+		const lang = "language";
 		
-	})
-	fetchAPI()
-	// education api code end
-	
-	// quiz code
-	const scienceQuestions = [
-		{
-			questions: 'What is the name of the molten rock that pours from volcanoes?',
-			answers: {
-				a: 'Lava',
-				b: 'Fire',
-				c: 'Sand'
-			},
-			correctAnswer: 'a'
-		},
-		{
-			questions: 'Which is not owned or created by Microsoft:',
-			answers: {
-				a: 'Minecraft',
-				b: 'Xbox',
-				c: 'Fortnite'
-			},
-			correctAnswer: 'c'
-		},
-		{
-			questions: 'The human body is what percentage of water?',
-			answers: {
-				a: '25%',
-				b: '60%',
-				c: '2%'
-			},
-			correctAnswer: 'b'
-		},
-		{
-			questions: 'What kind of animals can live on both water and land?',
-			answers: {
-				a: 'Reptiles',
-				b: 'Amphibians',
-				c: 'Mammals'
-			},
-			correctAnswer: 'b'
-		},
-		{
-			questions: 'At what temperature does water freeze?',
-			answers: {
-				a: '0 degrees Fahrenheit',
-				b: '20 degrees Fahrenheit',
-				c: '32 degrees Fahrenheit'
-			},
-			correctAnswer: 'c'
+		function fetchAPI(category) {
+			
+			fetch('https://api.api-ninjas.com/v1/trivia?category=' + category, {
+				method: 'GET',
+				headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+				contentType: 'application/json'
+			})
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						let question = data[0].question;
+						let answer = data[0].answer;
+						$('.question').text(question);
+						$('.answer').text(answer);
+					})
 		}
-	]
-	const quizContainer = document.getElementById('quiz');
-	const resultsContainer = document.getElementById('results');
-	const submitQuiz = document.getElementById('submit');
-	
-	
-	function buildQuiz() {
-		const output = [];
 		
-		scienceQuestions.forEach((currentQuestion, questionNumber) => {
-			const answers = [];
+		$('.sciButton').click((e) => {
+			e.preventDefault();
+			fetchAPI(sci)
+		})
+		$('.geoButton').click((e) => {
+			e.preventDefault();
+			fetchAPI(geo)
+		})
+		$('.mathButton').click((e) => {
+			e.preventDefault();
+			fetchAPI(math)
+		})
+		$('.genButton').click((e) => {
+			e.preventDefault();
+			fetchAPI(gen)
+		})
+		$('.langButton').click((e) => {
+			e.preventDefault();
+			fetchAPI(lang)
 			
-			// let label = `<label>
-			//     <input type="radio" name="question${questionNumber}" value="${letter}">
-			//     ${letter} :
-			//     ${currentQuestion.answers[letter]}
-			//   </label>`;
+		})
+		// education api code end
+		
+		// quiz code
+		const scienceQuestions = [
+			{
+				scienceQuestions: 'What is the name of the molten rock that pours from volcanoes?',
+				scienceAnswers: {
+					a: 'Lava',
+					b: 'Fire',
+					c: 'Sand'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'Which is not owned or created by Microsoft:',
+				scienceAnswers: {
+					a: 'Minecraft',
+					b: 'Xbox',
+					c: 'Fortnite'
+				},
+				correctScienceAnswer: 'c'
+			},
+			{
+				scienceQuestions: 'The human body is what percentage of water?',
+				scienceAnswers: {
+					a: '25%',
+					b: '60%',
+					c: '2%'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'What kind of animals can live on both water and land?',
+				scienceAnswers: {
+					a: 'Reptiles',
+					b: 'Amphibians',
+					c: 'Mammals'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'At what temperature does water freeze?',
+				scienceAnswers: {
+					a: '0 degrees Fahrenheit',
+					b: '20 degrees Fahrenheit',
+					c: '32 degrees Fahrenheit'
+				},
+				correctScienceAnswer: 'c'
+			},
+			{
+				scienceQuestions: 'What is the name for a group of snakes?',
+				scienceAnswers: {
+					a: 'A nest',
+					b: 'A flock',
+					c: 'A pod'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'What chemical is added to swimming pools to stop bacteria?',
+				scienceAnswers: {
+					a: 'Ammonia',
+					b: 'Chlorine',
+					c: 'Liquid Nitrogen'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'What are the blood vessels called that carry blood to the heart?',
+				scienceAnswers: {
+					a: 'Veins',
+					b: 'Artery',
+					c: 'Cells'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'How many eyes does a caterpillar have?',
+				scienceAnswers: {
+					a: '15',
+					b: '10',
+					c: '12'
+				},
+				correctScienceAnswer: 'c'
+			},
+			{
+				scienceQuestions: 'What is the only mammal that can fly?',
+				scienceAnswers: {
+					a: 'A bird',
+					b: 'A bee',
+					c: 'A bat'
+				},
+				correctScienceAnswer: 'c'
+			},
+			{
+				scienceQuestions: 'What is the hardest substance in the human body?',
+				scienceAnswers: {
+					a: 'Nails',
+					b: 'Tooth enamel',
+					c: 'Knuckle skin'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'What food group is the best source of energy?',
+				scienceAnswers: {
+					a: 'Carbohydrates',
+					b: 'Protein',
+					c: 'Fiber'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'What animal has the biggest heart?',
+				scienceAnswers: {
+					a: 'The elephant',
+					b: 'The hippopotamus',
+					c: 'The blue whale'
+				},
+				correctScienceAnswer: 'c'
+			},
+			{
+				scienceQuestions: 'What food group helps your body to grow and repair itself?',
+				scienceAnswers: {
+					a: 'Proteins',
+					b: 'Carbohydrates',
+					c: 'Sugars'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'How many bones are there in the human body?',
+				scienceAnswers: {
+					a: '102',
+					b: '206',
+					c: '452'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'True or False: Sound travels faster than light.',
+				scienceAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'True or False: Sharks do not have bones.',
+				scienceAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'True or False: Dolphins are herbivores.',
+				scienceAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctScienceAnswer: 'b'
+			},
+			{
+				scienceQuestions: 'True or False: The left side of your body is controlled by the right side of your brain.',
+				scienceAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctScienceAnswer: 'a'
+			},
+			{
+				scienceQuestions: 'True or False: Spiders are not insects.',
+				scienceAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctScienceAnswer: 'a'
+			}
+		]
+		const techQuestions = [
+			{
+				techQuestions: 'Solar power generates electricity from what source?',
+				techAnswers: {
+					a: 'The Sun',
+					b: 'Water',
+					c: 'The Moon'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'Did the Apple iPhone first become available in 2005, 2006, or 2007?',
+				techAnswers: {
+					a: '2005',
+					b: '2006',
+					c: '2007'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'In terms of computing, what does CPU stand for?',
+				techAnswers: {
+					a: 'Central Processing Unit',
+					b: 'Control Power Unit',
+					c: 'Circuit Panel Unit'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'True or false? Nintendo was founded after the year 1900.',
+				techAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctTechAnswers: 'b'
+			},
+			{
+				techQuestions: 'The Hubble Space Telescope is named after which American astronomer?',
+				techAnswers: {
+					a: 'James Hubble',
+					b: 'Carl Hubble',
+					c: 'Edwin Hubble'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'Is the wavelength of infrared light too long or short to be seen by humans?',
+				techAnswers: {
+					a: 'Long',
+					b: 'Short'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'Firefox, Opera, Chrome, Safari, and Explorer are types of what?',
+				techAnswers: {
+					a: 'Hardware',
+					b: 'Social Media Platforms',
+					c: 'Web Browsers'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'True or false? Gold is not a good conductor of electricity.',
+				techAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctTechAnswers: 'b'
+			},
+			{
+				techQuestions: 'The technologically advanced humanoid robot ASIMO is made by which car company?',
+				techAnswers: {
+					a: 'Ford',
+					b: 'Toyota',
+					c: 'Honda'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'True or false? Atomic bombs work by atomic fission.',
+				techAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'In terms of computing, what does ROM stand for?',
+				techAnswers: {
+					a: 'Random Access Memory',
+					b: 'Read Only Memory',
+					c: 'Revolution Overdrive Memory'
+				},
+				correctTechAnswers: 'b'
+			},
+			{
+				techQuestions: 'Did the original Sony Playstation use CDs or cartridges to play games?',
+				techAnswers: {
+					a: 'CDs',
+					b: 'Cartridges'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'What is the Earth\'s primary source of energy',
+				techAnswers: {
+					a: 'Wind',
+					b: 'Water',
+					c: 'Solar'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'IBM is a well known computer and information technology company, what does IBM stand for?',
+				techAnswers: {
+					a: 'Intellectual Business Machines',
+					b: 'Information Business Machines',
+					c: 'International Business Machines'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'Along with whom did Bill Gates found Microsoft?',
+				techAnswers: {
+					a: 'Paul Allen',
+					b: 'Elon Musk',
+					c: 'Mark Zuckerberg'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'What science fiction writer wrote the three laws of robotics?',
+				techAnswers: {
+					a: 'Isaac Newton',
+					b: 'Isaac Asimov',
+					c: 'Bill Nye'
+				},
+				correctTechAnswers: 'b'
+			},
+			{
+				techQuestions: 'True or false? In computing, keyboards are used as input devices.',
+				techAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'What does the abbreviation WWW stand for?',
+				techAnswers: {
+					a: 'Wind Water Wheel',
+					b: 'Wild Wild West',
+					c: 'World Wide Web'
+				},
+				correctTechAnswers: 'c'
+			},
+			{
+				techQuestions: 'Nano, Shuffle, Classic, and Touch are variations of what?',
+				techAnswers: {
+					a: 'The Apple iPod',
+					b: 'Zune',
+					c: 'TVs'
+				},
+				correctTechAnswers: 'a'
+			},
+			{
+				techQuestions: 'True or false? DNA is an abbreviation for \'Deoxyribonucleic acid\'.',
+				techAnswers: {
+					a: 'True',
+					b: 'False'
+				},
+				correctTechAnswers: 'a'
+			}
+		]
+		const scienceQuizContainer = document.getElementById('scienceQuiz');
+		const techQuizContainer = document.getElementById('techQuiz');
+		const scienceResultsContainer = document.getElementById('scienceResults');
+		const techResultsContainer = document.getElementById('techResults');
+		// let n = 5;
+		// let y = 5;
+		
+		function buildScienceQuiz() {
+			const randomScienceQuestions = scienceQuestions.sort(() => .5 - Math.random())
+			const selectedScienceQuestions = randomScienceQuestions.slice(0, 5);
 			
-			for (let letter in currentQuestion.answers) {
-				answers.push(`<label>
-            <input class="m-3" type="radio" name="question${questionNumber}" value="${letter}">
+			
+			const output = [];
+			
+			selectedScienceQuestions.forEach((currentQuestion, questionNumber) => {
+				const answers = [];
+				
+				for (let letter in currentQuestion.scienceAnswers) {
+					answers.push(`<label>
+            <input class="m-2" type="radio" name="sci-question${questionNumber}" value="${letter}">
             ${letter} :
-            ${currentQuestion.answers[letter]}
+            ${currentQuestion.scienceAnswers[letter]}
           </label>`);
+				}
+				
+				output.push(`<div class="sciQuizQuestion"> ${currentQuestion.scienceQuestions} </div>
+        <div class="sciQuizAnswers"> ${answers.join('')} </div>`);
+			})
+			scienceQuizContainer.innerHTML = output.join('');
+			scienceResultsContainer.innerHTML = '';
+			function showScienceResults() {
+				
+				const answerContainers = scienceQuizContainer.querySelectorAll('.sciQuizAnswers')
+				let numCorrect = 0;
+				
+				selectedScienceQuestions.forEach((currentQuestion, questionNumber) => {
+					const answerContainer = answerContainers[questionNumber];
+					const userAnswer = $(answerContainer.querySelector(`input[name=sci-question${questionNumber}]:checked`) || {}).val();
+					
+					if (userAnswer === currentQuestion.correctScienceAnswer) {
+						numCorrect++;
+						answerContainers[questionNumber].style.color = 'lightgreen';
+					} else {
+						answerContainers[questionNumber].style.color = 'red';
+					}
+					
+					scienceResultsContainer.innerHTML = `<h3>${numCorrect} out of ${selectedScienceQuestions.length} questions correct.</h3>`;
+					
+				});
 			}
+			$('#submit-sci').click(() => {showScienceResults()})
 			
-			// let output = `<div class="question"> ${currentQuestion.question} </div>
-			// <div class="answers"> ${answers.join('')} </div>`;
 			
-			output.push(`<div class="quizQuestion"> ${currentQuestion.questions} </div>
-        <div class="quizAnswers"> ${answers.join('')} </div>`);
+			
+		}
+		function buildTechQuiz() {
+			const output = [];
+			const randomTechQuestions = techQuestions.sort(() => .5 - Math.random())
+			const selectedTechQuestions = randomTechQuestions.slice(0, 5);
+			
+			selectedTechQuestions.forEach((currentQuestion, questionNumber) => {
+				const answers = [];
+				
+				for (let letter in currentQuestion.techAnswers) {
+					answers.push(`<label>
+            <input class="m-2" type="radio" name="tech-question${questionNumber}" value="${letter}">
+            ${letter} :
+            ${currentQuestion.techAnswers[letter]}
+          </label>`);
+				}
+				
+				output.push(`<div class="techQuizQuestion"> ${currentQuestion.techQuestions} </div>
+        <div class="techQuizAnswers"> ${answers.join('')} </div>`);
+			})
+			techQuizContainer.innerHTML = output.join('');
+			techResultsContainer.innerHTML = '';
+			function showTechResults(){
+				const answerContainers = techQuizContainer.querySelectorAll('.techQuizAnswers')
+				let numCorrect = 0;
+				
+				selectedTechQuestions.forEach((currentQuestion, questionNumber) => {
+					const answerContainer = answerContainers[questionNumber];
+					const userAnswer = $(answerContainer.querySelector(`input[name=tech-question${questionNumber}]:checked`) || {}).val();
+					
+					if (userAnswer === currentQuestion.correctTechAnswers) {
+						numCorrect++;
+						answerContainers[questionNumber].style.color = 'lightgreen';
+					} else {
+						answerContainers[questionNumber].style.color = 'red';
+					}
+					
+					techResultsContainer.innerHTML = `<h3>${numCorrect} out of ${selectedTechQuestions.length} questions correct.</h3>`;
+					
+				});
+			}
+			$('#submit-tech').click(() => {showTechResults()})
+			
+		}
+		
+		buildScienceQuiz();
+		buildTechQuiz();
+		
+		
+		$('#reset-sci').click(() => {buildScienceQuiz()})
+		$('#reset-tech').click(() => {buildTechQuiz()})
+		// quiz code end
+		
+		// dictionary code start
+		const searchBar = document.getElementById("search-Dictionary");
+		function fetchAPIDictionary(word) {
+			fetch('https://api.api-ninjas.com/v1/dictionary?word=' + word, {
+				method: 'GET',
+				headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
+				contentType: 'application/json'
+			})
+					.then(function (response) {
+						return response.json();
+					})
+					.then(function (data) {
+						console.log(data);
+						// let definition = data[0].definition;
+						// console.log(data)
+						$('.definition').text(data.definition);
+					})
+		}
+		
+		$('#searchDictionarybtn').click((e) => {
+			e.preventDefault();
+			console.log(document.querySelector('#search-Dictionary').value)
+			fetchAPIDictionary(document.querySelector('#search-Dictionary').value)
 		})
-		quizContainer.innerHTML = output.join('');
-		resultsContainer.innerHTML = '';
-	}
-	buildQuiz();
-	
-	function showResults() {
 		
-		const answerContainers = quizContainer.querySelectorAll('.quizAnswers')
-		let numCorrect = 0;
-		
-		scienceQuestions.forEach((currentQuestion, questionNumber) => {
-			const answerContainer = answerContainers[questionNumber];
-			const selector = `input[name=question${questionNumber}]:checked`;
-			const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-			
-			if (userAnswer === currentQuestion.correctAnswer) {
-				numCorrect++;
-				answerContainers[questionNumber].style.color = 'lightgreen';
-			} else {
-				answerContainers[questionNumber].style.color = 'red';
-			}
+		searchBar.addEventListener("submit", e => {
+			fetchAPIDictionary($('#search-Dictionary').value)
 		});
+		// dictionary code end
 		
-		resultsContainer.innerHTML = `<h3>${numCorrect} out of ${scienceQuestions.length} questions correct.</h3>`;
-		
-	}
-	$('#submit').click(() => {showResults()})
-	$('#reset').click(() => {buildQuiz()})
-	// quiz code end
-	
-	// dictionary code start
-	function fetchAPIDictionary(word) {
-		fetch('https://api.api-ninjas.com/v1/dictionary?word=' + word, {
-			method: 'GET',
-			headers: {'X-Api-Key': 'cIeQtdVErFokcXlopISSOA==kOfToXDSRPOshWVp'},
-			contentType: 'application/json'
-		})
-				.then(function (response) {
-					return response.json();
-				})
-				.then(function (data) {
-					console.log(data);
-					// let definition = data[0].definition;
-					// console.log(data)
-					$('.definition').text(data.definition);
-				})
-	}
-	
-	$('#searchDictionarybtn').click((e) => {
-		e.preventDefault();
-		console.log(document.querySelector('#search-Dictionary').value)
-		fetchAPIDictionary(document.querySelector('#search-Dictionary').value)
 	})
-	
-	searchBar.addEventListener("submit", e => {
-		fetchAPIDictionary($('#search-Dictionary').value)
-	});
-	// dictionary code end
-</script>
+	</script>
+
 </body>
 </html>
