@@ -31,7 +31,7 @@
 		<div class="projects" th:each="project : ${project}">
 			<h3 th:text="${project.getTitle()}"></h3>
 			<p th:text="${project.getBody()}"></p>
-			<img th:src="${project.getUrl()}" alt="image" width="350" height="300">
+			<img th:src="${project.getUrl()}" alt="image" width="350" height="300" style="border-radius: 20px">
 			<p>Posted by: <span th:text="${project.getUser().getUsername()}"></span></p>
 		</div>
 	</div>
