@@ -22,6 +22,30 @@
 	height: 200px;
 	margin-top: 40px;
 }
+.sci-quiz-container {
+	background-color: #fce5ba;
+	padding: 1rem;
+	border-radius: 10px;
+	margin: 0 1rem 1rem 0;
+}
+.tech-quiz-container {
+	background-color: #a7e66b;
+	padding: 1rem;
+	border-radius: 10px;
+	margin: 0 0 1rem 1rem;
+}
+.eng-quiz-container {
+	background-color: #e98570;
+	padding: 1rem;
+	border-radius: 10px;
+	margin: 1rem 1rem 0 0;
+}
+.math-quiz-container {
+	background-color: #ace1f3;
+	padding: 1rem;
+	border-radius: 10px;
+	margin: 1rem 0 0 1rem;
+}
 .sciQuizQuestion, .techQuizQuestion, .engineerQuizQuestion, .mathQuizQuestion {
 	font-size: 30px;
 	margin-bottom: 10px;
