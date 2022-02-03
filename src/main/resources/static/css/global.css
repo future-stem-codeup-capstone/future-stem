@@ -1,9 +1,13 @@
-
 /*Global edits start*/
-
+@import url('http://fonts.cdnfonts.com/css/helloetchasketch');
 html, body {
+
 	/*height: 100vh;*/
 	/*background-color: #d3d3d326;*/
+}
+.etch-sketch {
+	font-family: 'HelloEtchASketch', sans-serif;
+
 }
 
 .home-gradient{
@@ -61,6 +65,7 @@ html, body {
 
 }
 .future-txt {
+	font-family: 'HelloEtchASketch', sans-serif;
 	line-height: 2.3;
 	font-size: 8.5rem;
 }
@@ -129,6 +134,11 @@ html, body {
 .projects > * {
 	padding: 1rem;
 }
+.project-body {
+	width: 225px;
+	height: 150px;
+	overflow-y: auto;
+}
 
 .random-fact {
 	/*position: relative;*/
@@ -156,7 +166,7 @@ html, body {
 	background-color: #d3d3d326
 }
 .home-container {
-	margin: 15rem 1rem 0;
+	margin: 10rem 0 0;
 }
 .info-content {
 	margin-top: 5rem;

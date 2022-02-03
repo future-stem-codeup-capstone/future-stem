@@ -3,7 +3,7 @@
 }
 .education-corner {
 	position: relative;
-	left: 23rem;
+	left: 5rem;
 	top: 15rem;
 }
 .eclc {
@@ -36,17 +36,43 @@
 }
 .trivia-gen {
 	position: relative;
-	left: 251px;
+	left: 232px;
 }
 .big-quiz-container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-/*.reset-quizzes {*/
-/*	position: relative;*/
-/*	left: 18.2rem;*/
-/*}*/
+
+.sci-quiz-container > * {
+	position: relative;
+	top: -6rem;
+}
+.digital-dictionary {
+	margin-top: 5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/*flex-wrap: wrap;*/
+}
+.dictionary-form {
+	display: flex;
+}
+.dictionary-search {
+	position: relative;
+	top: 0!important;
+	left: 0!important;
+	transform: rotate(0deg) !important;
+
+}
+.definition {
+	overflow-y: auto;
+	background-color: white;
+	width: 50%;
+	height: 500px;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
 
 .sci-slide, .tech-slide, .engineer-slide, .math-slide {
 	position: absolute;

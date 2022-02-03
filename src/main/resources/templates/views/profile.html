@@ -44,11 +44,6 @@
 	
 	<div class="profile-container">
 		<div class="top-of-page d-flex">
-			<div class="random-fact rf-2">
-				<h3>Science Fact!</h3>
-				<div class="question"></div>
-				<div class="answer"></div>
-			</div>
 			<div class="profile-pic">
 				<img style="width: 250px; height: 250px; border-radius: 50%" th:src="${user.getProfile_pic()}" alt="profile-pic" class="user-avatar">
 				<h3 th:text="${username}" style="text-align: center"></h3>
@@ -62,6 +57,22 @@
 		
 		
 		<div class="d-flex middle-section">
+			<div class="hobbies-section">
+				<h4>Hobbies</h4>
+				<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
+					<label for="hobby">Add Hobby:</label>
+					<input id="hobby"  type="text" th:field="*{name}">
+					<button type="submit">Add</button>
+				</form>
+				<div class="d-flex" th:each="hobby : ${userHobbies}">
+					<div class="hobby d-flex">
+						<p th:text="${hobby.getName()}"></p>
+						<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
+							<button>Delete</button>
+						</form>
+					</div>
+				</div>
+			</div>
 			<div class="projects-section">
 				<button class="ml-auto btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
 				<div class="projects" th:each="currentProject : ${userProjects}">
@@ -108,8 +119,10 @@
 						</div>
 					</div>
 					<h3 th:text="${currentProject.getTitle()}"></h3>
-					<p th:text="${currentProject.getBody()}"></p>
-					<img th:src="${currentProject.getUrl()}" alt="image" width="400" height="300">
+					<div class="project-body">
+						<p class="project-body-text" th:text="${currentProject.getBody()}"></p>
+					</div>
+					<img th:src="${currentProject.getUrl()}" alt="image" width="250" height="150">
 					<div class="d-flex">
 						<button class="ml-auto btn btn-dark" type="button" data-th-id="${project.getId()}" data-toggle="modal"
 						        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
@@ -123,44 +136,7 @@
 				
 				</div>
 			</div>
-			<div class="trivia-section">
-				<h2>Trivia?</h2>
-				<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto asperiores, dolorem esse
-					fugiat libero neque numquam pariatur praesentium quaerat temporibus. Commodi deleniti illo ipsum
-					nesciunt nostrum quidem? Eos, nam, sunt!
-				</div>
-				<div>Aperiam at autem dolore doloribus enim facilis laborum magnam modi, molestiae necessitatibus odio
-					porro quidem rem similique sunt suscipit tenetur voluptate. Consequatur deserunt dolore esse eveniet
-					ex quo tempore temporibus?
-				</div>
-				<div>Accusantium adipisci aliquam architecto assumenda beatae culpa deserunt exercitationem impedit
-					nihil, non placeat quos reiciendis sed, sequi soluta, totam velit voluptates! Doloremque facilis
-					laudantium magnam molestias, odit repellat reprehenderit voluptatibus!
-				</div>
-				<div>A accusamus amet asperiores, at consequuntur delectus distinctio dolore dolorum eaque et, eum fugit
-					ipsum nesciunt nisi nostrum odio officiis placeat porro possimus quis repellat repellendus sed sunt
-					tempore tenetur.
-				</div>
-			</div>
 		</div>
-		
-		<div class="hobbies-section">
-			<h4>Hobbies</h4>
-			<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
-				<label for="hobby">Add Hobby:</label>
-				<input id="hobby"  type="text" th:field="*{name}">
-				<button type="submit">Add</button>
-			</form>
-			<div class="d-flex" th:each="hobby : ${userHobbies}">
-				<div class="hobby d-flex">
-					<p th:text="${hobby.getName()}"></p>
-					<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
-						<button>Delete</button>
-					</form>
-				</div>
-			</div>
-		</div>
-		
 	</div>
     <div th:insert="fragments/scripts"></div>
 	<script>
