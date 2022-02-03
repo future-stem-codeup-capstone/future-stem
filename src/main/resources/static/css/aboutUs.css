@@ -26,11 +26,12 @@
 #team-right-tile{
     float: right;
     margin-top: -58.5%;
-
+margin-right: 10%;
 }
 #team-btm-right-tile{
     float: right;
     margin-top: -58.6%;
+    margin-right: 10%;
 }
 .team-headshot {
     width: 35%;
