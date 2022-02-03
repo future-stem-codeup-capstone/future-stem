@@ -87,29 +87,61 @@
 		<label for="numbers">Numbers</label><br>
 	<input type="radio" name="language" id="both" value="2">
 		<label for="both">I like some of both</label><br>
+<br>
+		<b>11.Do you have an active imagination?</b><br>
+		<input type="radio" name="question" id="answer1" value=1>
+		<label for="words">Yes, I make up games all the time</label><br>
+		<input type="radio" name="question" id="answer2" value=4>
+		<label for="numbers">Sometimes, only when other people do too</label><br>
+		<input type="radio" name="question" id="answer3" value="2">
+		<label for="both">Not really</label><br>
+<br>
+<!--		<b>12. ?</b><br>-->
+<!--		<input type="radio" name="quest" id="answer4" value=1>-->
+<!--		<label for="words">1</label><br>-->
+<!--		<input type="radio" name="quest" id="answer5" value=4>-->
+<!--		<label for="numbers">2</label><br>-->
+<!--		<input type="radio" name="quest" id="answer6" value="2">-->
+<!--		<label for="both">3</label><br>-->
+<!--<br>-->
+<!--		<b>13. Question 13?</b><br>-->
+<!--		<input type="radio" name="quest" id="answer7" value=1>-->
+<!--		<label for="words">1</label><br>-->
+<!--		<input type="radio" name="quest" id="answer8" value=4>-->
+<!--		<label for="numbers">2</label><br>-->
+<!--		<input type="radio" name="quest" id="answer9" value="2">-->
+<!--		<label for="both">3</label><br>-->
 </div>
 <button type="button" onclick="showResults()">Submit</button>
 
 <div th:insert="fragments/scripts"></div>
 <script>
 	function showResults() {
-		var number = 0;
-		var hobby = document.getElementsByName("hobby");
-
-		for (var a = 0; a < hobby.length; a++) {
-		    if(hobby[a].checked)
-				number = number + parseInt(hobby[a].checked.value);
-			console.log(hobby[a].checked.value);
-			// console.log(number);
-		}
-		var trial = document.getElementsByName("trial");
-		for (var i = 0; i < trial.length; i++) {
-			if(trial[i].checked)
-				number = number + parseInt(trial[i].checked.value);
-			console.log(trial[i].checked.value);
-			// console.log(number);
-		}
-		// document.write("Tech super cool")
+		// var number = 0;
+		// var hobby = document.getElementsByName("hobby");
+		// console.log(hobby);
+		// for (var a = 0; a < hobby.length; a++) {
+		//     if(hobby[a].checked)
+		// 		number = number + parseInt(hobby[a].checked.value);
+		// 	console.log(hobby[a].checked.value);
+		// 	console.log(number);
+		// }
+		// console.log(parseInt(number));
+		// var trial = document.getElementsByName("trial");
+		// for (var i = 0; i < trial.length; i++) {
+		// 	if(trial[i].checked)
+		// 		number = number + parseInt(trial[i].checked.value);
+		// 	console.log(trial[i].checked.value);
+		// 	// console.log(number);
+		// }
+		// var group = document.getElementsByName("group");
+		// for (var b = 0; b < trial.length; b++) {
+		// 	if(group[b].checked)
+		// 		number = number + parseInt(group[b].checked.value);
+		// 	console.log(group[b].checked.value);
+		// 	// console.log(number);
+		// }
+		document.write("It seems like you have an aptitude for Technology. Pursuing technology allows you to work on countless activities such as solving various puzzles and even creating your own games!")
 	}
 </script>
 </body>
