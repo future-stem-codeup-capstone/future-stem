@@ -4,18 +4,37 @@
 	<meta charset="UTF-8">
 	<title>Home</title>
 </head>
-<body class="bg-color">
+<body style="background-color: #e4ff6d;
+	  background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);">
+<!--Nav??-->
+<!--style="background-color: #fde74c;-->
+<!--background-image: linear-gradient(319deg, #fde74c 0%, #32ff7a 37%, #d0672f, #2fcbe0 100%);-->
+
+
+<!--Green-->
+<!--background-color: #f8ef42;-->
+<!--background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);-->
+<!--Orange-->
+<!--background-color: #ffd045;-->
+<!--background-image: linear-gradient(315deg, #ffd045 0%, #d14545 74%);-->
+<!--Yellow-->
+<!--background-color: #e4ff6d;-->
+<!--background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);-->
+<!--Blue-->
+<!--style="background-color: #0beef9;-->
+<!--background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%);"-->
+
 <nav th:insert="fragments/navbar"></nav>
 
 <!--<h3 th:text="${usernameNav}" style="text-align: center"></h3>-->
-<div class="container home-container">
+
 <!--	<div class="random-fact">-->
 <!--		<h3>Science Fact!</h3>-->
 <!--		<div class="question"></div>-->
 <!--		<div class="answer"></div>-->
 <!--	</div>-->
-	<div class="main-content row">
-		<div class="projects-container col">
+
+		<div class="projects-container column ">
 			<div class="projects" th:each="project : ${project}">
 				<h3 th:text="${project.getTitle()}"></h3>
 				<p th:text="${project.getBody()}"></p>
@@ -23,9 +42,7 @@
 				<p>Posted by: <span th:text="${project.getUser().getUsername()}"></span></p>
 			</div>
 		</div>
-	</div>
 
-</div>
 
 <div th:each="connections : ${connection}">
 	<p th:text="${connections.getAddedUser().getUsername()}"></p>

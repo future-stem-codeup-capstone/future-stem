@@ -78,18 +78,27 @@ html, body {
 .projects-container {
 	position: fixed;
 	overflow: auto;
-	height: 800px;
+	height: 950px;
+	margin-top: 8em;
+
 }
 
 .projects {
+
 	background-color: white;
 	border-radius: 10px;
 	width: fit-content;
 	height: fit-content;
-	margin-top: 1rem;
-	/*padding: 10px;*/
-	/*margin: 40px;*/
+	text-align: center;
+	transform: scale(1.2);
+	padding: 1rem;
+	margin: 1rem auto;
+	border-top: 10px;
+	border-bottom: 10px;
 	box-shadow: 5px 8px 9px lightgray;
+}
+.projects:hover{
+	transform: scale(1.2);
 }
 .projects > * {
 	padding: 1rem;
@@ -104,6 +113,7 @@ html, body {
 	height: fit-content;
 	/*margin: 40px;*/
 	box-shadow: 5px 8px 9px lightgray;
+	transform: scale(1.1)
 }
 .random-fact > * {
 	padding: 1rem;
