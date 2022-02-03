@@ -5,86 +5,109 @@
     <meta charset="UTF-8">
     <title>Education</title>
 </head>
-<body>
+<body class="education-gradient">
 	<nav th:insert="fragments/navbar"></nav>
 
-	<div class="quiz-container m-5">
-	<div class="category mb-5" style="margin-top: 10rem">
-		<div class="question"></div>
-		<div class="answer"></div>
-		<button class="sciButton">Science</button>
-		<button class="geoButton">Geography</button>
-		<button class="mathButton">Mathematics</button>
-		<button class="genButton">General</button>
-		<button class="langButton">Language</button>
+	<div class="education-container">
+		<div class="education-corner animate__animated animate__lightSpeedInLeft">
+			<h1 class="display-1 font-italic eclc">Learning</h1>
+			<h1 class="display-1 font-italic eclc">Corner!</h1>
+		</div>
+		<div class="category animate__animated animate__lightSpeedInRight">
+			<h1 class="display-6 mb-3 trivia-gen">Trivia Generator!</h1>
+			<div class="qAndA">
+				<div class="question"></div>
+				<div class="answer"></div>
+			</div>
+			<div class="qABtnGroup">
+				<button class="sciButton btn btn-dark mr-1">Science</button>
+				<button class="geoButton btn btn-dark ml-1">Geography</button>
+				<button class="mathButton btn btn-dark ml-1">Mathematics</button>
+				<button class="genButton btn btn-dark ml-1">General</button>
+				<button class="langButton btn btn-dark ml-1">Language</button>
+			</div>
+			
+		</div>
+		<div class="big-quiz-container">
+			<div class="sci-quiz-container" style="width: 800px; height: 650px">
+				<button class="button-53 reset-quizzes mb-5">Reset Quizzes</button>
+				
+				<h1 class="text-center">Science Quiz</h1>
+				<div class="quiz-container">
+					<div id="scienceQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-sci">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-sci">Next Question</button>
+						<button id="submit-sci" class="btn btn-success mr-1">Submit</button>
+	<!--					<button id="reset-sci" class="btn btn-outline-success ml-1">Reset</button>-->
+					
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Dr. Moku.</p>
+					</footer>
+					
+					<div id="scienceResults"></div>
+				</div>
+			</div>
+			<div class="tech-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Technology Quiz</h1>
+				<div class="quiz-container">
+					<div id="techQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-tech">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-tech">Next Question</button>
+						<button id="submit-tech" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="techResults"></div>
+				</div>
+				
+			</div>
+			<div class="eng-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Engineering Quiz</h1>
+				<div class="quiz-container">
+					<div id="engineerQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-engineer">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-engineer">Next Question</button>
+						<button id="submit-engineer" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="engineerResults"></div>
+				</div>
+				
+			</div>
+			<div class="math-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Math Quiz</h1>
+				<div class="quiz-container">
+					<div id="mathQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-math">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-math">Next Question</button>
+						<button id="submit-math" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="mathResults"></div>
+				</div>
+			</div>
+		</div>
+		<div class="mt-5">
+			<form action="">
+				<label for="search-Dictionary">Digital Dictionary</label>
+				<input type="text" id="search-Dictionary" placeholder="Enter a word">
+				<button type="submit" id="searchDictionarybtn">Search</button>
+			</form>
+			<div class="definition"></div>
+		</div>
 	</div>
-	<div class="d-flex flex-wrap">
-		<div class="mr-3" style="width: 800px; height: 650px">
-			<h1>Science Quiz</h1>
-			<div id="scienceQuiz"></div>
-			<div class="d-flex">
-				<button id="submit-sci" class="mr-1">Submit</button>
-				<button id="reset-sci" class="ml-1">Reset</button>
-			</div>
-			<footer class="mt-1">
-				<p class="text-muted">All content is copyright &copy; Dr. Moku.</p>
-			</footer>
-			<div id="scienceResults"></div>
-		</div>
-		<div class="ml-3" style="width: 800px; height: 650px">
-			<h1>Technology Quiz</h1>
-			<div id="techQuiz"></div>
-			<div class="d-flex">
-				<button id="submit-tech" class="mr-1">Submit</button>
-				<button id="reset-tech" class="ml-1">Reset</button>
-			</div>
-			<footer class="mt-1">
-				<p class="text-muted">All content is copyright &copy; Science Kids</p>
-			</footer>
-			<div id="techResults"></div>
-		</div>
-		<div class="ml-3" style="width: 800px; height: 650px">
-			<h1>Engineering Quiz</h1>
-			<div id="engineerQuiz"></div>
-			<div class="d-flex">
-				<button id="submit-engineer" class="mr-1">Submit</button>
-				<button id="reset-engineer" class="ml-1">Reset</button>
-			</div>
-			<footer class="mt-1">
-				<p class="text-muted">All content is copyright &copy; Science Kids</p>
-			</footer>
-			<div id="engineerResults"></div>
-		</div>
-		<div class="ml-3" style="width: 800px; height: 650px">
-			<h1>Math Quiz</h1>
-			<div id="mathQuiz"></div>
-			<div class="d-flex">
-				<button id="submit-math" class="mr-1">Submit</button>
-				<button id="reset-math" class="ml-1">Reset</button>
-			</div>
-			<footer class="mt-1">
-				<p class="text-muted">All content is copyright &copy; Science Kids</p>
-			</footer>
-			<div id="mathResults"></div>
-		</div>
-	
-	
-	</div>
-	
-	
-	<div class="mt-5">
-		<form action="">
-			<label for="search-Dictionary">Digital Dictionary</label>
-			<input type="text" id="search-Dictionary" placeholder="Enter a word">
-			<button type="submit" id="searchDictionarybtn">Search</button>
-		</form>
-		<div class="definition"></div>
-	</div>
-	
-</div>
 	
 	<div th:insert="fragments/scripts"></div>
-	
 	<script>
 	$(document).ready(function () {
 		
@@ -858,8 +881,6 @@
 		function buildScienceQuiz() {
 			const randomScienceQuestions = scienceQuestions.sort(() => .5 - Math.random())
 			const selectedScienceQuestions = randomScienceQuestions.slice(0, 5);
-			
-			
 			const output = [];
 			
 			selectedScienceQuestions.forEach((currentQuestion, questionNumber) => {
@@ -872,12 +893,46 @@
             ${currentQuestion.scienceAnswers[letter]}
           </label>`);
 				}
-				
-				output.push(`<div class="sciQuizQuestion"> ${currentQuestion.scienceQuestions} </div>
-        <div class="sciQuizAnswers"> ${answers.join('')} </div>`);
+				output.push(`
+						<div class="sci-slide">
+							<div class="sciQuizQuestion">${currentQuestion.scienceQuestions}</div>
+							<div class="sciQuizAnswers">${answers.join('')}</div>
+						</div>
+				`)
 			})
 			scienceQuizContainer.innerHTML = output.join('');
 			scienceResultsContainer.innerHTML = '';
+			
+			const previousScienceButton = document.getElementById('previous-sci');
+			const nextScienceButton = document.getElementById('next-sci');
+			const slides = document.querySelectorAll('.sci-slide');
+			let currentSlide = 0;
+			
+			function showScienceSlide(n) {
+				slides[currentSlide].classList.remove('active-sci-slide');
+				slides[n].classList.add('active-sci-slide');
+				currentSlide = n;
+				if(currentSlide === 0){
+					previousScienceButton.style.display = 'none';
+				}
+				else{
+					previousScienceButton.style.display = 'inline-block';
+				}
+				if(currentSlide === slides.length-1){
+					nextScienceButton.style.display = 'none';
+					$('#submit-sci').css('display', 'inline-block');
+				}
+				else{
+					nextScienceButton.style.display = 'inline-block';
+					$('#submit-sci').css('display', 'none');
+				}
+			}
+			showScienceSlide(currentSlide)
+			function showNextScienceSlide(){showScienceSlide(currentSlide + 1)}
+			function showPreviousScienceSlide() {showScienceSlide(currentSlide - 1)}
+			$('#next-sci').click(() => {showNextScienceSlide()})
+			$('#previous-sci').click(() => {showPreviousScienceSlide()})
+			
 			function showScienceResults() {
 				
 				const answerContainers = scienceQuizContainer.querySelectorAll('.sciQuizAnswers')
@@ -900,6 +955,9 @@
 			}
 			$('#submit-sci').click(() => {showScienceResults()})
 			
+			$('#reset-sci').click(() => {
+				window.location.reload();
+			})
 			
 			
 		}
@@ -919,12 +977,47 @@
           </label>`);
 				}
 				
-				output.push(`<div class="techQuizQuestion"> ${currentQuestion.techQuestions} </div>
-        <div class="techQuizAnswers"> ${answers.join('')} </div>`);
+				output.push(`
+						<div class="tech-slide">
+							<div class="techQuizQuestion">${currentQuestion.techQuestions}</div>
+							<div class="techQuizAnswers">${answers.join('')}</div>
+						</div>
+				`)
 			})
 			
 			techQuizContainer.innerHTML = output.join('');
 			techResultsContainer.innerHTML = '';
+			
+			const previousTechButton = document.getElementById('previous-tech');
+			const nextTechButton = document.getElementById('next-tech');
+			const slides = document.querySelectorAll('.tech-slide');
+			let currentSlide = 0;
+			
+			function showTechSlide(n) {
+				slides[currentSlide].classList.remove('active-tech-slide');
+				slides[n].classList.add('active-tech-slide');
+				currentSlide = n;
+				
+				if (currentSlide === 0) {
+					previousTechButton.style.display = 'none';
+				} else {
+					previousTechButton.style.display = 'inline-block'
+				}
+				
+				if (currentSlide === slides.length - 1) {
+					nextTechButton.style.display = 'none';
+					$('#submit-tech').css('display', 'inline-block');
+				} else {
+					nextTechButton.style.display = 'inline-block';
+					$('#submit-tech').css('display', 'none')
+				}
+			}
+			showTechSlide(currentSlide)
+			function showNextTechSlide() {showTechSlide(currentSlide + 1)}
+			function showPreviousTechSlide() {showTechSlide(currentSlide - 1)}
+			$('#next-tech').click(() => {showNextTechSlide()})
+			$('#previous-tech').click(() => {showPreviousTechSlide()})
+			
 			function showTechResults(){
 				const answerContainers = techQuizContainer.querySelectorAll('.techQuizAnswers')
 				let numCorrect = 0;
@@ -963,13 +1056,53 @@
           </label>`);
 				}
 				
-				output.push(`<div class="engineerQuizQuestion"> ${currentQuestion.engineerQuestions} </div>
-        <div class="engineerQuizAnswers"> ${answers.join('')} </div>`);
+				output.push(`
+						<div class="engineer-slide">
+							<div class="engineerQuizQuestion">${currentQuestion.engineerQuestions}</div>
+							<div class="engineerQuizAnswers">${answers.join('')}</div>
+						</div>
+				`)
 				
 			})
 			
 			engineerQuizContainer.innerHTML = output.join('');
 			engineerResultsContainer.innerHTML = '';
+			
+			const previousEngineerButton = document.getElementById('previous-engineer');
+			const nextEngineerButton = document.getElementById('next-engineer');
+			const slides = document.querySelectorAll('.engineer-slide');
+			let currentSlide = 0;
+			
+			function showEngineerSlide(n) {
+				slides[currentSlide].classList.remove('active-engineer-slide');
+				slides[n].classList.add('active-engineer-slide');
+				currentSlide = n;
+				
+				if (currentSlide === 0) {
+					previousEngineerButton.style.display = 'none';
+				} else {
+					previousEngineerButton.style.display = 'inline-block';
+				}
+				
+				if (currentSlide === slides.length - 1) {
+					nextEngineerButton.style.display = 'none';
+					$('#submit-engineer').css('display', 'inline-block');
+				} else {
+					nextEngineerButton.style.display = 'inline-block';
+					$('#submit-engineer').css('display', 'none')
+				}
+			}
+			
+			showEngineerSlide(currentSlide)
+			function showNextEngineerSlide() {
+				showEngineerSlide(currentSlide + 1)
+			}
+			function showPreviousEngineerSlide() {
+				showEngineerSlide(currentSlide - 1)
+			}
+			$('#next-engineer').click(() => {showNextEngineerSlide()})
+			$('#previous-engineer').click(() => {showPreviousEngineerSlide()})
+			
 			function showEngineerResults() {
 				const answerContainers = engineerQuizContainer.querySelectorAll('.engineerQuizAnswers')
 				let numCorrect = 0;
@@ -1008,13 +1141,50 @@
           </label>`);
 				}
 				
-				output.push(`<div class="mathQuizQuestion"> ${currentQuestion.mathQuestion} </div>
-        <div class="mathQuizAnswers"> ${answers.join('')} </div>`);
+				output.push(`
+						<div class="math-slide">
+							<div class="mathQuizQuestion">${currentQuestion.mathQuestion}</div>
+							<div class="mathQuizAnswers">${answers.join('')}</div>
+						</div>
+				`)
 				
 			})
 			
 			mathQuizContainer.innerHTML = output.join('');
 			mathResultsContainer.innerHTML = '';
+			
+			const previousMathButton = document.getElementById('previous-math');
+			const nextMathButton = document.getElementById('next-math');
+			const slides = document.querySelectorAll('.math-slide');
+			let currentSlide = 0;
+			
+			function showMathSlide(n) {
+				slides[currentSlide].classList.remove('active-math-slide');
+				slides[n].classList.add('active-math-slide');
+				currentSlide = n;
+				
+				if (currentSlide === 0) {
+					previousMathButton.style.display = 'none';
+				} else {
+					previousMathButton.style.display = 'inline-block';
+				}
+				
+				if (currentSlide === slides.length - 1) {
+					nextMathButton.style.display = 'none';
+					$('#submit-math').css('display', 'inline-block');
+				} else {
+					nextMathButton.style.display = 'inline-block';
+					$('#submit-math').css('display', 'none')
+				}
+			}
+			
+			showMathSlide(currentSlide)
+			function showNextMathSlide() {showMathSlide(currentSlide + 1)}
+			function showPreviousMathSlide() {showMathSlide(currentSlide - 1)}
+			$('#next-math').click(() => {showNextMathSlide()})
+			$('#previous-math').click(() => {showPreviousMathSlide()})
+			
+			
 			function showMathResults() {
 				const answerContainers = mathQuizContainer.querySelectorAll('.mathQuizAnswers')
 				let numCorrect = 0;
@@ -1029,7 +1199,6 @@
 					} else {
 						answerContainers[questionNumber].style.color = 'red';
 					}
-					
 					mathResultsContainer.innerHTML = `<h3>${numCorrect} out of ${selectedMathQuestions.length} questions correct.</h3>`;
 					
 				});
@@ -1042,11 +1211,8 @@
 		buildEngineerQuiz();
 		buildMathQuiz();
 		
+		$('.reset-quizzes').click(() => {window.location.reload()})
 		
-		$('#reset-sci').click(() => {buildScienceQuiz()})
-		$('#reset-tech').click(() => {buildTechQuiz()})
-		$('#reset-engineer').click(() => {buildEngineerQuiz()})
-		$('#reset-math').click(() => {buildMathQuiz()})
 		// quiz code end
 		
 		// dictionary code start
