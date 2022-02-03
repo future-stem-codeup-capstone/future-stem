@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
-<nav th:fragment="navbar" sec:authorize="isAuthenticated()" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-	<a class="navbar-brand" href="/home"><img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="100" height="75"></a>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+	<a class="navbar-brand" href="/"><img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="100" height="75"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -12,17 +12,17 @@
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" href="/info" class="nav-link">Info</a>
+				<a href="/info" class="nav-link">Info</a>
 			</li>
 			<li class="nav-item">
-				<a href="/education" class="nav-link">Education</a>
+				<a sec:authorize="isAuthenticated()"  href="/education" class="nav-link">Education</a>
 			</li>
 			<li class="nav-item">
-				<a href="/map" class="nav-link">Map</a>
+				<a sec:authorize="isAuthenticated()" href="/map" class="nav-link">Map</a>
 			</li>
 
 			<li class="nav-item">
-				<a href="/stemquiz" class="nav-link">STEM Quiz</a>
+				<a sec:authorize="isAuthenticated()" href="/stemquiz" class="nav-link">STEM Quiz</a>
 			</li>
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/connection">Connections</a>
@@ -31,24 +31,11 @@
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">Profile</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" class="nav-link" href="/aboutUs">About Us</a>
+				<a class="nav-link" href="/aboutUs">About Us</a>
 			</li>
-<!--			<li class="nav-item">-->
-<!--				<a href="#" class="nav-link" data-toggle="modal" data-target="#register-modal">Register</a>-->
-<!--			</li>-->
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/update-account">Edit Account</a>
 			</li>
-<!--			<li class="nav-item dropdown">-->
-<!--				<a sec:authorize="isAuthenticated()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--					Settings-->
-<!--				</a>-->
-<!--				<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--					<a class="dropdown-item" href="/update-account">Edit Account</a>-->
-<!--					<a class="dropdown-item" href="#">Switch to Child</a>-->
-<!--					<div class="dropdown-divider"></div>-->
-<!--				</div>-->
-<!--			</li>-->
 			
 		</ul>
 		<div sec:authorize="isAuthenticated()">
