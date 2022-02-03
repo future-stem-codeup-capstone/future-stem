@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<<<<<<< HEAD
+<nav th:fragment="navbar"  class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+	<a sec:authorize="isAuthenticated()" class="navbar-brand" href="/home"><img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="100" height="75"></a>
+	<button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+=======
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
 	<a class="navbar-brand" href="/"><img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="100" height="75"></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+>>>>>>> e6024e90318b5573e69314db54729b64dceda6d9
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
@@ -12,11 +18,13 @@
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a href="/info" class="nav-link">Info</a>
+				<a  href="/info" class="nav-link">Info</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()"  href="/education" class="nav-link">Education</a>
+				<a sec:authorize="isAuthenticated()" href="/education" class="nav-link">Education</a>
 			</li>
+
+
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" href="/map" class="nav-link">Map</a>
 			</li>

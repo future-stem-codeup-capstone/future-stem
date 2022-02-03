@@ -2,9 +2,36 @@
 /*Global edits start*/
 
 html, body {
-	height: 100vh;
+	/*height: 100vh;*/
 	/*background-color: #d3d3d326;*/
 }
+
+.home-gradient{
+	background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);
+}
+.education-gradient{
+	background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+}
+.map-gradient{
+	background-image: linear-gradient(315deg, #ffd045 0%, #d14545 74%);
+}
+.stem-quiz-gradient{
+	background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%);
+}
+.connections-gradient{
+	background-image: linear-gradient(319deg, #e4ff6d 0%, #ffad42 37%, #e4ff6d 100%);
+}
+.profile-gradient{
+	background-image: linear-gradient(315deg, #f8ef42 0%, #0fd64f 74%);
+}
+.about-us-gradient{
+	background-image: linear-gradient(315deg, #ffd045 0%, #d14545 74%);
+}
+.edit-account-gradient{
+	background-image: linear-gradient(315deg, #0beef9 0%, #48a9fe 74%);
+}
+
+
 #stem-header {
 	width: 10rem;
 	height: 8rem;
@@ -77,17 +104,14 @@ html, body {
 	/*background-color: #d3d3d326;*/
 }
 .projects-container {
-	/*width: 100%;*/
+
 	flex-wrap: wrap;
 	display: flex;
 	justify-content: center;
-
-	/*position: fixed;*/
-	/*overflow: auto;*/
-	/*height: 800px;*/
 }
 
 .projects {
+
 	background-color: white;
 	border-radius: 10px;
 	width: fit-content;
@@ -96,6 +120,9 @@ html, body {
 	/*padding: 10px;*/
 	/*margin: 40px;*/
 	box-shadow: 5px 8px 9px lightgray;
+}
+.projects:hover{
+	transform: scale(1.2);
 }
 .projects > * {
 	padding: 1rem;
@@ -110,6 +137,7 @@ html, body {
 	height: fit-content;
 	/*margin: 40px;*/
 	box-shadow: 5px 8px 9px lightgray;
+	transform: scale(1.1)
 }
 .random-fact > * {
 	padding: 1rem;

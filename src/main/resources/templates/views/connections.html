@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title>Connections</title>
 	</head>
-<body>
+<body class="connections-gradient">
 <nav th:insert="fragments/navbar"></nav>
 
 <h3 style="margin-top: 1em">Your Friends</h3>
@@ -19,21 +19,13 @@
 	</form>
 </div>
 <h3 style="margin-top: 1em">All Users</h3>
-<form style="margin-top: 10em">
-	<input  id="search-username" type="search" placeholder="Search Username" >
-	<button  type="submit" id="search-username-btn">Search</button>
-</form>
-
-<!--<script>-->
-<!--$('#search-username-btn').click((e) => {-->
-<!--e.preventDefault();-->
-<!--console.log(document.querySelector('#search-Dictionary').value)-->
-<!--fetchAPIDictionary(document.querySelector('#search-username').value)-->
-<!--})-->
-<!--</script>-->
+<!--<form style="margin-top: 10em" th:object="${user}" method="post">-->
+<!--	<input  name="search-username" type="text" th:field="${allUsers}" placeholder="Search Username" >-->
+<!--	<button  type="submit" value="Search">Search</button>-->
+<!--</form>-->
 
 
-<div th:each="user : ${allUsers}" >
+<div th:class="search-username"  th:each="user : ${allUsers}" >
 	<h5 th:text="${user.getUsername()}"></h5>
 	<form th:action="@{/connection/addconnection}" th:method="post" >
 		<input type="hidden" th:name="addedUser" th:value="${user.getId()}" />
