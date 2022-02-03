@@ -1,7 +1,51 @@
-.quiz-container {
-	margin-top: 10rem;
-	/*position: relative;*/
-
+.education-container {
+	margin: 0 5rem 0;
+}
+.education-corner {
+	position: relative;
+	left: 18rem;
+	top: 15rem;
+}
+.eclc {
+	letter-spacing: 8px;
+}
+.corner-delay {
+	--animate-delay: 2s;
+}
+.category {
+	margin-bottom: 10rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	left: 26rem;
+}
+.qAndA {
+	border: 1px solid black;
+	border-radius: 10px;
+	width: 800px;
+	height: 7rem;
+	margin-bottom: 1rem;
+}
+.qAndA > * {
+	padding: 10px;
+}
+.qABtnGroup {
+	position: relative;
+	left: 135px;
+}
+.trivia-gen {
+	position: relative;
+	left: 251px;
+}
+.big-quiz-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+.reset-quizzes {
+	position: relative;
+	left: 18.2rem;
 }
 
 .sci-slide, .tech-slide, .engineer-slide, .math-slide {

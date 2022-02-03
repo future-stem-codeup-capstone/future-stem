@@ -8,101 +8,105 @@
 <body>
 	<nav th:insert="fragments/navbar"></nav>
 
-	<div class="quiz-container m-5">
-	<div class="category mb-5" style="margin-top: 10rem">
-		<div class="question"></div>
-		<div class="answer"></div>
-		<button class="sciButton">Science</button>
-		<button class="geoButton">Geography</button>
-		<button class="mathButton">Mathematics</button>
-		<button class="genButton">General</button>
-		<button class="langButton">Language</button>
-	</div>
-	<button class="btn btn-outline-dark reset-quizzes mb-5">Reset Quizzes</button>
-	<div class="d-flex flex-wrap">
-		<div class="sci-quiz-container" style="width: 800px; height: 650px">
-			<h1 class="text-center">Science Quiz</h1>
-			<div class="quiz-container">
-				<div id="scienceQuiz"></div>
-				<div class="d-flex button-group">
-					<button class="btn btn-dark mr-1" id="previous-sci">Previous Question</button>
-					<button class="btn btn-dark mr-1" id="next-sci">Next Question</button>
-					<button id="submit-sci" class="btn btn-success mr-1">Submit</button>
-<!--					<button id="reset-sci" class="btn btn-outline-success ml-1">Reset</button>-->
-				
-				</div>
-				<footer class="mt-1 quiz-footer">
-					<p class="text-muted">All content is copyright &copy; Dr. Moku.</p>
-				</footer>
-				
-				<div id="scienceResults"></div>
-			</div>
+	<div class="education-container">
+		<div class="education-corner animate__animated animate__lightSpeedInLeft">
+			<h1 class="display-1 font-italic eclc">Learning</h1>
+			<h1 class="display-1 font-italic eclc">Corner!</h1>
 		</div>
-		<div class="tech-quiz-container" style="width: 800px; height: 650px">
-			<h1 class="text-center">Technology Quiz</h1>
-			<div class="quiz-container">
-				<div id="techQuiz"></div>
-				<div class="d-flex button-group">
-					<button class="btn btn-dark mr-1" id="previous-tech">Previous Question</button>
-					<button class="btn btn-dark mr-1" id="next-tech">Next Question</button>
-					<button id="submit-tech" class="mr-1 btn btn-success">Submit</button>
-				</div>
-				<footer class="mt-1 quiz-footer">
-					<p class="text-muted">All content is copyright &copy; Science Kids</p>
-				</footer>
-				<div id="techResults"></div>
+		<div class="category animate__animated animate__lightSpeedInRight">
+			<h1 class="display-6 mb-3 trivia-gen">Trivia Generator!</h1>
+			<div class="qAndA">
+				<div class="question"></div>
+				<div class="answer"></div>
+			</div>
+			<div class="qABtnGroup">
+				<button class="sciButton btn btn-dark mr-1">Science</button>
+				<button class="geoButton btn btn-dark ml-1">Geography</button>
+				<button class="mathButton btn btn-dark ml-1">Mathematics</button>
+				<button class="genButton btn btn-dark ml-1">General</button>
+				<button class="langButton btn btn-dark ml-1">Language</button>
 			</div>
 			
 		</div>
-		<div class="eng-quiz-container" style="width: 800px; height: 650px">
-			<h1 class="text-center">Engineering Quiz</h1>
-			<div class="quiz-container">
-				<div id="engineerQuiz"></div>
-				<div class="d-flex button-group">
-					<button class="btn btn-dark mr-1" id="previous-engineer">Previous Question</button>
-					<button class="btn btn-dark mr-1" id="next-engineer">Next Question</button>
-					<button id="submit-engineer" class="mr-1 btn btn-success">Submit</button>
+		<button class="btn btn-outline-dark reset-quizzes mb-5">Reset Quizzes</button>
+		<div class="big-quiz-container">
+			<div class="sci-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Science Quiz</h1>
+				<div class="quiz-container">
+					<div id="scienceQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-sci">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-sci">Next Question</button>
+						<button id="submit-sci" class="btn btn-success mr-1">Submit</button>
+	<!--					<button id="reset-sci" class="btn btn-outline-success ml-1">Reset</button>-->
+					
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Dr. Moku.</p>
+					</footer>
+					
+					<div id="scienceResults"></div>
 				</div>
-				<footer class="mt-1 quiz-footer">
-					<p class="text-muted">All content is copyright &copy; Science Kids</p>
-				</footer>
-				<div id="engineerResults"></div>
 			</div>
-			
-		</div>
-		<div class="math-quiz-container" style="width: 800px; height: 650px">
-			<h1 class="text-center">Math Quiz</h1>
-			<div class="quiz-container">
-				<div id="mathQuiz"></div>
-				<div class="d-flex button-group">
-					<button class="btn btn-dark mr-1" id="previous-math">Previous Question</button>
-					<button class="btn btn-dark mr-1" id="next-math">Next Question</button>
-					<button id="submit-math" class="mr-1 btn btn-success">Submit</button>
+			<div class="tech-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Technology Quiz</h1>
+				<div class="quiz-container">
+					<div id="techQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-tech">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-tech">Next Question</button>
+						<button id="submit-tech" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="techResults"></div>
 				</div>
-				<footer class="mt-1 quiz-footer">
-					<p class="text-muted">All content is copyright &copy; Science Kids</p>
-				</footer>
-				<div id="mathResults"></div>
+				
+			</div>
+			<div class="eng-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Engineering Quiz</h1>
+				<div class="quiz-container">
+					<div id="engineerQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-engineer">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-engineer">Next Question</button>
+						<button id="submit-engineer" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="engineerResults"></div>
+				</div>
+				
+			</div>
+			<div class="math-quiz-container" style="width: 800px; height: 650px">
+				<h1 class="text-center">Math Quiz</h1>
+				<div class="quiz-container">
+					<div id="mathQuiz"></div>
+					<div class="d-flex button-group">
+						<button class="btn btn-dark mr-1" id="previous-math">Previous Question</button>
+						<button class="btn btn-dark mr-1" id="next-math">Next Question</button>
+						<button id="submit-math" class="mr-1 btn btn-success">Submit</button>
+					</div>
+					<footer class="mt-1 quiz-footer">
+						<p class="text-muted">All content is copyright &copy; Science Kids</p>
+					</footer>
+					<div id="mathResults"></div>
+				</div>
 			</div>
 		</div>
-	
-	
+		<div class="mt-5">
+			<form action="">
+				<label for="search-Dictionary">Digital Dictionary</label>
+				<input type="text" id="search-Dictionary" placeholder="Enter a word">
+				<button type="submit" id="searchDictionarybtn">Search</button>
+			</form>
+			<div class="definition"></div>
+		</div>
 	</div>
-	
-	
-	<div class="mt-5">
-		<form action="">
-			<label for="search-Dictionary">Digital Dictionary</label>
-			<input type="text" id="search-Dictionary" placeholder="Enter a word">
-			<button type="submit" id="searchDictionarybtn">Search</button>
-		</form>
-		<div class="definition"></div>
-	</div>
-	
-</div>
 	
 	<div th:insert="fragments/scripts"></div>
-	
 	<script>
 	$(document).ready(function () {
 		
