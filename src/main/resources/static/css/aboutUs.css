@@ -26,21 +26,24 @@
 
 #team-right-tile {
     float: right;
-    margin-top: -58.5%;
+    margin-top: -953px;
     margin-right: 10%;
 }
 
 #team-btm-right-tile {
     float: right;
-    margin-top: -58.6%;
+    margin-top: -955px;
     margin-right: 10%;
 }
 
 .team-headshot {
-    width: 35%;
+    /*width: 35%;*/
+    width: 250px;
+    height: 250px;
+    /*padding: 10px;*/
     margin-bottom: 45%;
     margin-left: .7%;
-    border-radius: 50%;
+    border-radius: 50px;
 }
 
 .team-card {
