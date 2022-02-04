@@ -9,7 +9,7 @@
 
 <div class="home-container">
 	<h1 class="display-1 text-center etch-sketch">Community Projects</h1>
-	<div class="projects-container">
+	<div class="d-flex flex-wrap justify-content-center">
 		<div class="projects" th:each="project : ${project}">
 			<h3 th:text="${project.getTitle()}"></h3>
 			<div class="project-body">

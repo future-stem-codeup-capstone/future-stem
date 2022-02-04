@@ -128,12 +128,6 @@ body {
 	/*height: 100vh;*/
 	/*background-color: #d3d3d326;*/
 }
-.projects-container {
-
-	flex-wrap: wrap;
-	display: flex;
-	justify-content: center;
-}
 
 .connections-page{
 
@@ -235,6 +229,8 @@ body {
 
 
 }
+
+
 
 /*dna animation*/
 /*body {*/
