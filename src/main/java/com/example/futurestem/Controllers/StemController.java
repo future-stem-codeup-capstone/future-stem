@@ -73,6 +73,26 @@ public class StemController {
 //        return "views/stemquiz";
 //    }
 
+    @GetMapping("/science")
+    public String showScience() {
+        return "views/science";
+    }
+
+
+    @GetMapping("/engineering")
+    public String showEngineering() {
+        return "views/engineering";
+    }
+
+    @GetMapping("/tech")
+    public String showTech() {
+        return "views/tech";
+    }
+
+    @GetMapping("/math")
+    public String showMath() {
+        return "views/math";
+    }
 
     @GetMapping("/aboutUs")
     public String aboutUs(Model model) {

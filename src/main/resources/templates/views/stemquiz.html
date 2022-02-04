@@ -117,9 +117,35 @@
 <div th:insert="fragments/scripts"></div>
 <script>
 	function showResults() {
-		// var number = 0;
-		// var hobby = document.getElementsByName("hobby");
+		var number = 0;
+		var hobby = parseInt(document.querySelector('input[name="hobby"]:checked').value);
+		// console.log(document.querySelector('input[name="hobby"]:checked').value)
 		// console.log(hobby);
+		var trial = parseInt(document.querySelector('input[name="trial"]:checked').value);
+		var group = parseInt(document.querySelector('input[name="group"]:checked').value);
+		var homework = parseInt(document.querySelector('input[name="homework"]:checked').value);
+		var study = parseInt(document.querySelector('input[name="study"]:checked').value);
+		var best = parseInt(document.querySelector('input[name="best"]:checked').value);
+		var learn = parseInt(document.querySelector('input[name="learn"]:checked').value);
+		var outside = parseInt(document.querySelector('input[name="outside"]:checked').value);
+		var results = parseInt(document.querySelector('input[name="results"]:checked').value);
+		var language = parseInt(document.querySelector('input[name="language"]:checked').value);
+		var question = parseInt(document.querySelector('input[name="question"]:checked').value);
+		number = hobby + trial + group + homework + study + best + learn + outside + results + language + question;
+		console.log(number)
+		if(number <= 13) {
+			window.location.href ="www.yourfuturestem.com/science";
+		}
+		else if(number <= 25 && number > 13) {
+			window.location.href ="www.yourfuturestem.com/tech";
+		}
+		else if(number <= 31 && number > 25) {
+			window.location.href ="www.yourfuturestem.com/engineering";
+		}
+		else if(number > 31) {
+			window.location.href ="www.yourfuturestem.com/math";
+		}
+		// console.log(hobby.attributes[0].value);
 		// for (var a = 0; a < hobby.length; a++) {
 		//     if(hobby[a].checked)
 		// 		number = number + parseInt(hobby[a].checked.value);
@@ -139,9 +165,9 @@
 		// 	if(group[b].checked)
 		// 		number = number + parseInt(group[b].checked.value);
 		// 	console.log(group[b].checked.value);
-		// 	// console.log(number);
+			// console.log(number);
 		// }
-		document.write("It seems like you have an aptitude for Technology. Pursuing technology allows you to work on countless activities such as solving various puzzles and even creating your own games!")
+		// document.write("It seems like you have an aptitude for Technology. Pursuing technology allows you to work on countless activities such as solving various puzzles and even creating your own games!")
 	}
 	//trying to push
 	//wont push font
