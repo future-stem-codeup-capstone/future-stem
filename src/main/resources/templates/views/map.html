@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="height: 100vh">
 <head th:insert="fragments/head">
 	<meta charset="UTF-8">
 	<title>Map</title>
@@ -10,11 +10,11 @@
 	
 	<div class="map-container">
 		<div>
-			<h1>Activities Map</h1>
-			<p>A simple map that you can use to filter categories and find activities for kids.</p>
+			<h1 class="display-1 etch-sketch text-center">Activities Map</h1>
+			<p class="text-center">A simple map that you can use to filter categories and find activities for kids.</p>
 		</div>
-		<div class="d-flex mb-3">
-			<select id="places-select" style="font-size: 16px; padding:4px 8px;">
+		<div class="d-flex mb-3 justify-content-center">
+			<select id="places-select" style="font-size: 16px; padding:4px 8px; border-radius: 4px">
 				<option value="">Choose a category...</option>
 				<option value="Zoo">Zoos</option>
 				<option value="Aquarium">Aquariums</option>
@@ -26,7 +26,7 @@
 			</select>
 			<form action="" class="form-inline ml-5">
 				<label class="mx-1" for="location-input">Location</label>
-				<input class="mx-1" type="text" id="location-input" placeholder="City, State and/or Zipcode" style="width: 13rem">
+				<input class="mx-1" type="text" id="location-input" placeholder="City, State and/or Zipcode" style="width: 13rem; border-radius: 4px">
 				<button class="btn btn-sm btn-dark mx-1" type="submit" id="location-button">Search</button>
 			</form>
 		</div>
@@ -41,7 +41,7 @@
 		mapboxgl.accessToken = 'pk.eyJ1IjoiamFja2llZGFsbGFzIiwiYSI6ImNreXc0eGI3ZTAzODYyeG1zbnhyc21wOXYifQ.bl5vqXwUq_SIoY62-Bscvw';
 		const mapboxKey = 'pk.eyJ1IjoiamFja2llZGFsbGFzIiwiYSI6ImNreXc0eGI3ZTAzODYyeG1zbnhyc21wOXYifQ.bl5vqXwUq_SIoY62-Bscvw';
 		const arcGisKey = 'AAPKc6f35ea946a144539423779db38681abVoLuBW1wawtaCGQDc5IW7bvp-Zvckhhb5dZoncVuR9_QSXG7LEQLdCb8qipLOT_F';
-		const basemapEnum = 'ArcGIS:Navigation'
+		const basemapEnum = 'ArcGIS:ColoredPencil'
 		const map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: `https://basemaps-api.arcgis.com/arcgis/rest/services/styles/${basemapEnum}?type=style&token=${arcGisKey}`, // style URL
