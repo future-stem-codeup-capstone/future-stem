@@ -43,20 +43,16 @@
 	
 	
 	<div class="profile-container">
-		<div class="top-of-page d-flex">
-			<div class="profile-pic">
-				<img style="width: 250px; height: 250px; border-radius: 50%" th:src="${user.getProfile_pic()}" alt="profile-pic" class="user-avatar">
-				<h3 th:text="${username}" style="text-align: center"></h3>
-			
-			</div>
+		<h1 class="display-1 etch-sketch"><span th:text="${username}"></span></h1>
+		<div class="top-of-page">
 			<div class="about-me">
-				<h1 th:text="${userAboutMe}"></h1>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci consequatur, dolorum eos harum illo illum impedit magnam magni, minus mollitia obcaecati omnis perferendis placeat reiciendis repellat sapiente, temporibus vel veritatis?
+				<h3>About Me</h3>
+				<p th:text="${userAboutMe}"></p>
 			</div>
-		</div>
-		
-		
-		<div class="d-flex middle-section">
+			<div class="profile-pic">
+				<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
+<!--				<h3 th:text="${username}" style="text-align: center"></h3>-->
+			</div>
 			<div class="hobbies-section">
 				<h4>Hobbies</h4>
 				<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
@@ -64,18 +60,26 @@
 					<input id="hobby"  type="text" th:field="*{name}">
 					<button type="submit">Add</button>
 				</form>
-				<div class="d-flex" th:each="hobby : ${userHobbies}">
-					<div class="hobby d-flex">
-						<p th:text="${hobby.getName()}"></p>
-						<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
-							<button>Delete</button>
-						</form>
+				<div class="user-hobbies-box">
+					<div th:each="hobby : ${userHobbies}">
+						<div class="user-hobbies">
+							<p th:text="${hobby.getName()}"></p>
+							<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
+								<button>Delete</button>
+							</form>
+						</div>
 					</div>
+				
 				</div>
 			</div>
+		</div>
+		<div class="add-project-btn">
+			<button class="btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
+		
+		</div>
+		<div class="middle-section">
 			<div class="projects-section">
-				<button class="ml-auto btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
-				<div class="projects" th:each="currentProject : ${userProjects}">
+				<div class="projects profile-projects" th:each="currentProject : ${userProjects}">
 					<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
 					     data-toggle="modal" tabindex="-1"
 					     aria-labelledby="edit-project-modal">
