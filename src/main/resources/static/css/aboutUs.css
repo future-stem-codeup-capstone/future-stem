@@ -10,7 +10,7 @@
 #our-team-title {
     position: relative;
     font-weight: 300;
-    margin-top: -5%;
+    margin-top: -9.5%;
     margin-left: 37%;
     font-size: 4vw;
     color: black;
@@ -23,16 +23,19 @@
     /*display: flex;*/
     /*justify-content: center;*/
 }
-#team-right-tile{
+
+#team-right-tile {
     float: right;
     margin-top: -58.5%;
-margin-right: 10%;
+    margin-right: 10%;
 }
-#team-btm-right-tile{
+
+#team-btm-right-tile {
     float: right;
     margin-top: -58.6%;
     margin-right: 10%;
 }
+
 .team-headshot {
     width: 35%;
     margin-bottom: 45%;
@@ -70,6 +73,11 @@ margin-right: 10%;
     font-weight: 400;
     font-size: 2.4vw;
     color: black;
+}
+
+.email-container {
+    margin-top: 250px;
+    margin-left: 5%;
 }
 
 .team-title-banner {
@@ -127,6 +135,7 @@ margin-right: 10%;
 
 /* CSS */
 .button-53 {
+    /*margin-top: 100px;*/
     background-color: #3DD1E7;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
@@ -158,6 +167,7 @@ margin-right: 10%;
 
 .button-53:after {
     content: '';
+    /*margin-top: 100px;*/
     position: absolute;
     border: 1px solid #000000;
     bottom: 4px;
@@ -167,6 +177,7 @@ margin-right: 10%;
 }
 
 .button-53:hover:after {
+    /*margin-top: 100px;*/
     bottom: 2px;
     left: 2px;
 }
