@@ -4,13 +4,15 @@
 <!--	<a class="navbar-brand" href="/"><img class="stem-img" src="/images/stem-removebg.jpeg" alt="stem" width="100" height="75"></a>-->
 <!--	<button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
-	<a class="navbar-brand" href="/"><img class="stem-img" src="images/tryagain45.png" alt="stem" width="100" height="75"></a>
+	<a class="navbar-brand" href="/"><img class="stem-img" src="images/stem-removebg.jpeg" alt="stem" width="100" height="75"></a>
+	
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 	
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
+	<div class="collapse navbar-collapse justify-content-center navbar-items" id="navbarSupportedContent">
+		<ul class="navbar-nav">
+			
 			<li class="nav-item active">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
 			</li>
@@ -20,17 +22,16 @@
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" href="/education" class="nav-link">Education</a>
 			</li>
-
-
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" href="/map" class="nav-link">Map</a>
 			</li>
 
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" href="/stemquiz" class="nav-link">STEM Quiz</a>
+				<a sec:authorize="isAuthenticated()" href="/stemquiz" class="nav-link left-nav">STEM Quiz</a>
 			</li>
+			
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" class="nav-link" href="/connection">Connections</a>
+				<a sec:authorize="isAuthenticated()" class="nav-link right-nav" href="/connection">Connections</a>
 			</li>
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">Profile</a>
@@ -41,13 +42,16 @@
 			<li class="nav-item">
 				<a sec:authorize="isAuthenticated()" class="nav-link" href="/update-account">Edit Account</a>
 			</li>
+			<li class="nav-item">
+				<div sec:authorize="isAuthenticated()">
+					<form th:action="@{/logout}" th:method="post" >
+						<button class="btn-link btn"><span class="logout">Logout</span></button>
+					</form>
+				</div>
+			</li>
 			
 		</ul>
-		<div sec:authorize="isAuthenticated()">
-			<form th:action="@{/logout}" th:method="post" >
-				<button class="btn-link btn">Logout</button>
-			</form>
-		</div>
+		
 <!--		<form class="form-inline my-2 my-lg-0">-->
 <!--			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
 <!--			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->

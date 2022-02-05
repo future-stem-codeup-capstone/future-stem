@@ -1,13 +1,39 @@
 /*Global edits start*/
 /*@import url('http://fonts.cdnfonts.com/css/helloetchasketch');*/
 html {
+	height: 100%;
 
 	/*height: 100vh;*/
 	/*background-color: #d3d3d326;*/
 }
 body {
+	height: 100%;
 	font-family: 'Cabin Sketch', cursive;
-
+	margin: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+.navbar-items {
+	position: relative;
+	left: -60px;
+}
+.logout {
+	font-size: 20px;
+	color: rgba(0,0,0,.5);
+	position: relative;
+	top: 1px;
+}
+.logout:hover {
+	text-decoration: none!important;
+}
+.nav-link {
+	font-size: 20px;
+}
+.left-nav {
+	margin-right: 7rem;
+}
+.right-nav {
+	margin-left: 7rem;
 }
 .etch-sketch {
 	font-family: 'Cabin Sketch', cursive;
