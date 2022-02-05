@@ -43,30 +43,51 @@
 	
 	
 	<div class="profile-container">
-		<h1 class="display-1 etch-sketch"><span th:text="${username}"></span></h1>
 		<div class="top-of-page">
-			<div class="about-me">
-				<h3>About Me</h3>
-				<p th:text="${userAboutMe}"></p>
+			<div class="top-left mr-3 row">
+				<div class="col">
+					<div class="username">
+						<h1 class="display-1 etch-sketch"><span th:text="${username}"></span></h1>
+					</div>
+					<div class="about-me">
+						<h3>About Me</h3>
+						<p th:text="${userAboutMe}"></p>
+					</div>
+				</div>
+				<div class="col">
+					<div class="profile-pic">
+						<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
+					</div>
+				</div>
 			</div>
-			<div class="profile-pic">
-				<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
-<!--				<h3 th:text="${username}" style="text-align: center"></h3>-->
-			</div>
-			<div class="hobbies-section">
-				<h4>Hobbies</h4>
-				<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
-					<label for="hobby">Add Hobby:</label>
-					<input id="hobby"  type="text" th:field="*{name}">
-					<button type="submit">Add</button>
-				</form>
-				<div class="user-hobbies-box">
-					<div th:each="hobby : ${userHobbies}">
-						<div class="user-hobbies">
-							<p th:text="${hobby.getName()}"></p>
-							<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
-								<button>Delete</button>
-							</form>
+			
+			<div class="hobbies-section ml-3">
+				<div class="hobby-header">
+					<h1 class="etch-sketch">Hobbies</h1>
+				</div>
+				<div class="hobby-form">
+					<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
+						<label for="hobby">Add Hobby:</label>
+						<input id="hobby"  type="text" th:field="*{name}">
+						<button class="btn btn-dark btn-sm ml-2" type="submit">Add</button>
+					</form>
+				</div>
+				<div class="d-flex justify-content-center">
+					<div class="hobby-box-container">
+						<div class="user-hobbies-box">
+							<div th:each="hobby : ${userHobbies}">
+								<div class="user-hobbies">
+									<div class="user-hobby">
+										<p th:text="${hobby.getName()}"></p>
+									</div>
+									<div class="delete-hobby-form">
+										<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
+											<button class="delete-hobby-btn"><i class="bi bi-x delete-icon"></i></button>
+										</form>
+									</div>
+								</div>
+							</div>
+						
 						</div>
 					</div>
 				
@@ -74,7 +95,7 @@
 			</div>
 		</div>
 		<div class="add-project-btn">
-			<button class="btn btn-dark" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
+			<button class="button-53 profile-add-project" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
 		
 		</div>
 		<div class="middle-section">
@@ -134,7 +155,7 @@
 						</button>
 						<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${project.getId()}"
 						      th:method="POST">
-							<button class="btn btn-danger">Delete</button>
+							<button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
 						</form>
 					</div>
 				
