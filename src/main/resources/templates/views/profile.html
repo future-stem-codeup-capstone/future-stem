@@ -140,7 +140,7 @@
 								<div class="modal-body">
 									<form th:action="@{/project/edit/{id}(id=${currentProject.id})}" method="post"
 									      th:object="${currentProject}">
-										<h3 th:text="${currentProject.getId()}"></h3>
+
 										<div class="form-group">
 											<label for="edit-title">Title:</label>
 											<input class="form-control" th:value="${currentProject.getTitle()}" name="title"
@@ -178,12 +178,11 @@
 						        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
 							Project
 						</button>
-						<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${project.getId()}"
-						      th:method="POST">
+						<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${currentProject.getId()}" method="POST">
 							<button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
 						</form>
 					</div>
-				
+
 				</div>
 			</div>
 		</div>
