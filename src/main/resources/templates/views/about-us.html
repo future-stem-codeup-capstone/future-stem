@@ -7,117 +7,119 @@
 </head>
 <body class="stem-quiz-gradient">
 <nav th:insert="fragments/navbar"></nav>
-<div class="email-container" style="margin-top: 250px" >
-    <div class="contact-section">
-        <button class="button-53" role="button" type="button" data-toggle="modal" data-target="#email-modal">Email Us
-        </button>
-        <div class="modal fade" id="email-modal" aria-hidden="true" data-toggle="modal" tabindex="-1"
-             aria-labelledby="email-modal">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" style="font-weight: bold">Email Us</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="contact-form" action="mailto:admin@example.com" method="POST" target="_blank">
-                            <div class="email">
-                                <p>You may contact the development team with any questions comments or concerns relating to future STEM
-                                We love hearing feedback from our community! </p>
-                            </div>
-<!--                            <div class="form-group">-->
-<!--                                <label for="firstName"> First Name</label>-->
-<!--                                <input type="text" id="firstName" name="firstName">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="lastName">Last Name</label>-->
-<!--                                <input type="text" id="lastName" name="lastName">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="email">Your Email</label>-->
-<!--                                <input type="email" id="email" name="email">-->
-<!--                            </div>-->
-<!--                            <div class="form-group">-->
-<!--                                <label for="message">Message</label>-->
-<!--                                <textarea name="message" id="message" cols="30" rows="10"></textarea>-->
-<!--                            </div>-->
-                            <button id="compose-message" type="submit">Compose message</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="wrapper">
+	<div class="email-container" style="margin-top: 250px" >
+		<div class="contact-section">
+			<button class="button-53" role="button" type="button" data-toggle="modal" data-target="#email-modal">Email Us
+			</button>
+			<div class="modal fade" id="email-modal" aria-hidden="true" data-toggle="modal" tabindex="-1"
+			     aria-labelledby="email-modal">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" style="font-weight: bold">Email Us</h5>
+							<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form id="contact-form" action="mailto:admin@example.com" method="POST" target="_blank">
+								<div class="email">
+									<p>You may contact the development team with any questions comments or concerns relating to future STEM
+										We love hearing feedback from our community! </p>
+								</div>
+								<!--                            <div class="form-group">-->
+								<!--                                <label for="firstName"> First Name</label>-->
+								<!--                                <input type="text" id="firstName" name="firstName">-->
+								<!--                            </div>-->
+								<!--                            <div class="form-group">-->
+								<!--                                <label for="lastName">Last Name</label>-->
+								<!--                                <input type="text" id="lastName" name="lastName">-->
+								<!--                            </div>-->
+								<!--                            <div class="form-group">-->
+								<!--                                <label for="email">Your Email</label>-->
+								<!--                                <input type="email" id="email" name="email">-->
+								<!--                            </div>-->
+								<!--                            <div class="form-group">-->
+								<!--                                <label for="message">Message</label>-->
+								<!--                                <textarea name="message" id="message" cols="30" rows="10"></textarea>-->
+								<!--                            </div>-->
+								<button id="compose-message" type="submit">Compose message</button>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="our-team-section">
+		<div id="our-team-title">
+			Meet The Team
+		</div>
+		<div id="team-tile-container">
+			<div id="team-left-tile" class="team-card">
+				<img class="team-headshot" src="images/professionalheadshotJackieD.jpg" alt="img">
+				<div class="team-name-bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum
+					dolore.
+				</div>
+				<div class="team-name-banner">Jackie Dallas</div>
+				<div class="team-title-banner">Software Developer</div>
+				<div class="team-social">
+					<a href="https://www.linkedin.com/in/jackie-dallas/"><i class="fa fa-linkedin-square fa-4x"></i></a>
+					<a href="https://github.com/jackiedallas"><i class="fa fa-github-square fa-4x"></i></a>
+				</div>
+			</div>
+			
+			<div id="team-right-tile" class="team-card">
+				<img class="team-headshot" src="images/IMG_3935 4.jpeg" alt="img">
+				<div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+					essecillum dolore.
+				</div>
+				<div class="team-name-banner">Ian McConihay</div>
+				<div class="team-title-banner">Software Developer</div>
+				<div class="team-social">
+					<a href="https://www.linkedin.com/in/ian-mcconihay/"><i class="fa fa-linkedin-square fa-4x"></i></a>
+					<a href="https://github.com/Ian-McConihay"><i class="fa fa-github-square fa-4x"></i></a>
+				</div>
+			</div>
+			
+			<div id="team-btm-left-tile" class="team-card">
+				<img class="team-headshot" src="/images/IMG_1321.jpeg" alt="img">
+				<div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+					essecillum dolore.
+				</div>
+				<div class="team-name-banner">Patric Noriega</div>
+				<div class="team-title-banner">Software Developer</div>
+				<div class="team-social">
+					<a href="https://www.linkedin.com/in/patricnoriega/"><i class="fa fa-linkedin-square fa-4x"></i></a>
+					<a href="https://github.com/patricnoriega"><i class="fa fa-github-square fa-4x"></i></a>
+				</div>
+			</div>
+			
+			<div id="team-btm-right-tile" class="team-card">
+				<img class="team-headshot" src="/images/robert-allison.jpg" alt="img">
+				<div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+					essecillum dolore.
+				</div>
+				<div class="team-name-banner">Robert Allsion</div>
+				<div class="team-title-banner">Software Developer</div>
+				<div class="team-social">
+					<a href="https://www.linkedin.com/in/robert-allison1/"><i class="fa fa-linkedin-square fa-4x"></i></a>
+					<a href="https://github.com/robertallison"><i class="fa fa-github-square fa-4x"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+<!--	<div class="push"></div>-->
 </div>
-
-
-<div id="our-team-section">
-    <div id="our-team-title">
-        Meet The Team
-    </div>
-    <div id="team-tile-container">
-        <div id="team-left-tile" class="team-card">
-            <img class="team-headshot" src="images/professionalheadshotJackieD.jpg" alt="img">
-            <div class="team-name-bio">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum
-                dolore.
-            </div>
-            <div class="team-name-banner">Jackie Dallas</div>
-            <div class="team-title-banner">Software Developer</div>
-            <div class="team-social">
-                <a href="https://www.linkedin.com/in/jackie-dallas/"><i class="fa fa-linkedin-square fa-4x"></i></a>
-                <a href="https://github.com/jackiedallas"><i class="fa fa-github-square fa-4x"></i></a>
-            </div>
-        </div>
-
-        <div id="team-right-tile" class="team-card">
-            <img class="team-headshot" src="images/IMG_3935 4.jpeg" alt="img">
-            <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                essecillum dolore.
-            </div>
-            <div class="team-name-banner">Ian McConihay</div>
-            <div class="team-title-banner">Software Developer</div>
-            <div class="team-social">
-                <a href="https://www.linkedin.com/in/ian-mcconihay/"><i class="fa fa-linkedin-square fa-4x"></i></a>
-                <a href="https://github.com/Ian-McConihay"><i class="fa fa-github-square fa-4x"></i></a>
-            </div>
-        </div>
-
-        <div id="team-btm-left-tile" class="team-card">
-            <img class="team-headshot" src="/images/IMG_1321.jpeg" alt="img">
-            <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                essecillum dolore.
-            </div>
-            <div class="team-name-banner">Patric Noriega</div>
-            <div class="team-title-banner">Software Developer</div>
-            <div class="team-social">
-                <a href="https://www.linkedin.com/in/patricnoriega/"><i class="fa fa-linkedin-square fa-4x"></i></a>
-                <a href="https://github.com/patricnoriega"><i class="fa fa-github-square fa-4x"></i></a>
-            </div>
-        </div>
-
-        <div id="team-btm-right-tile" class="team-card">
-            <img class="team-headshot" src="/images/robert-allison.jpg" alt="img">
-            <div class="team-name-bio"> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                essecillum dolore.
-            </div>
-            <div class="team-name-banner">Robert Allsion</div>
-            <div class="team-title-banner">Software Developer</div>
-            <div class="team-social">
-                <a href="https://www.linkedin.com/in/robert-allison1/"><i class="fa fa-linkedin-square fa-4x"></i></a>
-                <a href="https://github.com/robertallison"><i class="fa fa-github-square fa-4x"></i></a>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div th:insert="fragments/footer"></div>-->
 <div th:insert="fragments/scripts"></div>
 <script>
 	// $('#compose-message').click(() => {

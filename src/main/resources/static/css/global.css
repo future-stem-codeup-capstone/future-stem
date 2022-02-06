@@ -13,6 +13,23 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
+.wrapper {
+	min-height: 100%;
+	margin-bottom: -50px;
+}
+.push, .footer-basic {
+	height: 143px;
+}
+.error-button {
+	background: inherit;
+	border: none;
+	/*color: white;*/
+}
+.span-hover:hover {
+	text-decoration: underline;
+	text-decoration-color: white;
+
+}
 .navbar-items {
 	position: relative;
 	left: -60px;
@@ -32,6 +49,7 @@ body {
 .nav-link:hover {
 	color: lightgrey!important;
 }
+
 .navbar {
 	/*background-color: black!important;*/
 	background:url(https://raw.github.com/mmoustafa/Chalkboard/master/img/bg.png);
@@ -329,9 +347,12 @@ body {
 		height: 75px;
 	}
 	.footer-basic {
-		padding:40px 0;
-		background-color:#ffffff;
-		color:#4b4c4d;
+		background:url(https://raw.github.com/mmoustafa/Chalkboard/master/img/bg.png);
+
+		padding-top: 15px;
+		/*padding:40px 0;*/
+		/*background-color:#ffffff;*/
+		color: white;
 	}
 
 	.footer-basic ul {
@@ -370,7 +391,7 @@ body {
 		display:inline-block;
 		text-align:center;
 		border-radius:50%;
-		border:1px solid #ccc;
+		border:1px solid white;
 		margin:0 8px;
 		color:inherit;
 		opacity:0.75;
@@ -384,7 +405,7 @@ body {
 		margin-top:15px;
 		text-align:center;
 		font-size:13px;
-		color:#aaa;
+		color: white;
 		margin-bottom:0;
 	}
 
