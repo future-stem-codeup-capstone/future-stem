@@ -30,7 +30,7 @@
 	overflow-x: auto;
 	/*overscroll-behavior-x: auto;*/
 	justify-content: space-between;
-	width: 93%;
+	width: 100%;
 
 }
 .add-project-btn {
@@ -59,6 +59,24 @@
 	display: flex;
 	/*margin-top: 15px;*/
 }
+.add-hobby {
+	border: 1px solid white;
+	padding: 0;
+	height: 30px;
+	width: 30px;
+	position: relative;
+	top: 44px;
+	background-color: inherit;
+	border-radius: 6px;
+}
+.add-icon {
+	font-size: 60px;
+	color: white;
+	padding: 0;
+	position: relative;
+	top: -32px;
+	right: -1px;
+}
 .delete-hobby-btn {
 	border: none;
 	background-color: inherit;
@@ -69,6 +87,7 @@
 }
 .delete-icon {
 	font-size: 16px;
+	color: white;
 }
 .top-left {
 
@@ -99,6 +118,9 @@
 .hobby-form {
 	display: flex;
 	justify-content: center;
+	position: relative;
+	top: -45px;
+
 }
 .username {
 	text-align: center;
@@ -106,24 +128,24 @@
 
 .profile-pic {
 	padding: 5rem;
-	background: rgb(61 209 231 / 43%);
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 14.5px );
-	-webkit-backdrop-filter: blur( 14.5px );
-	border-radius: 12%;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	/*background: rgb(61 209 231 / 43%);*/
+	/*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+	/*backdrop-filter: blur( 14.5px );*/
+	/*-webkit-backdrop-filter: blur( 14.5px );*/
+	/*border-radius: 12%;*/
+	/*border: 1px solid rgba( 255, 255, 255, 0.18 );*/
 	position: relative;
 	top: -2px;
 	left: 0;
 	/*border-radius: 10px;*/
 }
 .user-about {
-	background: rgba( 184, 233, 134, 0.4 );
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 4.5px );
-	-webkit-backdrop-filter: blur( 4.5px );
-	border-radius: 10px;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	/*background: rgba( 184, 233, 134, 0.4 );*/
+	/*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+	/*backdrop-filter: blur( 4.5px );*/
+	/*-webkit-backdrop-filter: blur( 4.5px );*/
+	/*border-radius: 10px;*/
+	/*border: 1px solid rgba( 255, 255, 255, 0.18 );*/
 	width: 410px;
 	height: 264px;
 	position: relative;
@@ -137,30 +159,13 @@
 	position: relative;
 	top: 78px;
 	right: -32px;
-	background: rgba( 217, 71, 71, 0.4 );
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 4.5px );
-	-webkit-backdrop-filter: blur( 4.5px );
-	border-radius: 10px;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	/*background: rgba( 217, 71, 71, 0.4 );*/
+	/*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+	/*backdrop-filter: blur( 4.5px );*/
+	/*-webkit-backdrop-filter: blur( 4.5px );*/
+	/*border-radius: 10px;*/
+	/*border: 1px solid rgba( 255, 255, 255, 0.18 );*/
 }
 
-.bubble-container {
-	display: flex;
-	z-index: -1;
-	position: absolute;
-	top: 18rem;
-	left: 19rem;
-	width: 120%;
-}
-.bubble {
-	border-radius: 50%;
-	height: 135px;
-	width: 135px;
-	background: rgba( 237, 234, 24, 0.6 );
-	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-	backdrop-filter: blur( 15px );
-	-webkit-backdrop-filter: blur( 15px );
-	/*border-radius: 10px;*/
-}
+
 
