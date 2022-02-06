@@ -24,36 +24,35 @@
 
 
 <div th:insert="fragments/scripts"></div>
+<script>
+	const projectCards = document.querySelectorAll('.projects');
+	// let firstFourCards = [];
+	
+	const observer = new IntersectionObserver(entries => {
+		console.log(entries)
+		entries.forEach(entry => {
+			entry.target.classList.toggle('show', entry.isIntersecting)
+			// if (entry.isIntersecting) observer.unobserve(entry.target)
+		})
+	},{
+		// threshold: 1,
+		rootMargin: '-100px'
+	})
+	projectCards.forEach(card => {
+		observer.observe(card)
+	})
+	// for (let i = 0; i <= 3; i++) {
+	// 	$(projectCards[i]).addClass('show')
+	// 	observer.observe(projectCards[i])
+	// }
+	
+
+
+
+
+
+
+</script>
 </body>
 </html>
 
-<!--<div id="1" class="ball-box col" style="margin-left: 15em">-->
-<!--	<ul class="white-ball" >-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--	</ul>-->
-<!--	<ul class="red-ball">-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--	</ul>-->
-<!--</div>-->
