@@ -15,15 +15,15 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<form th:action="@{/register}" method="post" th:object="${user}">
+					<form th:action="@{/register}" method="post" th:object="${user}" >
 						<div class="form-group">
-							<input th:field="*{username}" class="form-control" placeholder="Username">
+							<input th:field="*{username}" class="form-control" placeholder="Username" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" placeholder="E-Mail" th:field="*{email}">
+							<input class="form-control" placeholder="E-Mail" th:field="*{email}" required>
 						</div>
 						<div class="form-group">
-							<input class="form-control" placeholder="Password" th:field="*{password}" type="password">
+							<input class="form-control" placeholder="Password" th:field="*{password}" type="password" required>
 						</div>
 						<input type="submit" value="Sign Me Up!">
 					</form>
@@ -56,10 +56,10 @@
 					</div>
 					<form th:action="@{/login}" method="post">
 						<div class="form-group">
-							<input name="username" type="text" placeholder="Username" class="form-control"/>
+							<input name="username" type="text" placeholder="Username" class="form-control" required/>
 						</div>
 						<div class="form-group">
-							<input name="password" type="password" placeholder="Password" class="form-control"/>
+							<input name="password" type="password" placeholder="Password" class="form-control" required/>
 						
 						</div>
 						<button class="button-53 login-button" type="submit">Log In</button>
