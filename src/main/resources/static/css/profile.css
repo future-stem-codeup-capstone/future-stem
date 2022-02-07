@@ -40,6 +40,10 @@
 }
 .profile-projects {
 	margin-left: 0!important;
+	opacity: 1!important;
+	transition: none!important;
+	transform: none!important;
+
 }
 .user-pic {
 	width: 230px;
