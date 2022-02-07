@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
     <meta charset="UTF-8">
-    <title>Engineering</title>
+    <title>Enineering</title>
 </head>
-<body>
-<h1>Engineering page</h1>
+<body class="engineering-gradient">
+<nav th:insert="fragments/navbar"></nav>
+<h1>Engineering Page</h1>
+<div th:insert="fragments/scripts"></div>
 </body>
 </html>

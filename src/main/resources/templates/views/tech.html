@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
     <meta charset="UTF-8">
     <title>Technology</title>
 </head>
-<body>
-<h1>Technology page</h1>
+<body class="technology-gradient">
+<nav th:insert="fragments/navbar"></nav>
+<div class="wrapper">
+    <div class="container margin-top15">
+        <h1 class="display-1 text-center etch-sketch">Technology Information</h1>
+        <div class="info-content">
+            <p>From your quiz results, you have been determined to be most aligned to the Technology category of STEM. Continue reading below for more information and links for more projects and information.</p>
+            <p>The technology category of STEM is a very vast category, including applications in website design, robotics, and even creating your own videogames!</p>
+            <p>If you would like to start doing projects that would allow you to use more technology, we would recommend looking into Arduino projects. Below is a link that will take you to a site called Instructables, which has many great ideas for you to work on with your family.</p>
+            <p><h3><a href="https://www.instructables.com/circuits/projects/">Click here for tech projects!</a></h3></p>
+        </div>
+
+    </div>
+    <div class="push"></div>
+
+</div>
+<div th:insert="fragments/scripts"></div>
+
+
 </body>
 </html>
