@@ -99,7 +99,7 @@
 			</div>
 			<div class="middle-section">
 				<div class="projects-section">
-					<div class="projects show profile-projects" th:each="currentProject : ${userProjects}">
+					<div class="projects profile-projects" th:each="currentProject : ${userProjects}">
 						<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
 						     data-toggle="modal" tabindex="-1"
 						     aria-labelledby="edit-project-modal">
