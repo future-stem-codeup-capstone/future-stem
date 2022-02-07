@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head">
 	<meta charset="UTF-8">
 	<title>Uh-Oh!</title>
 </head>
-<body>
-	<h1>Uh oh! Default error</h1>
+<body style="margin: 1rem">
+<div class="jumbotron jumbotron-fluid frame">
+	<div class="p-5">
+		<div class="header-500">
+			<h1 class="display-1 etch-sketch" style="color: white">
+				Uh oh, Back up and try again! :(
+			</h1>
+		</div>
+		<div class="go-home500">
+			<form action="/" method="get">
+				<div>
+					<button class="error-button"><span class="span-hover" style="color: white;">Go Back</span></button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 </body>
+
 </html>
