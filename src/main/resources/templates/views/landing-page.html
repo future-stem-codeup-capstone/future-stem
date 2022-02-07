@@ -5,77 +5,97 @@
 </head>
 <body style="background-color: white">
 <nav th:insert="fragments/navbar" ></nav>
-	<div class="modal fade" id="register-modal" aria-hidden="true" data-toggle="modal" tabindex="-1" aria-labelledby="register-modal">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" style="font-weight: bold">Register!</h5>
-					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form th:action="@{/register}" method="post" th:object="${user}" >
-						<div class="form-group">
-							<input th:field="*{username}" class="form-control" placeholder="Username" required>
-						</div>
-						<div class="form-group">
-							<input class="form-control" placeholder="E-Mail" th:field="*{email}" required>
-						</div>
-						<div class="form-group">
-							<input class="form-control" placeholder="Password" th:field="*{password}" type="password" required>
-						</div>
-						<input type="submit" value="Sign Me Up!">
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="stem-container">
-		<div class="future-box">
-			<h1 class="future-txt">future</h1>
-		</div>
-		<div class="stem-img-box">
-			<img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="500" height="375">
-		
-		</div>
-	</div>
-	<div class="container m-l-cntr">
-		<div class="vert-align-lg">
-			<div class="move-up">
-				<div class="login-container">
-					<!--			<h1 class="login-h1">Log In</h1>-->
-					<div th:if="${param.error}">
-						Invalid Username and Password.
+	<div class="wrapper">
+		<div class="modal fade" id="register-modal" aria-hidden="true" data-toggle="modal" tabindex="-1" aria-labelledby="register-modal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" style="font-weight: bold">Register!</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
-					<div th:if="${param.logout}">
-						You have been logged out.
+					<div class="modal-body">
+						<form th:action="@{/register}" method="post" th:object="${user}" >
+							<div class="form-group">
+								<input th:field="*{username}" class="form-control" placeholder="Username" required>
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="E-Mail" th:field="*{email}" required>
+							</div>
+							<div class="form-group">
+								<input class="form-control" placeholder="Password" th:field="*{password}" type="password" required>
+							</div>
+							<input type="submit" value="Sign Me Up!">
+						</form>
 					</div>
-					<form th:action="@{/login}" method="post">
-						<div class="form-group">
-							<input name="username" type="text" placeholder="Username" class="form-control" required/>
-						</div>
-						<div class="form-group">
-							<input name="password" type="password" placeholder="Password" class="form-control" required/>
-						
-						</div>
-						<button class="button-53 login-button" type="submit">Log In</button>
-					</form>
-				</div>
-				<hr class="hr-land">
-				<div class="join-btn-box">
-					<div class="join-btn-container">
-						<button class="button-53 register-button join-btn" type="button" data-toggle="modal" data-target="#register-modal">Create new account</button>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="stem-container">
+			<div class="future-box">
+				<h1 class="future-txt">future</h1>
+			</div>
+			<div class="stem-img-box">
+				<img class="stem-img" src="/images/stem-logo.jpeg" alt="stem" width="500" height="375">
 			
+			</div>
 		</div>
+		<div class="container m-l-cntr">
+			<div class="vert-align-lg">
+				<div class="move-up">
+					<div class="login-container">
+						<!--			<h1 class="login-h1">Log In</h1>-->
+						<div th:if="${param.error}">
+							Invalid Username and Password.
+						</div>
+						<div th:if="${param.logout}">
+							You have been logged out.
+						</div>
+						<form th:action="@{/login}" method="post">
+							<div class="form-group">
+								<input name="username" type="text" placeholder="Username" class="form-control" required/>
+							</div>
+							<div class="form-group">
+								<input name="password" type="password" placeholder="Password" class="form-control" required/>
+							
+							</div>
+							<button class="button-53 login-button" type="submit">Log In</button>
+						</form>
+					</div>
+					<hr class="hr-land">
+					<div class="join-btn-box">
+						<div class="join-btn-container">
+							<button class="button-53 register-button join-btn" type="button" data-toggle="modal" data-target="#register-modal">Create new account</button>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		</div>
+<!--		<div class="push"></div>-->
+	</div>
+	<div class="stem-guy-container">
+		<img class="stem-guy" src="/images/STEM.jpg" alt="stem" width="320" height="320"/>
+		<button  class="btn btn-danger"  title="Popover title" id="btn-popover"
+		         data-content="And here's some amazing content. It's very engaging. Right?"
+		         data-toggle="popover">
+			Click to toggle popover</button>
+	
 	</div>
 
+
+
+<!--	<div th:insert="fragments/footer"></div>-->
+
 	<div th:insert="fragments/scripts"></div>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#btn-popover').popover();
+		});
+	</script>
 </body>
 </html>
