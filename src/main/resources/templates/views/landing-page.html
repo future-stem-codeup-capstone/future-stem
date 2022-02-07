@@ -78,8 +78,24 @@
 		</div>
 <!--		<div class="push"></div>-->
 	</div>
+	<div class="stem-guy-container">
+		<img class="stem-guy" src="/images/STEM.jpg" alt="stem" width="320" height="320"/>
+		<button  class="btn btn-danger"  title="Popover title" id="btn-popover"
+		         data-content="And here's some amazing content. It's very engaging. Right?"
+		         data-toggle="popover">
+			Click to toggle popover</button>
+	
+	</div>
+
+
+
 <!--	<div th:insert="fragments/footer"></div>-->
 
 	<div th:insert="fragments/scripts"></div>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#btn-popover').popover();
+		});
+	</script>
 </body>
 </html>
