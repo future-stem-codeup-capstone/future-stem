@@ -179,16 +179,16 @@
 		var paper = parseInt(document.querySelector('input[name="paper"]:checked').value);
 		number = hobby + trial + group + time + homework + study + best + learn + outside + results + language + question + games + paper;
 		console.log(number)
-		if(number <= 13) {
+		if(number <= 17) {
 			window.location ="/science";
 		}
-		else if(number <= 25 && number > 13) {
+		else if(number <= 34 && number > 17) {
 			window.location ="/tech";
 		}
-		else if(number <= 31 && number > 25) {
+		else if(number <= 46 && number > 34) {
 			window.location ="/engineering";
 		}
-		else if(number > 31) {
+		else if(number > 46) {
 			window.location ="/math";
 		}
 		//had to recommit
