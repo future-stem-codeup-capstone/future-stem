@@ -98,6 +98,26 @@ body {
 	background-repeat: no-repeat;
 
 }
+.science-gradient{
+	background-image: linear-gradient(315deg, #69b91d 0%, #9855c4 74%);
+	background-repeat: no-repeat;
+
+}
+.engineering-gradient{
+	background-image: linear-gradient(315deg, #738c8f 0%, #2972b4 74%);
+	background-repeat: no-repeat;
+
+}
+.technology-gradient{
+	background-image: linear-gradient(315deg, #c97b4c 0%, #48a9fe 74%);
+	background-repeat: no-repeat;
+
+}
+.math-gradient{
+	background-image: linear-gradient(315deg, #b9aa4a 0%, #a37bce 74%);
+	background-repeat: no-repeat;
+
+}
 .about-us-gradient{
 	background-image: linear-gradient(315deg, #ffd045 0%, #d14545 74%);
 	background-repeat: no-repeat;

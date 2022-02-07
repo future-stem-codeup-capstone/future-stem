@@ -91,14 +91,53 @@
 			<br>
 			<b>11.Do you have an active imagination?</b><br>
 			<input type="radio" name="question" id="answer1" value=1>
-			<label for="words">Yes, I make up games all the time</label><br>
+			<label for="answer1">Yes, I make up games all the time</label><br>
 			<input type="radio" name="question" id="answer2" value=4>
-			<label for="numbers">Sometimes, only when other people do too</label><br>
+			<label for="answer2">Sometimes, only when other people do too</label><br>
 			<input type="radio" name="question" id="answer3" value="2">
-			<label for="both">Not really</label><br>
+			<label for="answer3">Not really</label><br>
 			<br>
+			<b>12. Do you like board games?</b><br>
+			<input type="radio" name="games" id="board" value=4>
+			<label for="board">Yes, I love board games</label><br>
+			<input type="radio" name="games" id="board1" value=3>
+			<label for="board1">Sometimes, I like to make up my own rules when I play</label><br>
+			<input type="radio" name="games" id="board2" value="2">
+			<label for="board2">No, I hate board games</label><br>
+			<br>
+			<b>13. Do you like finishing things in one sitting or coming back to finish work?</b><br>
+			<input type="radio" name="time" id="time" value=1>
+			<label for="time">I like to get it finished as soon as possible</label><br>
+			<input type="radio" name="time" id="time1" value=4>
+			<label for="time1">If I understand it, I'll try and work through problems</label><br>
+			<input type="radio" name="time" id="time2" value="2">
+			<label for="time2">No, I like taking breaks and coming back later</label><br>
+			<br>
+			<b>14. Do you like working with pen and paper or digitally?</b><br>
+			<input type="radio" name="paper" id="paper" value=1>
+			<label for="paper">I have to write stuff down by hand to understand it</label><br>
+			<input type="radio" name="paper" id="paper1" value=2>
+			<label for="paper1">Digital for me, its much faster</label><br>
+			<br>
+			<b>15. Which would you most like to do?</b><br>
+			<input type="radio" name="career" id="career" value=1>
+			<label for="career">Learn how the universe works</label><br>
+			<input type="radio" name="career" id="career1" value=2>
+			<label for="career1">Create machines that solve problems</label><br>
+			<input type="radio" name="career" id="career2" value=2>
+			<label for="career2">Design and build buildings or vehicles</label><br>
+			<input type="radio" name="career" id="career3" value=2>
+			<label for="career3">Try and solve problems using theories and algorithms</label><br>
+			<br>
+<!--			<b>12. Do you like board games?</b><br>-->
+<!--			<input type="radio" name="games" id="board" value=1>-->
+<!--			<label for="board">Yes, I love board games</label><br>-->
+<!--			<input type="radio" name="games" id="board1" value=4>-->
+<!--			<label for="numbers">Sometimes, I like to make up my own rules when I play</label><br>-->
+<!--			<input type="radio" name="games" id="board2" value="2">-->
+<!--			<label for="both">No, I hate board games</label><br>-->
 			<button type="button" onclick="showResults()">Submit</button>
-			
+
 			<!--		<b>12. ?</b><br>-->
 			<!--		<input type="radio" name="quest" id="answer4" value=1>-->
 			<!--		<label for="words">1</label><br>-->
@@ -134,8 +173,11 @@
 		var outside = parseInt(document.querySelector('input[name="outside"]:checked').value);
 		var results = parseInt(document.querySelector('input[name="results"]:checked').value);
 		var language = parseInt(document.querySelector('input[name="language"]:checked').value);
+		var time = parseInt(document.querySelector('input[name="time"]:checked').value);
 		var question = parseInt(document.querySelector('input[name="question"]:checked').value);
-		number = hobby + trial + group + homework + study + best + learn + outside + results + language + question;
+		var games = parseInt(document.querySelector('input[name="games"]:checked').value);
+		var paper = parseInt(document.querySelector('input[name="paper"]:checked').value);
+		number = hobby + trial + group + time + homework + study + best + learn + outside + results + language + question + games + paper;
 		console.log(number)
 		if(number <= 13) {
 			window.location ="/science";
