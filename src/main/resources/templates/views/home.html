@@ -6,54 +6,56 @@
 </head>
 <body class="home-gradient">
 <nav th:insert="fragments/navbar"></nav>
-
-<div class="home-container">
-	<h1 class="display-1 text-center etch-sketch">Community Projects</h1>
-	<div class="d-flex flex-wrap justify-content-center">
-		<div class="projects" th:each="project : ${project}">
-			<h3 th:text="${project.getTitle()}"></h3>
-			<div class="project-body">
-				<p class="project-body-text" th:text="${project.getBody()}"></p>
+<div class="wrapper">
+	<div class="home-container">
+		<h1 class="display-1 text-center etch-sketch">Community Projects</h1>
+		<div class="d-flex flex-wrap justify-content-center">
+			<div class="projects" th:each="project : ${project}">
+				<h3 th:text="${project.getTitle()}"></h3>
+				<div class="project-body">
+					<p class="project-body-text" th:text="${project.getBody()}"></p>
+				</div>
+				<img th:src="${project.getUrl()}" alt="image" width="250" height="150" style="border-radius: 20px">
+				<p>Posted by: <span th:text="${project.getUser().getUsername()}"></span></p>
 			</div>
-			<img th:src="${project.getUrl()}" alt="image" width="250" height="150" style="border-radius: 20px">
-			<p>Posted by: <span th:text="${project.getUser().getUsername()}"></span></p>
 		</div>
 	</div>
+	<div class="push"></div>
 </div>
+<div th:insert="fragments/footer"></div>
 
 
 
 <div th:insert="fragments/scripts"></div>
+<script>
+	const projectCards = document.querySelectorAll('.projects');
+	// let firstFourCards = [];
+	
+	const observer = new IntersectionObserver(entries => {
+		console.log(entries)
+		entries.forEach(entry => {
+			entry.target.classList.toggle('show', entry.isIntersecting)
+			// if (entry.isIntersecting) observer.unobserve(entry.target)
+		})
+	},{
+		// threshold: 1,
+		rootMargin: '-100px'
+	})
+	projectCards.forEach(card => {
+		observer.observe(card)
+	})
+	// for (let i = 0; i <= 3; i++) {
+	// 	$(projectCards[i]).addClass('show')
+	// 	observer.observe(projectCards[i])
+	// }
+	
+
+
+
+
+
+
+</script>
 </body>
 </html>
 
-<!--<div id="1" class="ball-box col" style="margin-left: 15em">-->
-<!--	<ul class="white-ball" >-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--	</ul>-->
-<!--	<ul class="red-ball">-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--		<li></li>-->
-<!--	</ul>-->
-<!--</div>-->

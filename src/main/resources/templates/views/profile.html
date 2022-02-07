@@ -4,162 +4,166 @@
     <meta charset="UTF-8">
     <title>Profile</title>
 </head>
-<body class="bg-color">
+<body class="map-gradient">
 	<nav th:insert="fragments/navbar"></nav>
-	<div class="modal fade" id="create-project-modal" aria-hidden="true" data-toggle="modal" tabindex="-1"
-     aria-labelledby="create-project-modal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" style="font-weight: bold">Add New Project!</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form th:action="@{/create-project}" method="post" th:object="${project}">
-                    <div class="form-group">
-                        <label for="title">Title:</label>
-                        <input class="form-control" th:field="*{title}" id="title">
-                    </div>
-                    <div class="form-group">
-                        <label for="body">Description:</label>
-                        <textarea class="form-control" th:field="*{body}" id="body" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="fileupload">Project Image URL:</label>
-                        <input th:field="*{url}" id="fileupload" class="form-control">
-                        <button class="button" type="button" id="picker">Pick file</button>
-                    </div>
-                    <button type="submit">Create</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
-	<div class="profile-container">
-		<div class="top-of-page">
-			<div class="top-left mr-3 row">
-				<div class="col user-about">
-					<div class="username">
-						<h1 class="display-3 etch-sketch"><span th:text="${username}"></span></h1>
-					</div>
-					<div class="about-me">
-						<h3>About Me</h3>
-						<p th:text="${userAboutMe}"></p>
-					</div>
-				</div>
-				<div class="col">
-					<div class="profile-pic">
-						<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
-					</div>
-				</div>
-			</div>
-			
-			<div class="hobbies-section">
-				<div class="hobby-header">
-					<h1 class="display-3 etch-sketch">Hobbies</h1>
-				</div>
-				<div class="hobby-form">
-					<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
-						<label for="hobby">Add Hobby:</label>
-						<input id="hobby"  type="text" th:field="*{name}">
-						<button class="btn btn-dark btn-sm ml-2" type="submit">Add</button>
-					</form>
-				</div>
-				<div class="d-flex justify-content-center">
-					<div class="hobby-box-container">
-						<div class="user-hobbies-box">
-							<div th:each="hobby : ${userHobbies}">
-								<div class="user-hobbies">
-									<div class="user-hobby">
-										<p th:text="${hobby.getName()}"></p>
-									</div>
-									<div class="delete-hobby-form">
-										<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
-											<button class="delete-hobby-btn"><i class="bi bi-x delete-icon"></i></button>
-										</form>
-									</div>
-								</div>
-							</div>
-						
-						</div>
-					</div>
-				
-				</div>
-			</div>
-		</div>
-		<div class="add-project-btn">
-			<button class="button-53 profile-add-project" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
-		
-		</div>
-		<div class="middle-section">
-			<div class="projects-section">
-				<div class="projects profile-projects" th:each="currentProject : ${userProjects}">
-					<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
-					     data-toggle="modal" tabindex="-1"
-					     aria-labelledby="edit-project-modal">
-						<div class="modal-dialog modal-dialog-centered">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" style="font-weight: bold">Edit Project!</h5>
-									<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<form th:action="@{/project/edit/{id}(id=${currentProject.id})}" method="post"
-									      th:object="${currentProject}">
-
-										<div class="form-group">
-											<label for="edit-title">Title:</label>
-											<input class="form-control" th:value="${currentProject.getTitle()}" name="title"
-											       id="edit-title">
-										
-										</div>
-										<div class="form-group">
-											<label for="edit-body">Description:</label>
-											<textarea class="form-control" th:value="${currentProject.getBody()}" name="body"
-											          id="edit-body" rows="3"></textarea>
-										</div>
-										<div class="form-group">
-											<label for="edit-fileupload">Project Image URL:</label>
-											<input th:value="${currentProject.getUrl()}" name="url" id="edit-fileupload"
-											       class="form-control">
-											<button class="button" type="button" id="edit-picker">Pick file</button>
-										</div>
-										<input type="hidden" name="projectId" th:value="${project.getId()}">
-										<button type="submit" data-th-id="${currentProject.getId()}">Submit edit</button>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<h3 th:text="${currentProject.getTitle()}"></h3>
-					<div class="project-body">
-						<p class="project-body-text" th:text="${currentProject.getBody()}"></p>
-					</div>
-					<img th:src="${currentProject.getUrl()}" alt="image" width="250" height="150">
-					<div class="d-flex">
-						<button class="ml-auto btn btn-dark" type="button" data-th-id="${project.getId()}" data-toggle="modal"
-						        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
-							Project
+	<div class="wrapper">
+		<div class="modal fade" id="create-project-modal" aria-hidden="true" data-toggle="modal" tabindex="-1"
+		     aria-labelledby="create-project-modal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" style="font-weight: bold">Add New Project!</h5>
+						<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
 						</button>
-						<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${currentProject.getId()}" method="POST">
-							<button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+					</div>
+					<div class="modal-body">
+						<form th:action="@{/create-project}" method="post" th:object="${project}">
+							<div class="form-group">
+								<label for="title">Title:</label>
+								<input class="form-control" th:field="*{title}" id="title">
+							</div>
+							<div class="form-group">
+								<label for="body">Description:</label>
+								<textarea class="form-control" th:field="*{body}" id="body" rows="3"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="fileupload">Project Image URL:</label>
+								<input th:field="*{url}" id="fileupload" class="form-control">
+								<button class="button" type="button" id="picker">Pick file</button>
+							</div>
+							<button type="submit">Create</button>
 						</form>
 					</div>
-
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					</div>
 				</div>
 			</div>
 		</div>
+		<div class="profile-container">
+			<div class="top-of-page frame">
+				<div class="top-left mr-3 row">
+					<div class="col user-about">
+						<div class="username">
+							<h1 class="display-3 etch-sketch" style="color: white"><span th:text="${username}"></span></h1>
+						</div>
+						<div class="about-me" style="color: white">
+							<h3>About Me</h3>
+							<p th:text="${userAboutMe}"></p>
+						</div>
+					</div>
+					<div class="col">
+						<div class="profile-pic">
+							<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
+						</div>
+					</div>
+				</div>
+				
+				<div class="hobbies-section" style="color: white">
+					<div class="hobby-header">
+						<h1 class="display-3 etch-sketch">Hobbies</h1>
+					</div>
+					<div class="hobby-form">
+						<form th:action="@{/create-hobby}" th:method="post" th:object="${newHobby}">
+							<label for="hobby">Add Hobby:</label>
+							<input id="hobby"  type="text" th:field="*{name}">
+							<button class="add-hobby ml-2" type="submit"><span class="add-icon">+</span></button>
+						</form>
+					</div>
+					<div class="d-flex justify-content-center" style="position: relative; top: -45px; left: 10px">
+						<div class="hobby-box-container">
+							<div class="user-hobbies-box">
+								<div th:each="hobby : ${userHobbies}">
+									<div class="user-hobbies">
+										<div class="user-hobby">
+											<p th:text="${hobby.getName()}"></p>
+										</div>
+										<div class="delete-hobby-form">
+											<form th:action="'/hobby/delete/' + ${hobby.getId()}" method="POST">
+												<button class="delete-hobby-btn"><i class="bi bi-x delete-icon"></i></button>
+											</form>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+			<div class="add-project-btn">
+				<button class="button-53 profile-add-project" type="button" data-toggle="modal" data-target="#create-project-modal">Add Project</button>
+			
+			</div>
+			<div class="middle-section">
+				<div class="projects-section">
+					<div class="projects show profile-projects" th:each="currentProject : ${userProjects}">
+						<div class="modal fade" th:id="'edit-project-modal' + ${currentProject.getId()}" aria-hidden="true"
+						     data-toggle="modal" tabindex="-1"
+						     aria-labelledby="edit-project-modal">
+							<div class="modal-dialog modal-dialog-centered">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" style="font-weight: bold">Edit Project!</h5>
+										<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form th:action="@{/project/edit/{id}(id=${currentProject.id})}" method="post"
+										      th:object="${currentProject}">
+											
+											<div class="form-group">
+												<label for="edit-title">Title:</label>
+												<input class="form-control" th:value="${currentProject.getTitle()}" name="title"
+												       id="edit-title">
+											
+											</div>
+											<div class="form-group">
+												<label for="edit-body">Description:</label>
+												<textarea class="form-control" th:value="${currentProject.getBody()}" name="body"
+												          id="edit-body" rows="3"></textarea>
+											</div>
+											<div class="form-group">
+												<label for="edit-fileupload">Project Image URL:</label>
+												<input th:value="${currentProject.getUrl()}" name="url" id="edit-fileupload"
+												       class="form-control">
+												<button class="button" type="button" id="edit-picker">Pick file</button>
+											</div>
+											<input type="hidden" name="projectId" th:value="${project.getId()}">
+											<button type="submit" data-th-id="${currentProject.getId()}">Submit edit</button>
+										</form>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<h3 th:text="${currentProject.getTitle()}"></h3>
+						<div class="project-body">
+							<p class="project-body-text" th:text="${currentProject.getBody()}"></p>
+						</div>
+						<img th:src="${currentProject.getUrl()}" alt="image" width="250" height="150">
+						<div class="d-flex">
+							<button class="ml-auto btn btn-dark" type="button" data-th-id="${project.getId()}" data-toggle="modal"
+							        th:attr="data-target='#edit-project-modal' + ${currentProject.getId()}">Edit
+								Project
+							</button>
+							<form class="delete-project-btn ml-auto" th:action="'/project/delete/' + ${currentProject.getId()}" method="POST">
+								<button class="btn btn-danger"><i class="bi bi-trash-fill"></i></button>
+							</form>
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="push"></div>
 	</div>
+	<div th:insert="fragments/footer"></div>
     <div th:insert="fragments/scripts"></div>
 	<script>
 		

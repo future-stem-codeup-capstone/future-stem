@@ -5,35 +5,37 @@
 	<title>Map</title>
 
 </head>
-<body class="map-gradient">
+<body class="stem-quiz-gradient">
 	<nav th:insert="fragments/navbar"></nav>
-	
-	<div class="map-container">
-		<div>
-			<h1 class="display-1 etch-sketch text-center">Activities Map</h1>
-			<p class="text-center">A simple map that you can use to filter categories and find activities for kids.</p>
+	<div class="wrapper">
+		<div class="map-container">
+			<div>
+				<h1 class="display-1 etch-sketch text-center">Activities Map</h1>
+				<p class="text-center">A simple map that you can use to filter categories and find activities for kids.</p>
+			</div>
+			<div class="d-flex mb-3 justify-content-center">
+				<select id="places-select" style="font-size: 16px; padding:4px 8px; border-radius: 4px">
+					<option value="">Choose a category...</option>
+					<option value="Zoo">Zoos</option>
+					<option value="Aquarium">Aquariums</option>
+					<option value="Wild Animal Park">Wild Animal Parks</option>
+					<option value="Museum">Museums</option>
+					<option value="Library">Libraries</option>
+					<option value="Education">Schools</option>
+					<option value="Parks and Outdoors">Parks and Outdoors</option>
+				</select>
+				<form action="" class="form-inline ml-5">
+					<label class="mx-1" for="location-input">Location</label>
+					<input class="mx-1" type="text" id="location-input" placeholder="City, State and/or Zipcode" style="width: 13rem; border-radius: 4px">
+					<button class="btn btn-sm btn-dark mx-1" type="submit" id="location-button">Search</button>
+				</form>
+			</div>
+			
+			<div id="map"></div>
 		</div>
-		<div class="d-flex mb-3 justify-content-center">
-			<select id="places-select" style="font-size: 16px; padding:4px 8px; border-radius: 4px">
-				<option value="">Choose a category...</option>
-				<option value="Zoo">Zoos</option>
-				<option value="Aquarium">Aquariums</option>
-				<option value="Wild Animal Park">Wild Animal Parks</option>
-				<option value="Museum">Museums</option>
-				<option value="Library">Libraries</option>
-				<option value="Education">Schools</option>
-				<option value="Parks and Outdoors">Parks and Outdoors</option>
-			</select>
-			<form action="" class="form-inline ml-5">
-				<label class="mx-1" for="location-input">Location</label>
-				<input class="mx-1" type="text" id="location-input" placeholder="City, State and/or Zipcode" style="width: 13rem; border-radius: 4px">
-				<button class="btn btn-sm btn-dark mx-1" type="submit" id="location-button">Search</button>
-			</form>
-		</div>
-		
-		<div id="map"></div>
+		<div class="push"></div>
 	</div>
-	
+	<div th:insert="fragments/footer"></div>
 	
 	<div th:insert="fragments/scripts"></div>
 	<script>
