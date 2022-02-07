@@ -97,6 +97,13 @@
 			<input type="radio" name="question" id="answer3" value="2">
 			<label for="both">Not really</label><br>
 			<br>
+			<b>12. Do you like board games?</b><br>
+			<input type="radio" name="games" id="board" value=1>
+			<label for="board">Yes, I love board games</label><br>
+			<input type="radio" name="games" id="board1" value=4>
+			<label for="numbers">Sometimes, I like to make up my own rules when I play</label><br>
+			<input type="radio" name="games" id="board2" value="2">
+			<label for="both">No, I hate board games</label><br>
 			<button type="button" onclick="showResults()">Submit</button>
 			
 			<!--		<b>12. ?</b><br>-->
@@ -135,7 +142,8 @@
 		var results = parseInt(document.querySelector('input[name="results"]:checked').value);
 		var language = parseInt(document.querySelector('input[name="language"]:checked').value);
 		var question = parseInt(document.querySelector('input[name="question"]:checked').value);
-		number = hobby + trial + group + homework + study + best + learn + outside + results + language + question;
+		var games = parseInt(document.querySelector('input[name="games"]:checked').value);
+		number = hobby + trial + group + homework + study + best + learn + outside + results + language + question + games;
 		console.log(number)
 		if(number <= 13) {
 			window.location ="/science";
