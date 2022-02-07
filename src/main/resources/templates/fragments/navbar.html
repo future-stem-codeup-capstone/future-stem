@@ -14,33 +14,33 @@
 		<ul class="navbar-nav">
 			
 			<li class="nav-item active">
-				<a sec:authorize="isAuthenticated()" class="nav-link" href="/home">Home<span class="sr-only">(current)</span></a>
+				<a sec:authorize="isAuthenticated()" class="nav-link hover-yellow" href="/home">Home<span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
-				<a  href="/info" class="nav-link">Info</a>
+				<a  href="/info" class="nav-link hover-green">Info</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" href="/education" class="nav-link">Education</a>
+				<a sec:authorize="isAuthenticated()" href="/education" class="nav-link hover-red">Education</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" href="/map" class="nav-link">Explore</a>
+				<a sec:authorize="isAuthenticated()" href="/map" class="nav-link hover-blue">Explore</a>
 			</li>
 
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" href="/stemquiz" class="nav-link left-nav">Interest Quiz</a>
+				<a sec:authorize="isAuthenticated()" href="/stemquiz" class="nav-link left-nav hover-yellow">Interest Quiz</a>
 			</li>
 			
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" class="nav-link right-nav" href="/connection">Community</a>
+				<a sec:authorize="isAuthenticated()" class="nav-link right-nav hover-yellow" href="/connection">Community</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" class="nav-link" href="/profile">Profile</a>
+				<a sec:authorize="isAuthenticated()" class="nav-link hover-green" href="/profile">Profile</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/aboutUs">About Us</a>
+				<a class="nav-link hover-blue" href="/aboutUs">About Us</a>
 			</li>
 			<li class="nav-item">
-				<a sec:authorize="isAuthenticated()" class="nav-link" href="/update-account">Edit Account</a>
+				<a sec:authorize="isAuthenticated()" class="nav-link hover-yellow" href="/update-account">Edit Account</a>
 			</li>
 			<li class="nav-item">
 				<div sec:authorize="isAuthenticated()">

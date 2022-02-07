@@ -18,7 +18,7 @@ body {
 	margin-bottom: -50px;
 }
 .push, .footer-basic {
-	height: 143px;
+	height: 200px;
 }
 .error-button {
 	background: inherit;
@@ -155,6 +155,37 @@ body {
 .stem-guy{
 
 }
+.footer-categories {
+	display: flex;
+	justify-content: center;
+}
+
+.footer-lists {
+	list-style: none inside none;
+	padding-left: 0;
+	text-align: center;
+}
+.fl-socials {
+	display: flex;
+	justify-content: center;
+}
+.fl-socials > * {
+	margin: 0 1rem;
+}
+.tech-stack, .team, .future-stem {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	margin: 0 6rem;
+	text-align: center;
+
+}
+.footer-lists li {
+	font-size: 10px;
+}
+.future-stem {
+	width: 100px;
+}
 
 
 /*.stem-img {*/
@@ -199,40 +230,38 @@ body {
 	border-radius: 10px;
 	box-shadow: -10px 12px 6px lightgray;
 	padding: 10px;
+	position: relative;
+	bottom: 7rem;
 
 
 }
 .vert-align-lg {
 	margin: auto 0;
 }
-.main-content {
-	/*width: 75%;*/
-	/*position: fixed;*/
-	/*width: 100%;*/
-	/*height: 100vh;*/
-	/*background-color: #d3d3d326;*/
-}
-
-.connections-page{
-
+.connection-header {
+	margin-bottom: 1rem;
 }
 
 .connections-container{
 	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	flex-wrap: wrap;
-	float: right;
-	width: 65%;
+	margin-top: 5rem;
+	/*flex-direction: column;*/
 }
 .connections-allUsers{
-	float: left;
-	width: 30%;
-	margin-left: 2em;
+
 }
 .connections-singleUser{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
+}
+.single-user-container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: center;
+	position: relative;
+	top: -9px;
 }
 .connections-singleUserInfo{
 	background-color: white;
@@ -240,12 +269,10 @@ body {
 	width: fit-content;
 	height: fit-content;
 	padding: 8px;
-	margin: 5rem;
+	margin: 2rem;
 	box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
 }
-/*@image: 'http://pancaketheorem.com/stuff/demos/borderimage/wood.png';*/
-/*@bgImage:'http://tumodaurbana.com/wp-content/uploads/2013/05/tumodaurbana-expo-dali.jpg';*/
-/*@size:200px;*/
+
 .frame {
 	background: url(https://files.123freevectors.com/wp-content/uploads/new/123fv-images/1175-green-chalkboard-background.jpg);
 	background-size: cover;
@@ -287,6 +314,22 @@ body {
 	height: fit-content;
 	margin: 5rem;
 	box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;
+}
+.hover-yellow:hover {
+	color: #fdef30!important;
+	transform: scale(1.1);
+}
+.hover-green:hover {
+	color: #b5f72b!important;
+	transform: scale(1.1);
+}
+.hover-red:hover {
+	transform: scale(1.1);
+	color: #f56439!important;
+}
+.hover-blue:hover {
+	transform: scale(1.1);
+	color: #a4effd!important;
 }
 /*.projects:hover{*/
 /*	transform: scale(1.2);*/
@@ -386,16 +429,16 @@ body {
 	}
 
 	.footer-basic ul {
-		padding:0;
-		list-style:none;
-		text-align:center;
-		font-size:18px;
-		line-height:1.6;
-		margin-bottom:0;
+		/*padding:0;*/
+		/*list-style:none;*/
+		/*text-align:center;*/
+		/*font-size:18px;*/
+		/*line-height:1.6;*/
+		/*margin-bottom:0;*/
 	}
 
 	.footer-basic li {
-		padding:0 10px;
+		/*padding:0 10px;*/
 	}
 
 	.footer-basic ul a {
