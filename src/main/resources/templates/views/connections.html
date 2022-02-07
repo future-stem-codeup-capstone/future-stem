@@ -14,24 +14,15 @@
 		<h5 style="height: 40px; width: 100%" >User Details</h5>
 <div class="connections-singleUserInfo" style="margin: 3em 4em 2em 0;" th:each="connections : ${connection}">
 	<p style="font-weight: bold" th:text="${connections.getAddedUser().getUsername()}" />
-<!--	<p th:text="${connections.getAddedUser().getEmail()}"/>-->
 	<img style="width: 140px; height: 140px; padding: 10px; border-radius: 50%" class="user-avatar" th:src="${connections.getAddedUser().getProfile_pic()}"/>
 	<p th:text="${connections.getAddedUser().getAboutMe()}"/>
+<!--	<p th:text="${connections.getAddedUser().getUserHobbies()[0].getName()}"/>-->
 <!--	<h3 th:text="${connections.getAddedUser().getUserProjects()[0].getTitle()}" />-->
-<!--	<p th:text="${connections.getAddedUser().getUserProjects()[0].getBody()}" />-->
-<!--	<img th:src="${connections.getAddedUser().getUserProjects()[0].getUrl()}" alt="image" width="350" height="300"/>-->
 	<form th:action="'/connection-delete/' + ${connections.getId()}" method="POST">
 		<button class="btn btn-secondary">Close</button>
 	</form>
 </div>
 </div>
-
-
-
-<!--<form style="margin-top: 10em" th:object="${user}" method="post">-->
-<!--	<input  name="search-username" type="text" th:field="${allUsers}" placeholder="Search Username" >-->
-<!--	<button  type="submit" value="Search">Search</button>-->
-<!--</form>-->
 
 <div class="connections-allUsers">
 	<h5 style="height: 40px; width: 100% ">Click on users to display information about them</h5>
