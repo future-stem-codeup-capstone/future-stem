@@ -55,7 +55,8 @@
 					</div>
 					<div class="col">
 						<div class="profile-pic">
-							<img class="user-pic" th:src="${user.getProfile_pic()}" alt="profile-pic">
+							<img class="user-pic" th:if="${user.getProfile_pic() == ''}" src="images/STEM.jpg" alt="user-pic">
+							<img class="user-pic" th:unless="${user.getProfile_pic() == ''}" th:src="${user.getProfile_pic()}" alt="user-pic">
 						</div>
 					</div>
 				</div>

@@ -13,7 +13,12 @@
 			<li>Username: <span th:text="${loggedInUser.getUsername()}"></span></li>
 			<li>Email: <span th:text="${loggedInUser.getEmail()}"></span></li>
 			<li>About Me: <span th:text="${loggedInUser.getAboutMe()}"></span></li>
-			<li>Avatar: <img th:src="${loggedInUser.getProfile_pic()}" class="user-avatar" width="230" height="200" alt="avatar"/></li>
+			<li th:if="${loggedInUser.getProfile_pic() == ''}">
+				Avatar: <img class="user-avatar" src="images/STEM.jpg" alt="user-pic" width="230" height="200">
+			</li>
+			<li th:unless="${loggedInUser.getProfile_pic() == ''}">
+				Avatar: <img th:src="${loggedInUser.getProfile_pic()}" class="user-avatar" width="230" height="200" alt="avatar"/>
+			</li>
 		</ul>
 		<button class="btn btn-dark edit-account-btn" style="margin-bottom: 8px">Edit</button>
 		<div class="update-account-form hidden">
